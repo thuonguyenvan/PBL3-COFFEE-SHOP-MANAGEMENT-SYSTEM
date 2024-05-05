@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PBL3_Coffee_Shop_Management_System
 {
-    public partial class LoginControl : UserControl
+    public partial class ProductsPanel : UserControl
     {
-        public LoginControl()
+        public ProductsPanel()
         {
             InitializeComponent();
         }

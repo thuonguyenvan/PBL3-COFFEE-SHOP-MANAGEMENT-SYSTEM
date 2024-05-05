@@ -15,6 +15,7 @@ namespace PBL3_Coffee_Shop_Management_System
         public SellScreen()
         {
             InitializeComponent();
+            flowLayoutPanel1.AutoScroll = true;
         }
     }
 }

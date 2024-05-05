@@ -1,0 +1,13 @@
+E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\bin\Debug\PBL3_Coffee_Shop_Management_System.exe.config
+E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\bin\Debug\PBL3_Coffee_Shop_Management_System.exe
+E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\bin\Debug\PBL3_Coffee_Shop_Management_System.pdb
+E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.csproj.AssemblyReference.cache
+E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.Form1.resources
+E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.Properties.Resources.resources
+E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.SellScreen.resources
+E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.csproj.GenerateResource.cache
+E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.csproj.CoreCompileInputs.cache
+E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.exe
+E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.pdb
+E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.ProductsPanel.resources
+E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.LoginControl.resources

@@ -28,128 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.vScrollBar2 = new System.Windows.Forms.VScrollBar();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // flowLayoutPanel1
             // 
-            this.panel1.Location = new System.Drawing.Point(14, 32);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(148, 126);
-            this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(168, 32);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(148, 126);
-            this.panel2.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(322, 32);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(148, 126);
-            this.panel3.TabIndex = 2;
-            // 
-            // panel8
-            // 
-            this.panel8.Location = new System.Drawing.Point(322, 164);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(148, 126);
-            this.panel8.TabIndex = 7;
-            // 
-            // panel9
-            // 
-            this.panel9.Location = new System.Drawing.Point(168, 164);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(148, 126);
-            this.panel9.TabIndex = 6;
-            // 
-            // panel10
-            // 
-            this.panel10.Location = new System.Drawing.Point(14, 164);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(148, 126);
-            this.panel10.TabIndex = 4;
-            // 
-            // panel13
-            // 
-            this.panel13.Location = new System.Drawing.Point(322, 296);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(148, 126);
-            this.panel13.TabIndex = 7;
-            // 
-            // panel14
-            // 
-            this.panel14.Location = new System.Drawing.Point(168, 296);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(148, 126);
-            this.panel14.TabIndex = 6;
-            // 
-            // panel15
-            // 
-            this.panel15.Location = new System.Drawing.Point(14, 296);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(148, 126);
-            this.panel15.TabIndex = 4;
-            // 
-            // panel18
-            // 
-            this.panel18.Location = new System.Drawing.Point(322, 428);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(148, 126);
-            this.panel18.TabIndex = 7;
-            // 
-            // panel19
-            // 
-            this.panel19.Location = new System.Drawing.Point(168, 428);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(148, 126);
-            this.panel19.TabIndex = 6;
-            // 
-            // panel20
-            // 
-            this.panel20.Location = new System.Drawing.Point(14, 428);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(148, 126);
-            this.panel20.TabIndex = 4;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.panel5);
-            this.panel4.Controls.Add(this.button2);
-            this.panel4.Controls.Add(this.button1);
-            this.panel4.Controls.Add(this.label1);
-            this.panel4.Location = new System.Drawing.Point(494, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(287, 591);
-            this.panel4.TabIndex = 8;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Coral;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(586, 630);
+            this.flowLayoutPanel1.TabIndex = 10;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(109, 32);
+            this.label1.Location = new System.Drawing.Point(142, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 0;
@@ -157,7 +61,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(74, 528);
+            this.button1.Location = new System.Drawing.Point(90, 575);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -166,82 +70,96 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(155, 528);
+            this.button2.Location = new System.Drawing.Point(171, 575);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // panel5
+            // panel4
             // 
-            this.panel5.Controls.Add(this.vScrollBar2);
-            this.panel5.Location = new System.Drawing.Point(4, 55);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(280, 467);
-            this.panel5.TabIndex = 3;
+            this.panel4.BackColor = System.Drawing.Color.Sienna;
+            this.panel4.Controls.Add(this.listView1);
+            this.panel4.Controls.Add(this.button2);
+            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Location = new System.Drawing.Point(586, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(330, 630);
+            this.panel4.TabIndex = 8;
             // 
-            // vScrollBar1
+            // listView1
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(477, 0);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 591);
-            this.vScrollBar1.TabIndex = 9;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader0,
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(6, 59);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(318, 497);
+            this.listView1.TabIndex = 3;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
-            // vScrollBar2
+            // columnHeader0
             // 
-            this.vScrollBar2.Location = new System.Drawing.Point(262, 0);
-            this.vScrollBar2.Name = "vScrollBar2";
-            this.vScrollBar2.Size = new System.Drawing.Size(17, 467);
-            this.vScrollBar2.TabIndex = 0;
+            this.columnHeader0.Text = "STT";
+            this.columnHeader0.Width = 33;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Tên sản phẩm";
+            this.columnHeader1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader1.Width = 94;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Số lượng";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 54;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Đơn giá";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 62;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Thành tiền";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.Width = 71;
             // 
             // SellScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.vScrollBar1);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel18);
-            this.Controls.Add(this.panel19);
-            this.Controls.Add(this.panel20);
-            this.Controls.Add(this.panel13);
-            this.Controls.Add(this.panel14);
-            this.Controls.Add(this.panel15);
-            this.Controls.Add(this.panel8);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel9);
-            this.Controls.Add(this.panel10);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Name = "SellScreen";
-            this.Size = new System.Drawing.Size(781, 591);
+            this.Size = new System.Drawing.Size(916, 630);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Panel panel20;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.VScrollBar vScrollBar2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader0;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
