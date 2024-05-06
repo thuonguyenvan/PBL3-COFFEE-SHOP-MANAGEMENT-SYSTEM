@@ -52,6 +52,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManagementScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ManagementScreen.Designer.cs">
+      <DependentUpon>ManagementScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -72,8 +78,23 @@
     <Compile Include="SellScreen.Designer.cs">
       <DependentUpon>SellScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="WelcomeScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WelcomeScreen.Designer.cs">
+      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkScheduleScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WorkScheduleScreen.Designer.cs">
+      <DependentUpon>WorkScheduleScreen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagementScreen.resx">
+      <DependentUpon>ManagementScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductsPanel.resx">
       <DependentUpon>ProductsPanel.cs</DependentUpon>
@@ -86,12 +107,19 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="LoginControl.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SellScreen.resx">
       <DependentUpon>SellScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WelcomeScreen.resx">
+      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkScheduleScreen.resx">
+      <DependentUpon>WorkScheduleScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -105,6 +133,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IMG_1630.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngegg %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngegg %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngegg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
