@@ -83,7 +83,7 @@
             // 
             this.button7.Location = new System.Drawing.Point(897, 25);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(127, 20);
+            this.button7.Size = new System.Drawing.Size(127, 21);
             this.button7.TabIndex = 10;
             this.button7.Text = "Xem thông tin cá nhân";
             this.button7.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@
             // 
             this.button8.Location = new System.Drawing.Point(1033, 25);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(69, 20);
+            this.button8.Size = new System.Drawing.Size(69, 21);
             this.button8.TabIndex = 11;
             this.button8.Text = "Đăng xuất";
             this.button8.UseVisualStyleBackColor = true;
@@ -107,7 +107,7 @@
             this.checkBox1.ForeColor = System.Drawing.Color.SandyBrown;
             this.checkBox1.Location = new System.Drawing.Point(0, 51);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(198, 91);
+            this.checkBox1.Size = new System.Drawing.Size(198, 126);
             this.checkBox1.TabIndex = 15;
             this.checkBox1.Text = "BÁN HÀNG";
             this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -121,9 +121,9 @@
             this.checkBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.checkBox2.ForeColor = System.Drawing.Color.SandyBrown;
-            this.checkBox2.Location = new System.Drawing.Point(0, 141);
+            this.checkBox2.Location = new System.Drawing.Point(0, 177);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(198, 91);
+            this.checkBox2.Size = new System.Drawing.Size(198, 126);
             this.checkBox2.TabIndex = 16;
             this.checkBox2.Text = "QUẢN LÝ KHÁCH HÀNG";
             this.checkBox2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -137,9 +137,9 @@
             this.checkBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.checkBox3.ForeColor = System.Drawing.Color.SandyBrown;
-            this.checkBox3.Location = new System.Drawing.Point(0, 231);
+            this.checkBox3.Location = new System.Drawing.Point(0, 303);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(198, 91);
+            this.checkBox3.Size = new System.Drawing.Size(198, 126);
             this.checkBox3.TabIndex = 17;
             this.checkBox3.Text = "XEM LỊCH SỬ BÁN HÀNG";
             this.checkBox3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -153,9 +153,9 @@
             this.checkBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.checkBox4.ForeColor = System.Drawing.Color.SandyBrown;
-            this.checkBox4.Location = new System.Drawing.Point(0, 321);
+            this.checkBox4.Location = new System.Drawing.Point(0, 429);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(198, 91);
+            this.checkBox4.Size = new System.Drawing.Size(198, 126);
             this.checkBox4.TabIndex = 18;
             this.checkBox4.Text = "XEM LỊCH LÀM VIỆC";
             this.checkBox4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -169,9 +169,9 @@
             this.checkBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.checkBox5.ForeColor = System.Drawing.Color.SandyBrown;
-            this.checkBox5.Location = new System.Drawing.Point(0, 411);
+            this.checkBox5.Location = new System.Drawing.Point(0, 555);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(198, 91);
+            this.checkBox5.Size = new System.Drawing.Size(198, 126);
             this.checkBox5.TabIndex = 19;
             this.checkBox5.Text = "XEM HÀNG HÓA";
             this.checkBox5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

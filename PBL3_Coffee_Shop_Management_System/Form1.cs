@@ -57,10 +57,9 @@ namespace PBL3_Coffee_Shop_Management_System
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
                 lastChecked = activeCheckBox;
-                ManagementScreen managementScreen = new ManagementScreen();
-                managementScreen.setCustomerManagementScreen();
+                CustomerManagementScreen customerManagementScreen = new CustomerManagementScreen();
                 panel1.Controls.Clear();
-                panel1.Controls.Add(managementScreen);
+                panel1.Controls.Add(customerManagementScreen);
             }
             else
             {
@@ -80,10 +79,9 @@ namespace PBL3_Coffee_Shop_Management_System
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
                 lastChecked = activeCheckBox;
-                ManagementScreen managementScreen = new ManagementScreen();
-                managementScreen.setSalesHistoryScreen();
+                SalesHistoryScreen salesHistoryScreen = new SalesHistoryScreen();
                 panel1.Controls.Clear();
-                panel1.Controls.Add(managementScreen);
+                panel1.Controls.Add(salesHistoryScreen);
             }
             else
             {
@@ -125,10 +123,9 @@ namespace PBL3_Coffee_Shop_Management_System
                 checkBox3.Checked = false;
                 checkBox4.Checked = false;
                 lastChecked = activeCheckBox;
-                ManagementScreen managementScreen = new ManagementScreen();
-                managementScreen.setProductManagementScreen();
+                ProductManagementScreen productManagementScreen = new ProductManagementScreen();
                 panel1.Controls.Clear();
-                panel1.Controls.Add(managementScreen);
+                panel1.Controls.Add(productManagementScreen);
             }
             else
             {

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerManagementScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomerManagementScreen.Designer.cs">
+      <DependentUpon>CustomerManagementScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,13 @@
     </Compile>
     <Compile Include="ManagementScreen.Designer.cs">
       <DependentUpon>ManagementScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="ProductManagementScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProductManagementScreen.Designer.cs">
+      <DependentUpon>ProductManagementScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductsPanel.cs">
       <SubType>UserControl</SubType>
@@ -71,6 +84,12 @@
     </Compile>
     <Compile Include="LoginControl.Designer.cs">
       <DependentUpon>LoginControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesHistoryScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SalesHistoryScreen.Designer.cs">
+      <DependentUpon>SalesHistoryScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="SellScreen.cs">
       <SubType>UserControl</SubType>
@@ -145,6 +164,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pngegg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Presenters\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
