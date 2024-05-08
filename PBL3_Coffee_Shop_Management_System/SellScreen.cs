@@ -16,6 +16,12 @@ namespace PBL3_Coffee_Shop_Management_System
         {
             InitializeComponent();
             flowLayoutPanel1.AutoScroll = true;
+            foreach (DataStructure d in DataStructure.Instance.list)
+            {
+                ProductsPanel panel = new ProductsPanel(d.Name);
+                flowLayoutPanel1.Controls.Add(panel);
+            }
+            
         }
     }
 }

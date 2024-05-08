@@ -104,7 +104,9 @@
     <Compile Include="CustomerManagementScreen.Designer.cs">
       <DependentUpon>CustomerManagementScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataStructure.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Presenters\IPresenter.cs" />
     <Compile Include="Views\Form1.cs">

@@ -39,6 +39,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
                 lastChecked = activeCheckBox;
+                GetAllData(this, EventArgs.Empty);
                 SellScreen sellScreen = new SellScreen();
                 panel1.Controls.Clear();
                 panel1.Controls.Add(sellScreen);

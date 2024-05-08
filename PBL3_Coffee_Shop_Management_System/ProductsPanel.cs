@@ -12,9 +12,16 @@ namespace PBL3_Coffee_Shop_Management_System
 {
     public partial class ProductsPanel : UserControl
     {
-        public ProductsPanel()
+        public ProductsPanel(string Product)
         {
             InitializeComponent();
+            pictureBox1.Image = Properties.Resources.IMG_1630;
+            label1.Text = Product;
+        }
+
+        private void Panel_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Product chose", "a");
         }
     }
 }

@@ -1,18 +1,17 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data;
-using MySql.Data.MySqlClient;
 
 namespace PBL3_Coffee_Shop_Management_System.Models
 {
-    internal class ProductModel : IModel
+    internal class EmployeeModel : IModel
     {
         private string connectionString;
-        public ProductModel(string connectionString)
+        public EmployeeModel(string connectionString)
         {
             this.connectionString = connectionString;
         }
@@ -20,7 +19,6 @@ namespace PBL3_Coffee_Shop_Management_System.Models
         {
             try
             {
-                DataStructure.Instance.list.Clear();
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     string sql = "SELECT * FROM Table1";
@@ -31,11 +29,10 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                         {
                             while (reader.Read())
                             {
-                                DataStructure structure = new DataStructure(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetString(4));
-                                DataStructure.Instance.list.Add(structure);
+                                Console.WriteLine(reader.GetInt32(0));
                             }
                         }
-                    }  
+                    }
                 }
             }
             catch (MySqlException e)
