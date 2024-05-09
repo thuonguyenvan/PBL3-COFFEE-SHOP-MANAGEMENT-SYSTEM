@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace PBL3_Coffee_Shop_Management_System.Models
 {
-    internal class CustomerModel : IModel
+    internal class UserAccountModel
     {
         private string connectionString;
-        public CustomerModel(string connectionString)
+        public UserAccountModel(string connectionString)
         {
             this.connectionString = connectionString;
         }
@@ -20,10 +20,10 @@ namespace PBL3_Coffee_Shop_Management_System.Models
         {
             try
             {
-                CustomerDTO.Instance.list.Clear();
+                UserAccountDTO.Instance.list.Clear();
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    string sql = "SELECT * FROM Customer";
+                    string sql = "SELECT * FROM LoginDetails";
                     using (MySqlCommand command = new MySqlCommand(sql, connection))
                     {
                         connection.Open();
@@ -31,8 +31,8 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                         {
                             while (reader.Read())
                             {
-                                CustomerDTO structure = new CustomerDTO(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetInt32(4));
-                                CustomerDTO.Instance.list.Add(structure);
+                                UserAccountDTO structure = new UserAccountDTO(reader.GetString(0), reader.GetString(1), reader.GetString(2));
+                                UserAccountDTO.Instance.list.Add(structure);
                             }
                         }
                     }

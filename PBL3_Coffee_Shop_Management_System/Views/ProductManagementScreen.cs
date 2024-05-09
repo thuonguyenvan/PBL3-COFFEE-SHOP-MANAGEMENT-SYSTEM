@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PBL3_Coffee_Shop_Management_System
+namespace PBL3_Coffee_Shop_Management_System.Views
 {
-    public partial class WelcomeScreen : UserControl
+    public partial class ProductManagementScreen : UserControl
     {
-        public WelcomeScreen()
+        public ProductManagementScreen()
         {
             InitializeComponent();
         }
+        public event EventHandler GetAllData;
     }
 }

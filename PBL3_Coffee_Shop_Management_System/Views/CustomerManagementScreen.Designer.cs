@@ -1,4 +1,4 @@
-﻿namespace PBL3_Coffee_Shop_Management_System
+﻿namespace PBL3_Coffee_Shop_Management_System.Views
 {
     partial class CustomerManagementScreen
     {
@@ -58,6 +58,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Mã Khách Hàng";
+            this.columnHeader1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader1.Width = 94;
             // 
             // columnHeader2

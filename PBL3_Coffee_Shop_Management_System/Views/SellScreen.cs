@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PBL3_Coffee_Shop_Management_System.DTO;
 
-namespace PBL3_Coffee_Shop_Management_System
+namespace PBL3_Coffee_Shop_Management_System.Views
 {
     public partial class SellScreen : UserControl
     {
@@ -16,12 +17,13 @@ namespace PBL3_Coffee_Shop_Management_System
         {
             InitializeComponent();
             flowLayoutPanel1.AutoScroll = true;
-            foreach (DataStructure d in DataStructure.Instance.list)
+            foreach (ProductDTO d in ProductDTO.Instance.list)
             {
                 ProductsPanel panel = new ProductsPanel(d.Name);
                 flowLayoutPanel1.Controls.Add(panel);
             }
             
         }
+        public event EventHandler GetAllData;
     }
 }

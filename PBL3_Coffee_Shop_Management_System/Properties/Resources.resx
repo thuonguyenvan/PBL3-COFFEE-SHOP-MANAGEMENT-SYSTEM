@@ -118,6 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Bánh_bông_lan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Banhbonglan.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bánh_sừng_bò" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Banhsungbo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bạc_xỉu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bạcxỉu.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cà_phê_sữa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Caphesua.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cà_phê_sữa_Sài_Gòn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CaphesuaSaiGon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cà_phê_đen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Capheden.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cà_phê_đen_Sài_Gòn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CaphedenSaiGon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="IMG_1630" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IMG_1630.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

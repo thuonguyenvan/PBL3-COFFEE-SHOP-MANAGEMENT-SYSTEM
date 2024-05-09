@@ -63,6 +63,76 @@ namespace PBL3_Coffee_Shop_Management_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Bạc_xỉu {
+            get {
+                object obj = ResourceManager.GetObject("Bạc_xỉu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Bánh_bông_lan {
+            get {
+                object obj = ResourceManager.GetObject("Bánh_bông_lan", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Bánh_sừng_bò {
+            get {
+                object obj = ResourceManager.GetObject("Bánh_sừng_bò", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cà_phê_đen {
+            get {
+                object obj = ResourceManager.GetObject("Cà_phê_đen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cà_phê_đen_Sài_Gòn {
+            get {
+                object obj = ResourceManager.GetObject("Cà_phê_đen_Sài_Gòn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cà_phê_sữa {
+            get {
+                object obj = ResourceManager.GetObject("Cà_phê_sữa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cà_phê_sữa_Sài_Gòn {
+            get {
+                object obj = ResourceManager.GetObject("Cà_phê_sữa_Sài_Gòn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IMG_1630 {
             get {
                 object obj = ResourceManager.GetObject("IMG_1630", resourceCulture);

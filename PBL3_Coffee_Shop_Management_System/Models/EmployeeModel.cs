@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using PBL3_Coffee_Shop_Management_System.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,10 @@ namespace PBL3_Coffee_Shop_Management_System.Models
         {
             try
             {
+                EmployeeDTO.Instance.list.Clear();
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    string sql = "SELECT * FROM Table1";
+                    string sql = "SELECT * FROM Employee";
                     using (MySqlCommand command = new MySqlCommand(sql, connection))
                     {
                         connection.Open();
@@ -29,7 +31,9 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                         {
                             while (reader.Read())
                             {
-                                Console.WriteLine(reader.GetInt32(0));
+                                EmployeeDTO structure = new EmployeeDTO(reader.GetInt32(0), reader.GetString(1), reader.GetBoolean(2), reader.GetDateTime(3),
+                                    reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetBoolean(7));
+                                EmployeeDTO.Instance.list.Add(structure);
                             }
                         }
                     }

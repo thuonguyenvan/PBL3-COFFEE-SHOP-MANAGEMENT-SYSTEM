@@ -1,4 +1,6 @@
-﻿using PBL3_Coffee_Shop_Management_System.Presenters;
+﻿using PBL3_Coffee_Shop_Management_System.Models;
+using PBL3_Coffee_Shop_Management_System.Presenters;
+using PBL3_Coffee_Shop_Management_System.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,19 +11,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace PBL3_Coffee_Shop_Management_System.Views
 {
     public partial class Form1 : Form
     {
         WelcomeScreen welcomeScreen = new WelcomeScreen();
+        UserAccountDTO userAccount;
         public Form1()
         {
+            /*using (LoginForm loginForm = new LoginForm())
+            {
+                loginForm.ShowDialog();
+                if (loginForm.DialogResult != DialogResult.Cancel)
+                {
+                    userAccount = loginForm.GetUserAccount();
+                    if (loginForm.Authentication == 1)
+                        userAccount.Authentication = true;
+                    else userAccount.Authentication = false;
+                }
+                else Dispose();
+            }*/
             InitializeComponent();
+            label2.Text = "Xin chào, " + userAccount.UserName;
             panel1.Controls.Add(welcomeScreen);
         }
-
-        public event EventHandler GetAllData;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -39,8 +54,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
                 lastChecked = activeCheckBox;
-                GetAllData(this, EventArgs.Empty);
+                string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
+                ProductModel productModel = new ProductModel(connstring);
+                productModel.getAllData();
                 SellScreen sellScreen = new SellScreen();
+                SellScreenPresenter sellScreenPresenter = new SellScreenPresenter(productModel, sellScreen);
                 panel1.Controls.Clear();
                 panel1.Controls.Add(sellScreen);
             }
@@ -62,6 +80,9 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
                 lastChecked = activeCheckBox;
+                string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
+                CustomerModel customerModel = new CustomerModel(connstring);
+                customerModel.getAllData();
                 CustomerManagementScreen customerManagementScreen = new CustomerManagementScreen();
                 panel1.Controls.Clear();
                 panel1.Controls.Add(customerManagementScreen);
@@ -139,10 +160,9 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 panel1.Controls.Add(welcomeScreen);
             }
         }
-
         private void button7_Click(object sender, EventArgs e)
         {
-            GetAllData(this, EventArgs.Empty);
+
         }
     }
 }

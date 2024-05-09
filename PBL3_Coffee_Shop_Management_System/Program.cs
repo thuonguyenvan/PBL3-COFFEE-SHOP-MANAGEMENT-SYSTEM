@@ -21,15 +21,12 @@ namespace PBL3_Coffee_Shop_Management_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            string Server = "localhost";
-            string UserName = "root";
-            string Password = "";
-            string DatabaseName = "DATA";
-            string connstring = string.Format("Server={0}; database={1}; UID={2}; password={3};", Server, DatabaseName, UserName, Password);
-            ProductModel productModel = new ProductModel(connstring);
             //Application.Run(new Form1());
+            string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
+            UserAccountModel userAccountModel = new UserAccountModel(connstring);
+            userAccountModel.getAllData();
             Form1 form1 = new Form1();
-            ProductPresenter productPresenter = new ProductPresenter(productModel, form1);
+            UserAccountPresenter userAccountPresenter = new UserAccountPresenter(userAccountModel, form1);
             Application.Run(form1);
         }
     }

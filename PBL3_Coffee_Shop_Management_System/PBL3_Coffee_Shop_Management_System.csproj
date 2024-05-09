@@ -98,16 +98,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomerManagementScreen.cs">
+    <Compile Include="DTO\UserAccountDTO.cs" />
+    <Compile Include="Models\UserAccountModel.cs" />
+    <Compile Include="Presenters\UserAccountPresenter.cs" />
+    <Compile Include="Views\CustomerManagementScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CustomerManagementScreen.Designer.cs">
+    <Compile Include="Views\CustomerManagementScreen.Designer.cs">
       <DependentUpon>CustomerManagementScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="DataStructure.cs" />
+    <Compile Include="DTO\CustomerDTO.cs" />
+    <Compile Include="DTO\EmployeeDTO.cs" />
+    <Compile Include="DTO\ProductDTO.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\IModel.cs" />
+    <Compile Include="Presenters\SellScreenPresenter.cs" />
     <Compile Include="Presenters\IPresenter.cs" />
     <Compile Include="Views\Form1.cs">
       <SubType>Form</SubType>
@@ -123,10 +130,16 @@
     </Compile>
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Presenters\ProductPresenter.cs" />
-    <Compile Include="ProductManagementScreen.cs">
+    <Compile Include="Views\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagementScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ProductManagementScreen.Designer.cs">
+    <Compile Include="Views\ProductManagementScreen.Designer.cs">
       <DependentUpon>ProductManagementScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductsPanel.cs">
@@ -137,28 +150,22 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LoginControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LoginControl.Designer.cs">
-      <DependentUpon>LoginControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="SalesHistoryScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="SalesHistoryScreen.Designer.cs">
       <DependentUpon>SalesHistoryScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="SellScreen.cs">
+    <Compile Include="Views\SellScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SellScreen.Designer.cs">
+    <Compile Include="Views\SellScreen.Designer.cs">
       <DependentUpon>SellScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="WelcomeScreen.cs">
+    <Compile Include="Views\WelcomeScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WelcomeScreen.Designer.cs">
+    <Compile Include="Views\WelcomeScreen.Designer.cs">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="WorkScheduleScreen.cs">
@@ -186,13 +193,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="LoginControl.resx">
-      <DependentUpon>LoginControl.cs</DependentUpon>
+    <EmbeddedResource Include="Views\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SellScreen.resx">
+    <EmbeddedResource Include="Views\SellScreen.resx">
       <DependentUpon>SellScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WelcomeScreen.resx">
+    <EmbeddedResource Include="Views\WelcomeScreen.resx">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkScheduleScreen.resx">
@@ -224,6 +231,32 @@
   <ItemGroup>
     <None Include="Resources\pngegg.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Banhbonglan.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Banhsungbo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CaphesuaSaiGon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CaphedenSaiGon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Caphesua.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Capheden.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CaphedenSaiGon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bacxiu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bạcxỉu.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

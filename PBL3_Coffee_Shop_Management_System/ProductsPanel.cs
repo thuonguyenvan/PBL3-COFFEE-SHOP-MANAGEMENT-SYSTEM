@@ -15,7 +15,7 @@ namespace PBL3_Coffee_Shop_Management_System
         public ProductsPanel(string Product)
         {
             InitializeComponent();
-            pictureBox1.Image = Properties.Resources.IMG_1630;
+            pictureBox1.Image = (Image)Properties.Resources.ResourceManager.GetObject(Product.Replace(" ", "_"));
             label1.Text = Product;
         }
 

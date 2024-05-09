@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using PBL3_Coffee_Shop_Management_System.DTO;
 
 namespace PBL3_Coffee_Shop_Management_System.Models
 {
@@ -20,10 +21,10 @@ namespace PBL3_Coffee_Shop_Management_System.Models
         {
             try
             {
-                DataStructure.Instance.list.Clear();
+                ProductDTO.Instance.list.Clear();
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    string sql = "SELECT * FROM Table1";
+                    string sql = "SELECT * FROM Product";
                     using (MySqlCommand command = new MySqlCommand(sql, connection))
                     {
                         connection.Open();
@@ -31,8 +32,8 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                         {
                             while (reader.Read())
                             {
-                                DataStructure structure = new DataStructure(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetString(4));
-                                DataStructure.Instance.list.Add(structure);
+                                ProductDTO structure = new ProductDTO(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetInt32(4));
+                                ProductDTO.Instance.list.Add(structure);
                             }
                         }
                     }  
