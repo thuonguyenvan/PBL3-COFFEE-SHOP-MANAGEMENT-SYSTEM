@@ -34,9 +34,9 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -47,6 +47,7 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(27, 139);
             this.listView1.Name = "listView1";
@@ -85,34 +86,10 @@
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader5.Width = 120;
             // 
-            // button1
-            // 
-            this.button1.Image = Properties.Resources.pngegg__1_;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(85, 56);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(73, 34);
-            this.button1.TabIndex = 1;
-            this.button1.Text = " Thêm";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Image = Properties.Resources.pngegg;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(220, 56);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(66, 34);
-            this.button2.TabIndex = 2;
-            this.button2.Text = " Xóa";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.Image = Properties.Resources.pngegg__2_;
+            this.button3.Image = global::PBL3_Coffee_Shop_Management_System.Properties.Resources.pngegg__2_;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Location = new System.Drawing.Point(345, 56);
             this.button3.Name = "button3";
@@ -121,6 +98,33 @@
             this.button3.Text = " Chỉnh sửa";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Image = global::PBL3_Coffee_Shop_Management_System.Properties.Resources.pngegg;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(220, 56);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(66, 34);
+            this.button2.TabIndex = 2;
+            this.button2.Text = " Xóa";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Image = global::PBL3_Coffee_Shop_Management_System.Properties.Resources.pngegg__1_;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(85, 56);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(73, 34);
+            this.button1.TabIndex = 1;
+            this.button1.Text = " Thêm";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CustomerManagementScreen
             // 
@@ -134,6 +138,7 @@
             this.Name = "CustomerManagementScreen";
             this.Size = new System.Drawing.Size(916, 630);
             this.ResumeLayout(false);
+
         }
 
         #endregion

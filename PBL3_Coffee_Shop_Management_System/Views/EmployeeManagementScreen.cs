@@ -11,14 +11,30 @@ using System.Windows.Forms;
 
 namespace PBL3_Coffee_Shop_Management_System.Views
 {
-    public partial class ProductManagementScreen : UserControl
+    public partial class EmployeeManagementScreen : UserControl
     {
-        public ProductManagementScreen()
+        public EmployeeManagementScreen()
         {
             InitializeComponent();
-            foreach (ProductDTO p in ProductDTO.Instance.list)
+            if (UserAccountDTO.Instance.Authentication)
             {
-                listView1.Items.Add(new ListViewItem(new string[] { p.ID.ToString(), p.Name, p.Price.ToString(), p.Unit, p.Type.ToString() }));
+                columnHeader11 = new ColumnHeader();
+                columnHeader11.Text = "Mật Khẩu";
+                columnHeader11.TextAlign = HorizontalAlignment.Center;
+                listView1.Columns.Add(columnHeader11);
+                foreach (EmployeeDTO e in EmployeeDTO.Instance.list)
+                {
+                    listView1.Items.Add(new ListViewItem(new string[] {e.ID.ToString(), e.Name, e.Gender?"Female":"Male", e.DateOfBirth.ToString(), e.Address, e.PhoneNum,
+                e.Email, e.isFullTime?"Có":"Không", UserAccountDTO.Instance.list.Find(x => x.ID == e.ID).UserName, UserAccountDTO.Instance.list.Find(x => x.ID == e.ID).Password}));
+                }
+            }
+            else
+            {
+                foreach (EmployeeDTO e in EmployeeDTO.Instance.list)
+                {
+                    listView1.Items.Add(new ListViewItem(new string[] {e.ID.ToString(), e.Name, e.Gender?"Female":"Male", e.DateOfBirth.ToString(), e.Address, e.PhoneNum,
+                    e.Email, e.isFullTime?"Có":"Không", UserAccountDTO.Instance.list.Find(x => x.ID == e.ID).UserName}));
+                }
             }
             AutoSizeColumnList(listView1);
         }
@@ -40,6 +56,5 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             }
             listView.EndUpdate();
         }
-        public event EventHandler GetAllData;
     }
 }

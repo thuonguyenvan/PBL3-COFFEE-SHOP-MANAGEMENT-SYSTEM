@@ -31,7 +31,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                         {
                             while (reader.Read())
                             {
-                                EmployeeDTO structure = new EmployeeDTO(reader.GetInt32(0), reader.GetString(1), reader.GetBoolean(2), reader.GetDateTime(3),
+                                EmployeeDTO structure = new EmployeeDTO(reader.GetString(0), reader.GetString(1), reader.GetBoolean(2), reader.GetDateTime(3),
                                     reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetBoolean(7));
                                 EmployeeDTO.Instance.list.Add(structure);
                             }

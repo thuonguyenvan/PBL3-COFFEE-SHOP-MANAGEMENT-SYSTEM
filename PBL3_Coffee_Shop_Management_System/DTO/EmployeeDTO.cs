@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PBL3_Coffee_Shop_Management_System.DTO
 {
-    internal class EmployeeDTO
+    public class EmployeeDTO
     {
-        private int _ID;
+        private string _ID;
         private string _Name;
         private bool _Gender;
         private DateTime _DateOfBirth;
@@ -27,9 +27,9 @@ namespace PBL3_Coffee_Shop_Management_System.DTO
                     _Instance = new EmployeeDTO();
                 return _Instance;
             }
-            private set { }
+            set { _Instance = value; }
         }
-        public int ID { get { return _ID; } set { _ID = value; } }
+        public string ID { get { return _ID; } set { _ID = value; } }
         public string Name { get { return _Name; } set { _Name = value; } }
         public bool Gender { get { return _Gender; } set { _Gender = value; } }
         public DateTime DateOfBirth { get { return _DateOfBirth; } set { _DateOfBirth = value; } }
@@ -38,7 +38,7 @@ namespace PBL3_Coffee_Shop_Management_System.DTO
         public string Email { get { return _Email; } set { _Email = value; } }
         public bool isFullTime { get { return _isFullTime; } set { _isFullTime = value; } }
         public EmployeeDTO() { }
-        public EmployeeDTO(int ID, string Name, bool Gender, DateTime DateOfBirth, string Address, string PhoneNum, string Email, bool isFullTime)
+        public EmployeeDTO(string ID, string Name, bool Gender, DateTime DateOfBirth, string Address, string PhoneNum, string Email, bool isFullTime)
         {
             _ID = ID;
             _Name = Name;

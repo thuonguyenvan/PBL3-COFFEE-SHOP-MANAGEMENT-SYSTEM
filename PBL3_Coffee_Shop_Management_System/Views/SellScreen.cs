@@ -22,7 +22,24 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 ProductsPanel panel = new ProductsPanel(d.Name);
                 flowLayoutPanel1.Controls.Add(panel);
             }
-            
+        }
+        private void AutoSizeColumnList(ListView listView)
+        {
+            listView.BeginUpdate();
+            Dictionary<int, int> columnSize = new Dictionary<int, int>();
+            listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            foreach (ColumnHeader colHeader in listView.Columns)
+                columnSize.Add(colHeader.Index, colHeader.Width);
+            listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            foreach (ColumnHeader colHeader in listView.Columns)
+            {
+                int nColWidth;
+                if (columnSize.TryGetValue(colHeader.Index, out nColWidth))
+                    colHeader.Width = Math.Max(nColWidth, colHeader.Width);
+                else
+                    colHeader.Width = Math.Max(50, colHeader.Width);
+            }
+            listView.EndUpdate();
         }
         public event EventHandler GetAllData;
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PBL3_Coffee_Shop_Management_System.DTO
 {
-    internal class CustomerDTO
+    public class CustomerDTO
     {
         private int _ID;
         private string _Name;
@@ -24,7 +24,7 @@ namespace PBL3_Coffee_Shop_Management_System.DTO
                     _Instance = new CustomerDTO();
                 return _Instance;
             }
-            private set { }
+            set { _Instance = value; }
         }
         public int ID { get { return _ID; } set { _ID = value; } }
         public string Name { get { return _Name; } set { _Name = value; } }

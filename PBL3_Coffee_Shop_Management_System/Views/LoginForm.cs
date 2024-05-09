@@ -14,10 +14,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
     public partial class LoginForm : Form
     {
         private int _Authentication = 0;
-        public int Authentication { get { return _Authentication; } private set { } }
+        public int Authentication { get { return _Authentication; } private set { _Authentication = value; } }
         public LoginForm()
         {
             InitializeComponent();
+            CenterToScreen();
         }
         private int checkAuth(string ID)
         {
@@ -45,7 +46,8 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                     if (textBox2.Text == u.Password)
                     {
                         Authentication = checkAuth(u.ID);
-                        return;
+                        DialogResult = DialogResult.Yes;
+                        Close();
                     }
                     else
                     {
@@ -62,6 +64,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
 
         private void button2_Click(object sender, EventArgs e)
         {
+        }
+
+        private void LoginForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13) button1_Click(sender, e);
         }
     }
 }

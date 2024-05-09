@@ -99,15 +99,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\UserAccountDTO.cs" />
+    <Compile Include="EventArguments\CustomerEventArgs.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
+    <Compile Include="Presenters\CustomerPresenter.cs" />
+    <Compile Include="Presenters\EmployeePresenter.cs" />
     <Compile Include="Presenters\UserAccountPresenter.cs" />
+    <Compile Include="Views\CustomerDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CustomerDetailsForm.Designer.cs">
+      <DependentUpon>CustomerDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CustomerManagementScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\CustomerManagementScreen.Designer.cs">
       <DependentUpon>CustomerManagementScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataStructure.cs" />
     <Compile Include="DTO\CustomerDTO.cs" />
     <Compile Include="DTO\EmployeeDTO.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
@@ -116,17 +124,17 @@
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Presenters\SellScreenPresenter.cs" />
     <Compile Include="Presenters\IPresenter.cs" />
+    <Compile Include="Views\EmployeeManagementScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeManagementScreen.Designer.cs">
+      <DependentUpon>EmployeeManagementScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ManagementScreen.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ManagementScreen.Designer.cs">
-      <DependentUpon>ManagementScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Presenters\ProductPresenter.cs" />
@@ -142,10 +150,10 @@
     <Compile Include="Views\ProductManagementScreen.Designer.cs">
       <DependentUpon>ProductManagementScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductsPanel.cs">
+    <Compile Include="Views\ProductsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ProductsPanel.Designer.cs">
+    <Compile Include="Views\ProductsPanel.Designer.cs">
       <DependentUpon>ProductsPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -174,13 +182,19 @@
     <Compile Include="WorkScheduleScreen.Designer.cs">
       <DependentUpon>WorkScheduleScreen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\CustomerDetailsForm.resx">
+      <DependentUpon>CustomerDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CustomerManagementScreen.resx">
+      <DependentUpon>CustomerManagementScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeManagementScreen.resx">
+      <DependentUpon>EmployeeManagementScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManagementScreen.resx">
-      <DependentUpon>ManagementScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProductsPanel.resx">
+    <EmbeddedResource Include="Views\ProductsPanel.resx">
       <DependentUpon>ProductsPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

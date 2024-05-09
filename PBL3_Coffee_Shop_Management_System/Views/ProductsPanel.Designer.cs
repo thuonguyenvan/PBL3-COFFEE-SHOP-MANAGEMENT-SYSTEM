@@ -1,4 +1,4 @@
-﻿namespace PBL3_Coffee_Shop_Management_System
+﻿namespace PBL3_Coffee_Shop_Management_System.Views
 {
     partial class ProductsPanel
     {

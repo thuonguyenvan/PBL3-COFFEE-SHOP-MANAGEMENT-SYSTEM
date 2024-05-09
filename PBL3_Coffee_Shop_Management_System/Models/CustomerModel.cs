@@ -43,5 +43,73 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                 MessageBox.Show(e.Message);
             }
         }
+        public void Add(CustomerDTO customer)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string sql = "INSERT INTO Customer (ID, Name, PhoneNum, Email, Points) VALUES (@ID, @Name, @PhoneNum, @Email, @Points)";
+                    using (MySqlCommand command = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@ID", customer.ID);
+                        command.Parameters.AddWithValue("@Name", customer.Name);
+                        command.Parameters.AddWithValue("@PhoneNum", customer.PhoneNum);
+                        command.Parameters.AddWithValue("@Email", customer.Email);
+                        command.Parameters.AddWithValue("@Points", customer.Points);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+        public void Delete(CustomerDTO customer)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string sql = "DELETE FROM Customer WHERE ID = @ID";
+                    using (MySqlCommand command = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@ID", customer.ID);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+        public void Update(CustomerDTO customer)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string sql = "UPDATE Customer SET Name = @Name, PhoneNum = @PhoneNum, Email = @Email, Points = @Points WHERE ID = @ID";
+                    using (MySqlCommand command = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@ID", customer.ID);
+                        command.Parameters.AddWithValue("@Name", customer.Name);
+                        command.Parameters.AddWithValue("@PhoneNum", customer.PhoneNum);
+                        command.Parameters.AddWithValue("@Email", customer.Email);
+                        command.Parameters.AddWithValue("@Points", customer.Points);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PBL3_Coffee_Shop_Management_System.DTO
 {
-    internal class UserAccountDTO
+    public class UserAccountDTO
     {
         private string _ID;
         private string _UserName;
@@ -23,7 +23,7 @@ namespace PBL3_Coffee_Shop_Management_System.DTO
                     _Instance = new UserAccountDTO();
                 return _Instance;
             }
-            private set { }
+            set { _Instance = value; }
         }
         public string ID { get { return _ID; } set { _ID = value; } }
         public string UserName { get { return _UserName; } set { _UserName = value; } }
