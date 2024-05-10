@@ -29,7 +29,7 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
                 customerDetailsForm.ShowDialog();
                 if (customerDetailsForm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
                 {
-                    CustomerDTO.Instance.list.Add(CustomerDTO.Instance);
+                    CustomerDTO.Instance.list.Add(customerDetailsForm.GetData());
                     _model.Add(CustomerDTO.Instance);
                 }
             }
@@ -49,7 +49,7 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
                 customerDetailsForm.ShowDialog();
                 if (customerDetailsForm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
                 {
-                    CustomerDTO.Instance.list[CustomerDTO.Instance.list.FindIndex(x => x.ID == e.customer[0].ID)] = CustomerDTO.Instance;
+                    CustomerDTO.Instance.list[CustomerDTO.Instance.list.FindIndex(x => x.ID == e.customer[0].ID)] = customerDetailsForm.GetData();
                     _model.Update(CustomerDTO.Instance);
                 }
             }

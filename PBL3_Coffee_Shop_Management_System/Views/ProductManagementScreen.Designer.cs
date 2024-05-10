@@ -47,6 +47,7 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(27, 139);
             this.listView1.Name = "listView1";
@@ -54,7 +55,6 @@
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.FullRowSelect = true;
             // 
             // columnHeader1
             // 
@@ -88,7 +88,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.Image = Properties.Resources.pngegg__2_;
+            this.button3.Image = global::PBL3_Coffee_Shop_Management_System.Properties.Resources.pngegg__2_;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Location = new System.Drawing.Point(345, 56);
             this.button3.Name = "button3";
@@ -97,10 +97,11 @@
             this.button3.Text = " Chỉnh sửa";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
-            this.button2.Image = Properties.Resources.pngegg;
+            this.button2.Image = global::PBL3_Coffee_Shop_Management_System.Properties.Resources.pngegg;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(220, 56);
             this.button2.Name = "button2";
@@ -109,10 +110,11 @@
             this.button2.Text = " Xóa";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Image = Properties.Resources.pngegg__1_;
+            this.button1.Image = global::PBL3_Coffee_Shop_Management_System.Properties.Resources.pngegg__1_;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(85, 56);
             this.button1.Name = "button1";
@@ -121,8 +123,9 @@
             this.button1.Text = " Thêm";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ProductsManagementScreen
+            // ProductManagementScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,9 +134,10 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
-            this.Name = "ProductsManagementScreen";
+            this.Name = "ProductManagementScreen";
             this.Size = new System.Drawing.Size(916, 630);
             this.ResumeLayout(false);
+
         }
 
         #endregion

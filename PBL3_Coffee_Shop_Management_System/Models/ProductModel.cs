@@ -44,5 +44,73 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                 MessageBox.Show(e.Message);
             }
         }
+        public void Add(ProductDTO product)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string sql = "INSERT INTO Product (ID, Name, SellPrice, Unit, TypeID) VALUES (@ID, @Name, @Price, @Unit, @TypeID)";
+                    using (MySqlCommand command = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@ID", product.ID);
+                        command.Parameters.AddWithValue("@Name", product.Name);
+                        command.Parameters.AddWithValue("@Price", product.Price);
+                        command.Parameters.AddWithValue("@Unit", product.Unit);
+                        command.Parameters.AddWithValue("@TypeID", product.Type);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+        public void Delete(ProductDTO product)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string sql = "DELETE FROM Product WHERE ID = @ID";
+                    using (MySqlCommand command = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@ID", product.ID);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+        public void Update(ProductDTO product)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string sql = "UPDATE Product SET Name = @Name, SellPrice = @Price, Unit = @Unit, TypeID = @TypeID WHERE ID = @ID";
+                    using (MySqlCommand command = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@ID", product.ID);
+                        command.Parameters.AddWithValue("@Name", product.Name);
+                        command.Parameters.AddWithValue("@Price", product.Price);
+                        command.Parameters.AddWithValue("@Unit", product.Unit);
+                        command.Parameters.AddWithValue("@TypeID", product.Type);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
     }
 }

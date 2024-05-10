@@ -100,6 +100,7 @@
   <ItemGroup>
     <Compile Include="DTO\UserAccountDTO.cs" />
     <Compile Include="EventArguments\CustomerEventArgs.cs" />
+    <Compile Include="EventArguments\ProductEventArgs.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Presenters\CustomerPresenter.cs" />
     <Compile Include="Presenters\EmployeePresenter.cs" />
@@ -143,6 +144,12 @@
     </Compile>
     <Compile Include="Views\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ProductDetailsForm.Designer.cs">
+      <DependentUpon>ProductDetailsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ProductManagementScreen.cs">
       <SubType>UserControl</SubType>
@@ -193,6 +200,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProductDetailsForm.resx">
+      <DependentUpon>ProductDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProductManagementScreen.resx">
+      <DependentUpon>ProductManagementScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ProductsPanel.resx">
       <DependentUpon>ProductsPanel.cs</DependentUpon>

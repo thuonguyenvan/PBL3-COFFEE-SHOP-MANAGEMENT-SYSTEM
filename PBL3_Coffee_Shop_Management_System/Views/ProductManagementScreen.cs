@@ -1,4 +1,5 @@
 ﻿using PBL3_Coffee_Shop_Management_System.DTO;
+using PBL3_Coffee_Shop_Management_System.EventArguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,6 +41,54 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             }
             listView.EndUpdate();
         }
-        public event EventHandler GetAllData;
+        public event EventHandler AddProduct;
+        public event EventHandler<ProductEventArgs> DeleteProduct;
+        public event EventHandler<ProductEventArgs> UpdateProduct;
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddProduct(this, EventArgs.Empty);
+            listView1.Items.Clear();
+            foreach (ProductDTO p in ProductDTO.Instance.list)
+            {
+                listView1.Items.Add(new ListViewItem(new string[] { p.ID.ToString(), p.Name, p.Price.ToString(), p.Unit, p.Type.ToString() }));
+            }
+            AutoSizeColumnList(listView1);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                ProductDTO product = new ProductDTO();
+                foreach (ListViewItem item in listView1.SelectedItems)
+                {
+                    ProductDTO temp = new ProductDTO(Convert.ToInt32(item.Text), item.SubItems[1].Text, Convert.ToInt32(item.SubItems[2].Text),
+                        item.SubItems[3].Text, Convert.ToInt32(item.SubItems[4].Text));
+                    product.list.Add(temp);
+                    listView1.Items.Remove(item);
+                }
+                DeleteProduct(this, new ProductEventArgs(product.list));
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 1)
+            {
+                ListViewItem item = listView1.SelectedItems[0];
+                List<ProductDTO> list = new List<ProductDTO>();
+                ProductDTO product = new ProductDTO(Convert.ToInt32(item.Text), item.SubItems[1].Text, Convert.ToInt32(item.SubItems[2].Text),
+                        item.SubItems[3].Text, Convert.ToInt32(item.SubItems[4].Text));
+                list.Add(product);
+                UpdateProduct(this, new ProductEventArgs(list));
+                listView1.Items.Clear();
+                foreach (ProductDTO p in ProductDTO.Instance.list)
+                {
+                    listView1.Items.Add(new ListViewItem(new string[] { p.ID.ToString(), p.Name, p.Price.ToString(), p.Unit, p.Type.ToString() }));
+                }
+                AutoSizeColumnList(listView1);
+            }
+        }
     }
 }
