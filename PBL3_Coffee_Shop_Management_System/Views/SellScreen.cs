@@ -13,15 +13,42 @@ namespace PBL3_Coffee_Shop_Management_System.Views
 {
     public partial class SellScreen : UserControl
     {
+        ProductsPanel[] panel = new ProductsPanel[DataStructure<ProductDTO>.Instance.Count];
         public SellScreen()
         {
             InitializeComponent();
             flowLayoutPanel1.AutoScroll = true;
+            int index = 0;
             foreach (ProductDTO d in DataStructure<ProductDTO>.Instance)
             {
-                ProductsPanel panel = new ProductsPanel(d.Name);
-                flowLayoutPanel1.Controls.Add(panel);
+                panel[index] = new ProductsPanel(d.Name);
+                panel[index].MouseClick += ProductSelected;
+                foreach (Control control in panel[index].Controls)
+                    control.Click += ProductSelected;
+                flowLayoutPanel1.Controls.Add(panel[index++]);
             }
+        }
+        private void ProductSelected(object sender, EventArgs e)
+        {
+            ProductDTO product;
+            if (sender.GetType() == panel[0].GetType())
+            {
+                var temp = sender as ProductsPanel;
+                product = DataStructure<ProductDTO>.Instance.Find(x => x.Name == temp.Name);
+            }
+            else if (sender.GetType() == label1.GetType())
+            {
+                var temp = sender as Label;
+                product = DataStructure<ProductDTO>.Instance.Find(x => x.Name == temp.Text);
+            }
+            else
+            {
+                var temp = sender as PictureBox;
+                product = DataStructure<ProductDTO>.Instance.Find(x => x.Name == temp.Tag.ToString());
+            }            
+            var r = listView1.Items.OfType<ListViewItem>();
+            var listViewItem = r.LastOrDefault();
+            listView1.Items.Add(new ListViewItem(new string[] { (listViewItem!=null?listView1.Items.IndexOf(listViewItem)+2:1).ToString(), product.Name, "1", product.Price.ToString(), product.Price.ToString() }));
         }
         private void AutoSizeColumnList(ListView listView)
         {

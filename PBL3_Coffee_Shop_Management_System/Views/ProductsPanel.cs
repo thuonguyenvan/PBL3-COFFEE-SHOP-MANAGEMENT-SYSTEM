@@ -15,13 +15,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         public ProductsPanel(string Product)
         {
             InitializeComponent();
+            Name = Product;
             pictureBox1.Image = (Image)Properties.Resources.ResourceManager.GetObject(Product.Replace(" ", "_"));
+            pictureBox1.Tag = Product;
             label1.Text = Product;
-        }
-
-        private void Panel_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Product chose", "a");
+            label1.Left = (Width - label1.Width) / 2;
         }
     }
 }

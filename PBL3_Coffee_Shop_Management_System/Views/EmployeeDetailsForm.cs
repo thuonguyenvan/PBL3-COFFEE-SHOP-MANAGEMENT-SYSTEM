@@ -24,7 +24,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             s = DataStructure<EmployeeDTO>.Instance.Last().ID;
             s = s.Remove(1, 5);
             s += i.ToString();
-            if (s.Length < 6) s.Insert(1, string.Concat(Enumerable.Repeat("0", 6-s.Length)));
+            if (s.Length < 6) s = s.Insert(1, string.Concat(Enumerable.Repeat("0", 6-s.Length)));
             textBox1.Text = s;
         }
         public EmployeeDetailsForm(EmployeeDTO product)
