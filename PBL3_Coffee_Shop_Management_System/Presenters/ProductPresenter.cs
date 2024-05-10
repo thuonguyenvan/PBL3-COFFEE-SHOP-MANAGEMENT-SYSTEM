@@ -30,8 +30,9 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
                 productDetailsForm.ShowDialog();
                 if (productDetailsForm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
                 {
-                    ProductDTO.Instance.list.Add(productDetailsForm.GetData());
-                    _model.Add(ProductDTO.Instance);
+                    ProductDTO product = productDetailsForm.GetData();
+                    DataStructure<ProductDTO>.Instance.Add(product);
+                    _model.Add(product);
                 }
             }
         }
@@ -39,7 +40,7 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
         {
             foreach (ProductDTO product in e.product)
             {
-                ProductDTO.Instance.list.Remove(product);
+                DataStructure<ProductDTO>.Instance.Remove(product);
                 _model.Delete(product);
             }
         }
@@ -50,8 +51,9 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
                 productDetailsForm.ShowDialog();
                 if (productDetailsForm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
                 {
-                    ProductDTO.Instance.list[ProductDTO.Instance.list.FindIndex(x => x.ID == e.product[0].ID)] = productDetailsForm.GetData();
-                    _model.Update(ProductDTO.Instance);
+                    ProductDTO product = productDetailsForm.GetData();
+                    DataStructure<ProductDTO>.Instance[DataStructure<ProductDTO>.Instance.FindIndex(x => x.ID == e.product[0].ID)] = product;
+                    _model.Update(product);
                 }
             }
         }

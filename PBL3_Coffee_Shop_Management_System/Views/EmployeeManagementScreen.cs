@@ -1,4 +1,5 @@
 ﻿using PBL3_Coffee_Shop_Management_System.DTO;
+using PBL3_Coffee_Shop_Management_System.EventArguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,27 +14,29 @@ namespace PBL3_Coffee_Shop_Management_System.Views
 {
     public partial class EmployeeManagementScreen : UserControl
     {
-        public EmployeeManagementScreen()
+        private bool Authentication;
+        public EmployeeManagementScreen(bool auth)
         {
             InitializeComponent();
-            if (UserAccountDTO.Instance.Authentication)
+            Authentication = auth;
+            if (auth)
             {
                 columnHeader11 = new ColumnHeader();
                 columnHeader11.Text = "Mật Khẩu";
                 columnHeader11.TextAlign = HorizontalAlignment.Center;
                 listView1.Columns.Add(columnHeader11);
-                foreach (EmployeeDTO e in EmployeeDTO.Instance.list)
+                foreach (EmployeeDTO e in DataStructure<EmployeeDTO>.Instance)
                 {
                     listView1.Items.Add(new ListViewItem(new string[] {e.ID.ToString(), e.Name, e.Gender?"Female":"Male", e.DateOfBirth.ToString(), e.Address, e.PhoneNum,
-                e.Email, e.isFullTime?"Có":"Không", UserAccountDTO.Instance.list.Find(x => x.ID == e.ID).UserName, UserAccountDTO.Instance.list.Find(x => x.ID == e.ID).Password}));
+                e.Email, e.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == e.ID).UserName, DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == e.ID).Password}));
                 }
             }
             else
             {
-                foreach (EmployeeDTO e in EmployeeDTO.Instance.list)
+                foreach (EmployeeDTO e in DataStructure<EmployeeDTO>.Instance)
                 {
                     listView1.Items.Add(new ListViewItem(new string[] {e.ID.ToString(), e.Name, e.Gender?"Female":"Male", e.DateOfBirth.ToString(), e.Address, e.PhoneNum,
-                    e.Email, e.isFullTime?"Có":"Không", UserAccountDTO.Instance.list.Find(x => x.ID == e.ID).UserName}));
+                    e.Email, e.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == e.ID).UserName}));
                 }
             }
             AutoSizeColumnList(listView1);
@@ -55,6 +58,81 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                     colHeader.Width = Math.Max(50, colHeader.Width);
             }
             listView.EndUpdate();
+        }
+        public event EventHandler AddEmployee;
+        public event EventHandler<EmployeeEventArgs> DeleteEmployee;
+        public event EventHandler<EmployeeEventArgs> UpdateEmployee;
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddEmployee(this, EventArgs.Empty);
+            listView1.Items.Clear();
+            if (Authentication)
+            {
+                foreach (EmployeeDTO em in DataStructure<EmployeeDTO>.Instance)
+                {
+                    listView1.Items.Add(new ListViewItem(new string[] {em.ID.ToString(), em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.Address, em.PhoneNum,
+                    em.Email, em.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).UserName, DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).Password}));
+                }
+            }
+            else
+            {
+                foreach (EmployeeDTO em in DataStructure<EmployeeDTO>.Instance)
+                {
+                    listView1.Items.Add(new ListViewItem(new string[] { em.ID, em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.PhoneNum,
+                    em.Email, em.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).UserName }));
+                }
+            }
+            AutoSizeColumnList(listView1);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                List<EmployeeDTO> list = new List<EmployeeDTO>();
+                foreach (ListViewItem item in listView1.SelectedItems)
+                {
+                    EmployeeDTO temp = new EmployeeDTO(item.Text, item.SubItems[1].Text, item.SubItems[2].Text=="Nam"?false:true,
+                        Convert.ToDateTime(item.SubItems[3].Text), item.SubItems[4].Text, item.SubItems[5].Text, item.SubItems[6].Text,
+                        item.SubItems[7].Text == "Không" ? false : true);
+                    list.Add(temp);
+                    listView1.Items.Remove(item);
+                }
+                DeleteEmployee(this, new EmployeeEventArgs(list));
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 1)
+            {
+                ListViewItem item = listView1.SelectedItems[0];
+                List<EmployeeDTO> list = new List<EmployeeDTO>();
+                EmployeeDTO employee = new EmployeeDTO(item.Text, item.SubItems[1].Text, item.SubItems[2].Text == "Nam" ? false : true,
+                        Convert.ToDateTime(item.SubItems[3].Text), item.SubItems[4].Text, item.SubItems[5].Text, item.SubItems[6].Text,
+                        item.SubItems[7].Text == "Không" ? false : true);
+                list.Add(employee);
+                UpdateEmployee(this, new EmployeeEventArgs(list));
+                listView1.Items.Clear();
+                if (Authentication)
+                {
+                    foreach (EmployeeDTO em in DataStructure<EmployeeDTO>.Instance)
+                    {
+                        listView1.Items.Add(new ListViewItem(new string[] {em.ID.ToString(), em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.Address, em.PhoneNum,
+                    em.Email, em.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).UserName, DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).Password}));
+                    }
+                }
+                else
+                {
+                    foreach (EmployeeDTO em in DataStructure<EmployeeDTO>.Instance)
+                    {
+                        listView1.Items.Add(new ListViewItem(new string[] { em.ID, em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.PhoneNum,
+                    em.Email, em.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).UserName }));
+                    }
+                }
+                AutoSizeColumnList(listView1);
+            }
         }
     }
 }

@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace PBL3_Coffee_Shop_Management_System.EventArguments
 {
-    public class ProductEventArgs : EventArgs
+    public class EmployeeEventArgs : EventArgs
     {
-        private readonly List<ProductDTO> _product;
-        public ProductEventArgs(List<ProductDTO> product)
+        private readonly List<EmployeeDTO> _employee;
+        public EmployeeEventArgs(List<EmployeeDTO> employee)
         {
-            _product = product;
+            _employee = employee;
         }
-        public List<ProductDTO> product
+        public List<EmployeeDTO> employee
         {
-            get { return _product; }
+            get { return _employee; }
         }
     }
 }

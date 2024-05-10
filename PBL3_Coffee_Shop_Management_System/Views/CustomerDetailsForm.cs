@@ -17,7 +17,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         {
             InitializeComponent();
             CenterToScreen();
-            textBox1.Text = (CustomerDTO.Instance.list.Last().ID + 1).ToString();
+            textBox1.Text = (DataStructure<CustomerDTO>.Instance.Last().ID + 1).ToString();
         }
         public CustomerDetailsForm(CustomerDTO customer)
         {
@@ -32,11 +32,6 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         }
         public CustomerDTO GetData()
         {
-            CustomerDTO.Instance.ID = Convert.ToInt32(textBox1.Text);
-            CustomerDTO.Instance.Name = textBox2.Text;
-            CustomerDTO.Instance.PhoneNum = textBox3.Text;
-            CustomerDTO.Instance.Email = textBox4.Text;
-            CustomerDTO.Instance.Points = Convert.ToInt32(textBox5.Text);
             return new CustomerDTO(Convert.ToInt32(textBox1.Text), textBox2.Text, textBox3.Text, textBox4.Text, Convert.ToInt32(textBox5.Text));
         }
 

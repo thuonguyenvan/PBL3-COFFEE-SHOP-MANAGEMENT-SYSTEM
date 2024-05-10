@@ -16,19 +16,6 @@ namespace PBL3_Coffee_Shop_Management_System.DTO
         private string _PhoneNum;
         private string _Email;
         private bool _isFullTime;
-        private List<EmployeeDTO> _list = new List<EmployeeDTO>();
-        public List<EmployeeDTO> list { get { return _list; } set { } }
-        private static EmployeeDTO _Instance;
-        public static EmployeeDTO Instance
-        {
-            get
-            {
-                if (_Instance == null)
-                    _Instance = new EmployeeDTO();
-                return _Instance;
-            }
-            set { _Instance = value; }
-        }
         public string ID { get { return _ID; } set { _ID = value; } }
         public string Name { get { return _Name; } set { _Name = value; } }
         public bool Gender { get { return _Gender; } set { _Gender = value; } }

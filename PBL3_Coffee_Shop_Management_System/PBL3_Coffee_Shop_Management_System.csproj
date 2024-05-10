@@ -98,8 +98,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\DataStructure.cs" />
     <Compile Include="DTO\UserAccountDTO.cs" />
     <Compile Include="EventArguments\CustomerEventArgs.cs" />
+    <Compile Include="EventArguments\EmployeeEventArgs.cs" />
     <Compile Include="EventArguments\ProductEventArgs.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Presenters\CustomerPresenter.cs" />
@@ -125,6 +127,12 @@
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Presenters\SellScreenPresenter.cs" />
     <Compile Include="Presenters\IPresenter.cs" />
+    <Compile Include="Views\EmployeeDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeDetailsForm.Designer.cs">
+      <DependentUpon>EmployeeDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmployeeManagementScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -194,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CustomerManagementScreen.resx">
       <DependentUpon>CustomerManagementScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeDetailsForm.resx">
+      <DependentUpon>EmployeeDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EmployeeManagementScreen.resx">
       <DependentUpon>EmployeeManagementScreen.cs</DependentUpon>

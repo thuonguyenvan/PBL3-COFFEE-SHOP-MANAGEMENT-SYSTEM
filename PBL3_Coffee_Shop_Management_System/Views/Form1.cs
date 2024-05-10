@@ -18,6 +18,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
     public partial class Form1 : Form
     {
         WelcomeScreen welcomeScreen = new WelcomeScreen();
+        UserAccountDTO userAccountDTO = new UserAccountDTO();
         public Form1()
         {
             /*using (LoginForm loginForm = new LoginForm())
@@ -32,10 +33,10 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 }
                 else Environment.Exit(0);
             }*/
-            UserAccountDTO.Instance.Authentication = true;
-            UserAccountDTO.Instance.UserName = "admin";
-            InitializeComponent(UserAccountDTO.Instance.Authentication);
-            label1.Text = "Xin chào, " + UserAccountDTO.Instance.UserName;
+            userAccountDTO.Authentication = true;
+            userAccountDTO.UserName = "admin";
+            InitializeComponent(userAccountDTO.Authentication);
+            label1.Text = "Xin chào, " + userAccountDTO.UserName;
             panel1.Controls.Add(welcomeScreen);
         }
 
@@ -54,12 +55,12 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox3.Checked = false;
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
-                if (UserAccountDTO.Instance.Authentication)
+                if (userAccountDTO.Authentication)
                     checkBox6.Checked = false;
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 ProductModel productModel = new ProductModel(connstring);
-                if (ProductDTO.Instance.list.Count() == 0)
+                if (DataStructure<ProductDTO>.Instance.Count() == 0)
                     productModel.getAllData();
                 SellScreen sellScreen = new SellScreen();
                 SellScreenPresenter sellScreenPresenter = new SellScreenPresenter(productModel, sellScreen);
@@ -83,12 +84,12 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox3.Checked = false;
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
-                if (UserAccountDTO.Instance.Authentication)
+                if (userAccountDTO.Authentication)
                     checkBox6.Checked = false;
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 CustomerModel customerModel = new CustomerModel(connstring);
-                if (CustomerDTO.Instance.list.Count() == 0)
+                if (DataStructure<CustomerDTO>.Instance.Count() == 0)
                     customerModel.getAllData();
                 CustomerManagementScreen customerManagementScreen = new CustomerManagementScreen();
                 CustomerPresenter customerPresenter = new CustomerPresenter(customerModel, customerManagementScreen);
@@ -112,7 +113,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox2.Checked = false;
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
-                if (UserAccountDTO.Instance.Authentication)
+                if (userAccountDTO.Authentication)
                     checkBox6.Checked = false;
                 lastChecked = activeCheckBox;
                 SalesHistoryScreen salesHistoryScreen = new SalesHistoryScreen();
@@ -136,7 +137,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox2.Checked = false;
                 checkBox3.Checked = false;
                 checkBox5.Checked = false;
-                if (UserAccountDTO.Instance.Authentication)
+                if (userAccountDTO.Authentication)
                     checkBox6.Checked = false;
                 lastChecked = activeCheckBox;
                 WorkScheduleScreen workScheduleScreen = new WorkScheduleScreen();
@@ -160,12 +161,12 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox2.Checked = false;
                 checkBox3.Checked = false;
                 checkBox4.Checked = false;
-                if (UserAccountDTO.Instance.Authentication)
+                if (userAccountDTO.Authentication)
                     checkBox6.Checked = false;
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 ProductModel productModel = new ProductModel(connstring);
-                if (ProductDTO.Instance.list.Count() == 0)
+                if (DataStructure<ProductDTO>.Instance.Count() == 0)
                     productModel.getAllData();
                 ProductManagementScreen productManagementScreen = new ProductManagementScreen();
                 ProductPresenter productPresenter = new ProductPresenter(productModel, productManagementScreen);
@@ -192,9 +193,9 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 EmployeeModel employeeModel = new EmployeeModel(connstring);
-                if (EmployeeDTO.Instance.list.Count() == 0)
+                if (DataStructure<EmployeeDTO>.Instance.Count() == 0)
                     employeeModel.getAllData();
-                EmployeeManagementScreen employeeManagementScreen = new EmployeeManagementScreen();
+                EmployeeManagementScreen employeeManagementScreen = new EmployeeManagementScreen(userAccountDTO.Authentication);
                 EmployeePresenter employeePresenter = new EmployeePresenter(employeeModel, employeeManagementScreen);
                 panel1.Controls.Clear();
                 panel1.Controls.Add(employeeManagementScreen);
@@ -210,7 +211,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         {
             string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
             EmployeeModel employeeModel = new EmployeeModel(connstring);
-            if (EmployeeDTO.Instance.list.Count() == 0)
+            if (DataStructure<EmployeeDTO>.Instance.Count() == 0)
                 employeeModel.getAllData();
             // to do later
         }
@@ -222,15 +223,15 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 loginForm.ShowDialog();
                 if (loginForm.DialogResult != DialogResult.Cancel)
                 {
-                    UserAccountDTO.Instance = loginForm.GetUserAccount();
+                    userAccountDTO = loginForm.GetUserAccount();
                     if (loginForm.Authentication == 1)
-                        UserAccountDTO.Instance.Authentication = true;
-                    else UserAccountDTO.Instance.Authentication = false;
+                        userAccountDTO.Authentication = true;
+                    else userAccountDTO.Authentication = false;
                 }
                 else Environment.Exit(0);
             }
-            InitializeComponent(UserAccountDTO.Instance.Authentication);
-            label1.Text = "Xin chào, " + UserAccountDTO.Instance.UserName;
+            InitializeComponent(userAccountDTO.Authentication);
+            label1.Text = "Xin chào, " + userAccountDTO.UserName;
             panel1.Controls.Add(welcomeScreen);
         }
     }

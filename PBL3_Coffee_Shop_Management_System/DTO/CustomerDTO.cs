@@ -13,19 +13,6 @@ namespace PBL3_Coffee_Shop_Management_System.DTO
         private string _PhoneNum;
         private string _Email;
         private int _Points;
-        private List<CustomerDTO> _list = new List<CustomerDTO>();
-        public List<CustomerDTO> list { get { return _list; } set { } }
-        private static CustomerDTO _Instance;
-        public static CustomerDTO Instance
-        {
-            get
-            {
-                if (_Instance == null)
-                    _Instance = new CustomerDTO();
-                return _Instance;
-            }
-            set { _Instance = value; }
-        }
         public int ID { get { return _ID; } set { _ID = value; } }
         public string Name { get { return _Name; } set { _Name = value; } }
         public string PhoneNum { get { return _PhoneNum; } set { _PhoneNum = value; } }

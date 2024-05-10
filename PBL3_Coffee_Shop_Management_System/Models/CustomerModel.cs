@@ -20,7 +20,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
         {
             try
             {
-                CustomerDTO.Instance.list.Clear();
+                DataStructure<CustomerDTO>.Instance.Clear();
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     string sql = "SELECT * FROM Customer";
@@ -32,7 +32,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                             while (reader.Read())
                             {
                                 CustomerDTO structure = new CustomerDTO(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetInt32(4));
-                                CustomerDTO.Instance.list.Add(structure);
+                                DataStructure<CustomerDTO>.Instance.Add(structure);
                             }
                         }
                     }

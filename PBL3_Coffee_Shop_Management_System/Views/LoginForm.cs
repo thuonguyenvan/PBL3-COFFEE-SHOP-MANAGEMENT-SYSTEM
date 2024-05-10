@@ -28,7 +28,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         }
         internal UserAccountDTO GetUserAccount()
         {
-            return UserAccountDTO.Instance.list.Find(x => x.UserName == textBox1.Text);
+            return DataStructure<UserAccountDTO>.Instance.Find(x => x.UserName == textBox1.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 MessageBox.Show("Vui lòng nhập tài khoản và mật khẩu", "Empty Field");
                 return;
             }
-            foreach (UserAccountDTO u in UserAccountDTO.Instance.list)
+            foreach (UserAccountDTO u in DataStructure<UserAccountDTO>.Instance)
             {
                 if (textBox1.Text == u.UserName)
                 {

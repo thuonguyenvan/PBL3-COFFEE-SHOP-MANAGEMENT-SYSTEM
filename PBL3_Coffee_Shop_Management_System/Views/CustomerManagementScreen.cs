@@ -17,7 +17,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         public CustomerManagementScreen()
         {
             InitializeComponent();
-            foreach (CustomerDTO c in CustomerDTO.Instance.list)
+            foreach (CustomerDTO c in DataStructure<CustomerDTO>.Instance)
             {
                 listView1.Items.Add(new ListViewItem(new string[] {c.ID.ToString(), c.Name, c.PhoneNum, c.Email, c.Points.ToString()}));
             }
@@ -48,7 +48,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         {
             AddCustomer(this, EventArgs.Empty);
             listView1.Items.Clear();
-            foreach (CustomerDTO c in CustomerDTO.Instance.list)
+            foreach (CustomerDTO c in DataStructure<CustomerDTO>.Instance)
             {
                 listView1.Items.Add(new ListViewItem(new string[] { c.ID.ToString(), c.Name, c.PhoneNum, c.Email, c.Points.ToString() }));
             }
@@ -59,15 +59,15 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                CustomerDTO customer = new CustomerDTO();
+                List<CustomerDTO> list = new List<CustomerDTO>();
                 foreach (ListViewItem item in listView1.SelectedItems)
                 {
                     CustomerDTO temp = new CustomerDTO(Convert.ToInt32(item.Text), item.SubItems[1].Text, item.SubItems[2].Text,
                         item.SubItems[3].Text, Convert.ToInt32(item.SubItems[4].Text));
-                    customer.list.Add(temp);
+                    list.Add(temp);
                     listView1.Items.Remove(item);
                 }
-                DeleteCustomer(this, new CustomerEventArgs(customer.list));
+                DeleteCustomer(this, new CustomerEventArgs(list));
             }
         }
 
@@ -82,7 +82,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 list.Add(customer);
                 UpdateCustomer(this, new CustomerEventArgs(list));
                 listView1.Items.Clear();
-                foreach (CustomerDTO c in CustomerDTO.Instance.list)
+                foreach (CustomerDTO c in DataStructure<CustomerDTO>.Instance)
                 {
                     listView1.Items.Add(new ListViewItem(new string[] { c.ID.ToString(), c.Name, c.PhoneNum, c.Email, c.Points.ToString() }));
                 }

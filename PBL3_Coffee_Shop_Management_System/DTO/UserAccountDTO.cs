@@ -12,19 +12,6 @@ namespace PBL3_Coffee_Shop_Management_System.DTO
         private string _UserName;
         private string _Password;
         private bool _Authentication;
-        private List<UserAccountDTO> _list = new List<UserAccountDTO>();
-        public List<UserAccountDTO> list { get { return _list; } set { } }
-        private static UserAccountDTO _Instance;
-        public static UserAccountDTO Instance
-        {
-            get
-            {
-                if (_Instance == null)
-                    _Instance = new UserAccountDTO();
-                return _Instance;
-            }
-            set { _Instance = value; }
-        }
         public string ID { get { return _ID; } set { _ID = value; } }
         public string UserName { get { return _UserName; } set { _UserName = value; } }
         public string Password { get { return _Password; } set { _Password = value; } }

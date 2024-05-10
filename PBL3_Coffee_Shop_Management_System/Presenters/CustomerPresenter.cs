@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.AccessControl;
 
 namespace PBL3_Coffee_Shop_Management_System.Presenters
 {
@@ -29,8 +30,9 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
                 customerDetailsForm.ShowDialog();
                 if (customerDetailsForm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
                 {
-                    CustomerDTO.Instance.list.Add(customerDetailsForm.GetData());
-                    _model.Add(CustomerDTO.Instance);
+                    CustomerDTO customer = customerDetailsForm.GetData();
+                    DataStructure<CustomerDTO>.Instance.Add(customerDetailsForm.GetData());
+                    _model.Add(customer);
                 }
             }
         }
@@ -38,7 +40,7 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
         {
             foreach (CustomerDTO customer in e.customer)
             {
-                CustomerDTO.Instance.list.Remove(customer);
+                DataStructure<CustomerDTO>.Instance.Remove(customer);
                 _model.Delete(customer);
             }
         }
@@ -49,8 +51,9 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
                 customerDetailsForm.ShowDialog();
                 if (customerDetailsForm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
                 {
-                    CustomerDTO.Instance.list[CustomerDTO.Instance.list.FindIndex(x => x.ID == e.customer[0].ID)] = customerDetailsForm.GetData();
-                    _model.Update(CustomerDTO.Instance);
+                    CustomerDTO customer = customerDetailsForm.GetData();
+                    DataStructure<CustomerDTO>.Instance[DataStructure<CustomerDTO>.Instance.FindIndex(x => x.ID == e.customer[0].ID)] = customer;
+                    _model.Update(customer);
                 }
             }
         }

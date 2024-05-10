@@ -17,7 +17,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         {
             InitializeComponent();
             CenterToScreen();
-            textBox1.Text = (ProductDTO.Instance.list.Last().ID + 1).ToString();
+            textBox1.Text = (DataStructure<ProductDTO>.Instance.Last().ID + 1).ToString();
         }
         public ProductDetailsForm(ProductDTO product)
         {
@@ -32,11 +32,6 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         }
         public ProductDTO GetData()
         {
-            ProductDTO.Instance.ID = Convert.ToInt32(textBox1.Text);
-            ProductDTO.Instance.Name = textBox2.Text;
-            ProductDTO.Instance.Price = Convert.ToInt32(textBox3.Text);
-            ProductDTO.Instance.Unit = textBox4.Text;
-            ProductDTO.Instance.Type = Convert.ToInt32(textBox5.Text);
             return new ProductDTO(Convert.ToInt32(textBox1.Text), textBox2.Text, Convert.ToInt32(textBox3.Text), textBox4.Text, Convert.ToInt32(textBox5.Text));
         }
 

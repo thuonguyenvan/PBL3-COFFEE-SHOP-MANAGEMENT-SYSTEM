@@ -17,7 +17,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         {
             InitializeComponent();
             flowLayoutPanel1.AutoScroll = true;
-            foreach (ProductDTO d in ProductDTO.Instance.list)
+            foreach (ProductDTO d in DataStructure<ProductDTO>.Instance)
             {
                 ProductsPanel panel = new ProductsPanel(d.Name);
                 flowLayoutPanel1.Controls.Add(panel);

@@ -13,18 +13,6 @@ namespace PBL3_Coffee_Shop_Management_System.DTO
         private int _Price;
         private string _Unit;
         private int _Type;
-        private List<ProductDTO> _list = new List<ProductDTO>();
-        private static ProductDTO _Instance;
-        public static ProductDTO Instance
-        {
-            get
-            {
-                if (_Instance == null)
-                    _Instance = new ProductDTO();
-                return _Instance;
-            }
-            set { _Instance = value; }
-        }
         public int ID { get { return _ID; } set { _ID = value; } }
         public string Name { get { return _Name; } set { _Name = value; } }
         public int Price { get { return _Price; } set { _Price = value; } }
@@ -39,6 +27,5 @@ namespace PBL3_Coffee_Shop_Management_System.DTO
             _Unit = Unit;
             _Type = Type;
         }
-        public List<ProductDTO> list { get { return _list; } set { } }
     }
 }
