@@ -14,10 +14,29 @@ namespace PBL3_Coffee_Shop_Management_System.Views
     public partial class SellScreen : UserControl
     {
         ProductsPanel[] panel = new ProductsPanel[DataStructure<ProductDTO>.Instance.Count];
+        DataTable dataTable = new DataTable();
         public SellScreen()
         {
             InitializeComponent();
             flowLayoutPanel1.AutoScroll = true;
+            dataTable.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("STT", typeof(int)),
+                new DataColumn("Tên sản phẩm", typeof(string)),
+                new DataColumn("Số lượng", typeof(int)),
+                new DataColumn("Đơn giá", typeof(int)),
+                new DataColumn("Thành tiền", typeof (int))
+            });
+            dataTable.Columns[0].AutoIncrement = true;
+            dataTable.Columns[0].AutoIncrementSeed = 1;
+            for (int i = 0; i < dataTable.Columns.Count; i++)
+                dataTable.Columns[i].ReadOnly = true;
+            dataTable.Columns[2].ReadOnly = false;
+            dataGridView1.DataSource = dataTable;
+            for (int i = 0; i < dataTable.Columns.Count; i++)
+                dataGridView1.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             int index = 0;
             foreach (ProductDTO d in DataStructure<ProductDTO>.Instance)
             {
@@ -45,29 +64,31 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             {
                 var temp = sender as PictureBox;
                 product = DataStructure<ProductDTO>.Instance.Find(x => x.Name == temp.Tag.ToString());
-            }            
-            var r = listView1.Items.OfType<ListViewItem>();
-            var listViewItem = r.LastOrDefault();
-            listView1.Items.Add(new ListViewItem(new string[] { (listViewItem!=null?listView1.Items.IndexOf(listViewItem)+2:1).ToString(), product.Name, "1", product.Price.ToString(), product.Price.ToString() }));
-        }
-        private void AutoSizeColumnList(ListView listView)
-        {
-            listView.BeginUpdate();
-            Dictionary<int, int> columnSize = new Dictionary<int, int>();
-            listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            foreach (ColumnHeader colHeader in listView.Columns)
-                columnSize.Add(colHeader.Index, colHeader.Width);
-            listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            foreach (ColumnHeader colHeader in listView.Columns)
-            {
-                int nColWidth;
-                if (columnSize.TryGetValue(colHeader.Index, out nColWidth))
-                    colHeader.Width = Math.Max(nColWidth, colHeader.Width);
-                else
-                    colHeader.Width = Math.Max(50, colHeader.Width);
             }
-            listView.EndUpdate();
+            var rows = dataTable.AsEnumerable().Where(r => r.Field<string>("Tên sản phẩm") == product.Name);
+            if (rows.Count() == 0)
+            {
+                dataTable.Rows.Add(null, product.Name, 1, product.Price, product.Price);
+            }
+            else
+            {
+                DataRow dataRow = dataTable.AsEnumerable().Where(r => r.Field<string>("Tên sản phẩm") == product.Name).LastOrDefault();
+                dataRow["Số lượng"] = (Int32)dataRow["Số lượng"] + 1;
+                dataTable.Columns[4].ReadOnly = false;
+                dataRow["Thành tiền"] = (Int32)dataRow["Số lượng"] * (Int32)dataRow["Đơn giá"];
+                dataTable.Columns[4].ReadOnly = true;
+            }
         }
         public event EventHandler GetAllData;
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
     }
 }
