@@ -17,13 +17,13 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         {
             InitializeComponent();
             CenterToScreen();
-            textBox1.Text = (DataStructure<ProductDTO>.Instance.Last().ID + 1).ToString();
+            textBox1.Text = (Convert.ToInt32(DataStructure<ProductDTO>.Instance.Last().ID) + 1).ToString();
         }
         public ProductDetailsForm(ProductDTO product)
         {
             InitializeComponent();
             CenterToScreen();
-            textBox1.Text = product.ID.ToString();
+            textBox1.Text = product.ID;
             textBox2.Text = product.Name;
             textBox3.Text = product.Price.ToString();
             textBox4.Text = product.Unit;
@@ -32,7 +32,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         }
         public ProductDTO GetData()
         {
-            return new ProductDTO(Convert.ToInt32(textBox1.Text), textBox2.Text, Convert.ToInt32(textBox3.Text), textBox4.Text, Convert.ToInt32(textBox5.Text));
+            return new ProductDTO(textBox1.Text, textBox2.Text, Convert.ToInt32(textBox3.Text), textBox4.Text, Convert.ToInt32(textBox5.Text));
         }
 
         private void button1_Click(object sender, EventArgs e)

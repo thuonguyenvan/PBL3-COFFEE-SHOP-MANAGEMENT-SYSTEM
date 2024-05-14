@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2024 at 11:28 AM
+-- Generation Time: May 14, 2024 at 12:29 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `customer` (
-  `ID` int(11) NOT NULL,
+  `ID` char(6) NOT NULL,
   `Name` text NOT NULL,
   `PhoneNum` text NOT NULL,
   `Email` text NOT NULL,
@@ -40,8 +40,15 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`ID`, `Name`, `PhoneNum`, `Email`, `Points`) VALUES
-(1, 'Nguyễn Hữu Hùng Dũng', '1', 'a@gmail.com', 0),
-(2, 'Nguyễn Văn Thương', '2', 'b@gmail.com', 500);
+('1', 'Nguyễn Hữu Hùng Dũng', '1', 'a@gmail.com', 0),
+('2', 'Nguyễn Văn Thương', '2', 'b@gmail.com', 500),
+('3', 'a', '3', 'c@gmail.com', 0),
+('4', 'b', '4', 'd@gmail.com', 20),
+('5', 'c', '3', 'a', 0),
+('6', 'd', '7', 'g', 0),
+('7', 'e', 'c', '3', 0),
+('8', 'sdf', '22', 'fsfsf', 0),
+('9', 'ádasd', 'bbb', '3', 0);
 
 -- --------------------------------------------------------
 
@@ -50,7 +57,7 @@ INSERT INTO `customer` (`ID`, `Name`, `PhoneNum`, `Email`, `Points`) VALUES
 --
 
 CREATE TABLE `employee` (
-  `ID` int(11) NOT NULL,
+  `ID` char(6) NOT NULL,
   `Name` text NOT NULL,
   `Gender` tinyint(1) NOT NULL,
   `DateOfBirth` date NOT NULL,
@@ -60,6 +67,14 @@ CREATE TABLE `employee` (
   `isFullTime` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`ID`, `Name`, `Gender`, `DateOfBirth`, `Address`, `PhoneNum`, `Email`, `isFullTime`) VALUES
+('E00001', 'Nguyễn Văn Thương', 0, '2014-05-14', 'a', '4', 'f', 1),
+('M00001', 'Nguyễn Hữu Hùng Dũng', 0, '2014-05-14', 'a', '1', 'a@gmail.com', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -68,7 +83,7 @@ CREATE TABLE `employee` (
 
 CREATE TABLE `hoursworkedinmonth` (
   `Month` date NOT NULL,
-  `EmployeeID` int(11) NOT NULL,
+  `EmployeeID` char(6) NOT NULL,
   `HoursWorked` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -99,7 +114,7 @@ INSERT INTO `logindetails` (`ID`, `UserName`, `Password`) VALUES
 --
 
 CREATE TABLE `product` (
-  `ID` int(11) NOT NULL,
+  `ID` char(6) NOT NULL,
   `Name` text NOT NULL,
   `SellPrice` int(11) NOT NULL,
   `Unit` text NOT NULL,
@@ -111,13 +126,13 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`ID`, `Name`, `SellPrice`, `Unit`, `TypeID`) VALUES
-(1, 'Cà phê đen', 12000, 'Ly', 1),
-(2, 'Cà phê sữa', 15000, 'Ly', 1),
-(3, 'Cà phê đen Sài Gòn', 18000, 'Ly', 1),
-(4, 'Cà phê sữa Sài Gòn', 20000, 'Ly', 1),
-(5, 'Bạc xỉu', 22000, 'Ly', 1),
-(6, 'Bánh sừng bò', 15000, 'Cai', 2),
-(7, 'Bánh bông lan', 15000, 'Cai', 2);
+('1', 'Cà phê đen', 12000, 'Ly', 1),
+('2', 'Cà phê sữa', 15000, 'Ly', 1),
+('3', 'Cà phê đen Sài Gòn', 18000, 'Ly', 1),
+('4', 'Cà phê sữa Sài Gòn', 20000, 'Ly', 1),
+('5', 'Bạc xỉu', 22000, 'Ly', 1),
+('6', 'Bánh sừng bò', 15000, 'Cai', 2),
+('7', 'Bánh bông lan', 15000, 'Cai', 2);
 
 -- --------------------------------------------------------
 
@@ -126,7 +141,7 @@ INSERT INTO `product` (`ID`, `Name`, `SellPrice`, `Unit`, `TypeID`) VALUES
 --
 
 CREATE TABLE `producttype` (
-  `ID` int(11) NOT NULL,
+  `ID` char(6) NOT NULL,
   `Type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -137,10 +152,10 @@ CREATE TABLE `producttype` (
 --
 
 CREATE TABLE `receipt` (
-  `ID` int(11) NOT NULL,
+  `ID` char(6) NOT NULL,
   `TransactionTime` datetime NOT NULL,
-  `EmployeeID` int(11) NOT NULL,
-  `CustomerID` int(11) NOT NULL,
+  `EmployeeID` char(6) NOT NULL,
+  `CustomerID` char(6) NOT NULL,
   `TableNum` int(11) NOT NULL,
   `Discount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -152,8 +167,8 @@ CREATE TABLE `receipt` (
 --
 
 CREATE TABLE `receiptdetails` (
-  `ReceiptID` int(11) NOT NULL,
-  `ProductID` int(11) NOT NULL,
+  `ReceiptID` char(6) NOT NULL,
+  `ProductID` char(6) NOT NULL,
   `Quantity` int(11) NOT NULL,
   `Total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -165,7 +180,7 @@ CREATE TABLE `receiptdetails` (
 --
 
 CREATE TABLE `salary` (
-  `EmployeeID` int(11) NOT NULL,
+  `EmployeeID` char(6) NOT NULL,
   `Position` text NOT NULL,
   `Salary` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -177,8 +192,8 @@ CREATE TABLE `salary` (
 --
 
 CREATE TABLE `shiftdetails` (
-  `WorkshiftID` int(11) NOT NULL,
-  `EmployeeID` int(11) NOT NULL
+  `WorkshiftID` char(6) NOT NULL,
+  `EmployeeID` char(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -188,7 +203,7 @@ CREATE TABLE `shiftdetails` (
 --
 
 CREATE TABLE `workshift` (
-  `ID` int(11) NOT NULL,
+  `ID` char(6) NOT NULL,
   `StartTime` time NOT NULL,
   `EndTime` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -263,28 +278,6 @@ ALTER TABLE `shiftdetails`
 --
 ALTER TABLE `workshift`
   ADD PRIMARY KEY (`ID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `customer`
---
-ALTER TABLE `customer`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `employee`
---
-ALTER TABLE `employee`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `product`
---
-ALTER TABLE `product`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -32,7 +32,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                         {
                             while (reader.Read())
                             {
-                                ProductDTO structure = new ProductDTO(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetInt32(4));
+                                ProductDTO structure = new ProductDTO(reader.GetString(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetInt32(4));
                                 DataStructure<ProductDTO>.Instance.Add(structure);
                             }
                         }

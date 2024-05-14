@@ -19,7 +19,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             InitializeComponent();
             foreach (CustomerDTO c in DataStructure<CustomerDTO>.Instance)
             {
-                listView1.Items.Add(new ListViewItem(new string[] {c.ID.ToString(), c.Name, c.PhoneNum, c.Email, c.Points.ToString()}));
+                listView1.Items.Add(new ListViewItem(new string[] {c.ID, c.Name, c.PhoneNum, c.Email, c.Points.ToString()}));
             }
             AutoSizeColumnList(listView1);
         }
@@ -50,7 +50,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             listView1.Items.Clear();
             foreach (CustomerDTO c in DataStructure<CustomerDTO>.Instance)
             {
-                listView1.Items.Add(new ListViewItem(new string[] { c.ID.ToString(), c.Name, c.PhoneNum, c.Email, c.Points.ToString() }));
+                listView1.Items.Add(new ListViewItem(new string[] { c.ID, c.Name, c.PhoneNum, c.Email, c.Points.ToString() }));
             }
             AutoSizeColumnList(listView1);
         }
@@ -62,7 +62,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 List<CustomerDTO> list = new List<CustomerDTO>();
                 foreach (ListViewItem item in listView1.SelectedItems)
                 {
-                    CustomerDTO temp = new CustomerDTO(Convert.ToInt32(item.Text), item.SubItems[1].Text, item.SubItems[2].Text,
+                    CustomerDTO temp = new CustomerDTO(item.Text, item.SubItems[1].Text, item.SubItems[2].Text,
                         item.SubItems[3].Text, Convert.ToInt32(item.SubItems[4].Text));
                     list.Add(temp);
                     listView1.Items.Remove(item);
@@ -77,14 +77,14 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             {
                 ListViewItem item = listView1.SelectedItems[0];
                 List<CustomerDTO> list = new List<CustomerDTO>();
-                CustomerDTO customer = new CustomerDTO(Convert.ToInt32(item.Text), item.SubItems[1].Text, item.SubItems[2].Text,
+                CustomerDTO customer = new CustomerDTO(item.Text, item.SubItems[1].Text, item.SubItems[2].Text,
                         item.SubItems[3].Text, Convert.ToInt32(item.SubItems[4].Text));
                 list.Add(customer);
                 UpdateCustomer(this, new CustomerEventArgs(list));
                 listView1.Items.Clear();
                 foreach (CustomerDTO c in DataStructure<CustomerDTO>.Instance)
                 {
-                    listView1.Items.Add(new ListViewItem(new string[] { c.ID.ToString(), c.Name, c.PhoneNum, c.Email, c.Points.ToString() }));
+                    listView1.Items.Add(new ListViewItem(new string[] { c.ID, c.Name, c.PhoneNum, c.Email, c.Points.ToString() }));
                 }
                 AutoSizeColumnList(listView1);
             }
