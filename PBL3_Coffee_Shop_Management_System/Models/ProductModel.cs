@@ -112,5 +112,31 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                 MessageBox.Show(e.Message);
             }
         }
+        public ProductDTO Find(string ProductID)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string sql = "SELECT * FROM Product WHERE ID = @ID";
+                    using (MySqlCommand command = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@ID", ProductID);
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            reader.Read();
+                            ProductDTO product = new ProductDTO(reader.GetString(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetInt32(4));
+                            return product;
+                        }
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.Message);
+                return null;
+            }
+        }
     }
 }

@@ -99,13 +99,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\DataStructure.cs" />
+    <Compile Include="DTO\ReceiptDTO.cs" />
     <Compile Include="DTO\UserAccountDTO.cs" />
     <Compile Include="EventArguments\CustomerEventArgs.cs" />
     <Compile Include="EventArguments\EmployeeEventArgs.cs" />
     <Compile Include="EventArguments\ProductEventArgs.cs" />
+    <Compile Include="Models\ReceiptModel.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Presenters\CustomerPresenter.cs" />
     <Compile Include="Presenters\EmployeePresenter.cs" />
+    <Compile Include="Presenters\ReceiptPresenter.cs" />
     <Compile Include="Presenters\UserAccountPresenter.cs" />
     <Compile Include="Views\CustomerDetailsForm.cs">
       <SubType>Form</SubType>

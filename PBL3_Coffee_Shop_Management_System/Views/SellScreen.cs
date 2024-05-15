@@ -37,6 +37,15 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 dataGridView1.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            DataGridViewButtonColumn dataGridViewButtonColumn = new DataGridViewButtonColumn();
+            dataGridViewButtonColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dataGridViewButtonColumn.Text = "X";
+            dataGridViewButtonColumn.UseColumnTextForButtonValue = true;
+            dataGridViewButtonColumn.Width = 20;
+            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridView1.Columns[0].Width = 33;
+            dataGridView1.Columns.Add(dataGridViewButtonColumn);
+            dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             int index = 0;
             foreach (ProductDTO d in DataStructure<ProductDTO>.Instance)
             {
