@@ -31,32 +31,35 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                         {
                             while (reader.Read())
                             {
-                                List<ProductDTO> products = new List<ProductDTO>();
-                                List<int> Quantity = new List<int>();
-                                List<int> Total = new List<int>();
-                                string sql1 = "SELECT * FROM ReceiptDetails WHERE ID = @ID";
-                                using (MySqlCommand command1 = new MySqlCommand(sql1, connection))
-                                {
-                                    command1.Parameters.AddWithValue("@ID", reader.GetString(0));
-                                    using (MySqlDataReader reader1 = command1.ExecuteReader())
-                                    {
-                                        ProductModel productModel = new ProductModel(connectionString);
-                                        
-                                        while (reader1.Read())
-                                        {
-                                            products.Add(productModel.Find(reader1.GetString(1)));
-                                            Quantity.Add(reader.GetInt32(2));
-                                            Total.Add(reader.GetInt32(3));
-                                        }
-                                    }
-                                }
                                 ReceiptDTO structure = new ReceiptDTO(reader.GetString(0), reader.GetDateTime(1), reader.GetString(2), reader.GetString(3), reader.GetInt32(4), reader.GetInt32(5));
-                                structure.Products = products;
-                                structure.Quantity = Quantity;
-                                structure.Total = Total;
                                 DataStructure<ReceiptDTO>.Instance.Add(structure);
                             }
                         }
+                    }
+                    foreach (ReceiptDTO r in DataStructure<ReceiptDTO>.Instance)
+                    {
+                        List<ProductDTO> products = new List<ProductDTO>();
+                        List<int> Quantity = new List<int>();
+                        List<int> Total = new List<int>();
+                        sql = "SELECT * FROM ReceiptDetails WHERE ReceiptID = @ID";
+                        using (MySqlCommand command = new MySqlCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@ID", r.ReceiptID);
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                ProductModel productModel = new ProductModel(connectionString);
+
+                                while (reader.Read())
+                                {
+                                    products.Add(productModel.Find(reader.GetString(1)));
+                                    Quantity.Add(reader.GetInt32(2));
+                                    Total.Add(reader.GetInt32(3));
+                                }
+                            }
+                        }
+                        r.Products = products;
+                        r.Quantity = Quantity;
+                        r.Total = Total;
                     }
                 }
             }

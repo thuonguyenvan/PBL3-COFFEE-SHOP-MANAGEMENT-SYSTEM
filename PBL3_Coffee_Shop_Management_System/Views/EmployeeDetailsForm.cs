@@ -16,6 +16,8 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         public EmployeeDetailsForm()
         {
             InitializeComponent();
+            comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 1;
             CenterToScreen();
             string s = DataStructure<EmployeeDTO>.Instance.Last().ID;
             s = s.Remove(0, 1);
@@ -27,18 +29,21 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             if (s.Length < 6) s = s.Insert(1, string.Concat(Enumerable.Repeat("0", 6-s.Length)));
             textBox1.Text = s;
         }
-        public EmployeeDetailsForm(EmployeeDTO product)
+        public EmployeeDetailsForm(EmployeeDTO employee)
         {
             InitializeComponent();
             CenterToScreen();
-            textBox1.Text = product.ID;
-            textBox2.Text = product.Name;
-            textBox3.Text = product.Address;
-            textBox4.Text = product.PhoneNum;
-            textBox5.Text = product.Email;
-            textBox6.Text = DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == product.ID).UserName;
-            textBox7.Text = DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == product.ID).Password;
+            textBox1.Text = employee.ID;
+            textBox2.Text = employee.Name;
+            textBox3.Text = employee.Address;
+            textBox4.Text = employee.PhoneNum;
+            textBox5.Text = employee.Email;
+            textBox6.Text = DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == employee.ID).UserName;
+            textBox7.Text = DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == employee.ID).Password;
             textBox1.Enabled = false;
+            comboBox1.SelectedIndex = employee.Gender ? 1 : 0;
+            comboBox2.SelectedIndex = employee.isFullTime ? 0 : 1;
+            dateTimePicker1.Value = employee.DateOfBirth;
         }
         public EmployeeDTO GetData()
         {

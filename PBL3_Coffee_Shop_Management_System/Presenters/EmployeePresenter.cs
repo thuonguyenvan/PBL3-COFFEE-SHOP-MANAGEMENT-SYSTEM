@@ -14,6 +14,11 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
     {
         private EmployeeModel _model;
         private EmployeeManagementScreen _view;
+        public EmployeePresenter(EmployeeModel model, EmployeeDTO e)
+        {
+            _model = model;
+            OnUpdateEmployee(this, new EmployeeEventArgs(new List<EmployeeDTO> {e}));
+        }
         public EmployeePresenter(EmployeeModel model, EmployeeManagementScreen view)
         {
             _model = model;

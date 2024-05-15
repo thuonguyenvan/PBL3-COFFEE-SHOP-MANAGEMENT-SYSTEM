@@ -33,8 +33,8 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 }
                 else Environment.Exit(0);
             }*/
+            userAccountDTO = DataStructure<UserAccountDTO>.Instance[1];
             userAccountDTO.Authentication = true;
-            userAccountDTO.UserName = "admin";
             InitializeComponent(userAccountDTO.Authentication);
             label1.Text = "Xin chào, " + userAccountDTO.UserName;
             panel1.Controls.Add(welcomeScreen);
@@ -46,6 +46,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         }
 
         CheckBox lastChecked;
+        // Bán hàng
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox activeCheckBox = sender as CheckBox;
@@ -74,7 +75,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 panel1.Controls.Add(welcomeScreen);
             }
         }
-
+        // Quản lý khách hàng
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox activeCheckBox = sender as CheckBox;
@@ -103,7 +104,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 panel1.Controls.Add(welcomeScreen);
             }
         }
-
+        // Lịch sử bán hàng
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox activeCheckBox = sender as CheckBox;
@@ -116,6 +117,10 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 if (userAccountDTO.Authentication)
                     checkBox6.Checked = false;
                 lastChecked = activeCheckBox;
+                string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
+                ReceiptModel receiptModel = new ReceiptModel(connstring);
+                if (DataStructure<ReceiptDTO>.Instance.Count() == 0)
+                    receiptModel.getAllData();
                 SalesHistoryScreen salesHistoryScreen = new SalesHistoryScreen();
                 panel1.Controls.Clear();
                 panel1.Controls.Add(salesHistoryScreen);
@@ -127,7 +132,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 panel1.Controls.Add(welcomeScreen);
             }
         }
-
+        // Lịch làm việc
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox activeCheckBox = sender as CheckBox;
@@ -151,7 +156,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 panel1.Controls.Add(welcomeScreen);
             }
         }
-
+        // Quản lý sản phẩm
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox activeCheckBox = sender as CheckBox;
@@ -180,6 +185,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 panel1.Controls.Add(welcomeScreen);
             }
         }
+        //Quản lý nhân viên
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox activeCheckBox = sender as CheckBox;
@@ -207,14 +213,16 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 panel1.Controls.Add(welcomeScreen);
             }
         }
+        // Xem thông tin cá nhân
         private void button7_Click(object sender, EventArgs e)
         {
             string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
             EmployeeModel employeeModel = new EmployeeModel(connstring);
             if (DataStructure<EmployeeDTO>.Instance.Count() == 0)
                 employeeModel.getAllData();
-            // to do later
+            EmployeePresenter employeePresenter = new EmployeePresenter(employeeModel, DataStructure<EmployeeDTO>.Instance.Find(x => x.ID == userAccountDTO.ID));
         }
+        // Đăng xuất
         private void button8_Click(object sender, EventArgs e)
         {
             Controls.Clear();

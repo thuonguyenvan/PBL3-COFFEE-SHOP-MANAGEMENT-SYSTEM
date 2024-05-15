@@ -27,11 +27,10 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 new DataColumn("Đơn giá", typeof(int)),
                 new DataColumn("Thành tiền", typeof (int))
             });
-            dataTable.Columns[0].AutoIncrement = true;
-            dataTable.Columns[0].AutoIncrementSeed = 1;
             for (int i = 0; i < dataTable.Columns.Count; i++)
                 dataTable.Columns[i].ReadOnly = true;
             dataTable.Columns[2].ReadOnly = false;
+            // setup datagridview
             dataGridView1.DataSource = dataTable;
             for (int i = 0; i < dataTable.Columns.Count; i++)
                 dataGridView1.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -46,6 +45,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             dataGridView1.Columns[0].Width = 33;
             dataGridView1.Columns.Add(dataGridViewButtonColumn);
             dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            //
             int index = 0;
             foreach (ProductDTO d in DataStructure<ProductDTO>.Instance)
             {
@@ -77,7 +77,8 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             var rows = dataTable.AsEnumerable().Where(r => r.Field<string>("Tên sản phẩm") == product.Name);
             if (rows.Count() == 0)
             {
-                dataTable.Rows.Add(null, product.Name, 1, product.Price, product.Price);
+                dataTable.Rows.Add(dataTable.AsEnumerable().LastOrDefault() != null ? (Int32)dataTable.AsEnumerable().LastOrDefault().ItemArray[0]+1:1,
+                    product.Name, 1, product.Price, product.Price);
             }
             else
             {
@@ -90,14 +91,32 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         }
         public event EventHandler GetAllData;
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            
+            if (e.ColumnIndex == dataGridView1.Columns["Số lượng"].Index)
+            {
+                dataTable.Columns[4].ReadOnly = false;
+                dataTable.Rows[e.RowIndex].SetField(4, (Int32)dataTable.Rows[e.RowIndex].ItemArray[2] * (Int32)dataTable.Rows[e.RowIndex].ItemArray[3]);
+                dataTable.Columns[4].ReadOnly = true;
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex != -1)
+            {
+                dataTable.Rows.RemoveAt(e.RowIndex);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dataTable.Rows.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
