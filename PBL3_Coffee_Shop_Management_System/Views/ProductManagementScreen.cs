@@ -14,9 +14,15 @@ namespace PBL3_Coffee_Shop_Management_System.Views
 {
     public partial class ProductManagementScreen : UserControl
     {
-        public ProductManagementScreen()
+        public ProductManagementScreen(bool auth)
         {
             InitializeComponent();
+            if (!auth)
+            {
+                button1.Visible = false;
+                button2.Visible = false;
+                button3.Visible = false;
+            }
             foreach (ProductDTO p in DataStructure<ProductDTO>.Instance)
             {
                 listView1.Items.Add(new ListViewItem(new string[] { p.ID, p.Name, p.Price.ToString(), p.Unit, p.Type.ToString() }));

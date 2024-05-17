@@ -145,7 +145,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 if (userAccountDTO.Authentication)
                     checkBox6.Checked = false;
                 lastChecked = activeCheckBox;
-                WorkScheduleScreen workScheduleScreen = new WorkScheduleScreen();
+                WorkScheduleScreen workScheduleScreen = new WorkScheduleScreen(userAccountDTO.Authentication);
                 panel1.Controls.Clear();
                 panel1.Controls.Add(workScheduleScreen);
             }
@@ -173,7 +173,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 ProductModel productModel = new ProductModel(connstring);
                 if (DataStructure<ProductDTO>.Instance.Count() == 0)
                     productModel.getAllData();
-                ProductManagementScreen productManagementScreen = new ProductManagementScreen();
+                ProductManagementScreen productManagementScreen = new ProductManagementScreen(userAccountDTO.Authentication);
                 ProductPresenter productPresenter = new ProductPresenter(productModel, productManagementScreen);
                 panel1.Controls.Clear();
                 panel1.Controls.Add(productManagementScreen);

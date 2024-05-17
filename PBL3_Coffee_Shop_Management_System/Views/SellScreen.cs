@@ -116,7 +116,8 @@ namespace PBL3_Coffee_Shop_Management_System.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            ConfirmOrderForm confirmOrderForm = new ConfirmOrderForm(dataTable);
+            confirmOrderForm.ShowDialog();
         }
     }
 }

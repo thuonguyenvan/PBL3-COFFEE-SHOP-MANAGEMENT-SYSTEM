@@ -64,5 +64,14 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             return new EmployeeDTO(textBox1.Text, textBox2.Text, comboBox1.SelectedIndex==0?false:true, dateTimePicker1.Value, textBox3.Text, textBox4.Text,
                 textBox5.Text, comboBox2.SelectedIndex == 0 ? true : false);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

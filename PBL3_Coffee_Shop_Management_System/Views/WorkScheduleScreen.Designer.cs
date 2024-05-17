@@ -57,6 +57,9 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             this.button24 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.button26 = new System.Windows.Forms.Button();
+            this.button27 = new System.Windows.Forms.Button();
+            this.button28 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -477,11 +480,51 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             this.monthCalendar1.TabIndex = 1;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
+            // button26
+            // 
+            this.button26.BackColor = System.Drawing.Color.Transparent;
+            this.button26.Image = global::PBL3_Coffee_Shop_Management_System.Properties.Resources.pngegg__2_;
+            this.button26.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button26.Location = new System.Drawing.Point(670, 51);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(96, 34);
+            this.button26.TabIndex = 9;
+            this.button26.Text = " Chỉnh sửa";
+            this.button26.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button26.UseVisualStyleBackColor = false;
+            // 
+            // button27
+            // 
+            this.button27.Image = global::PBL3_Coffee_Shop_Management_System.Properties.Resources.pngegg;
+            this.button27.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button27.Location = new System.Drawing.Point(545, 51);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(66, 34);
+            this.button27.TabIndex = 8;
+            this.button27.Text = " Xóa";
+            this.button27.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button27.UseVisualStyleBackColor = true;
+            // 
+            // button28
+            // 
+            this.button28.Image = global::PBL3_Coffee_Shop_Management_System.Properties.Resources.pngegg__1_;
+            this.button28.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button28.Location = new System.Drawing.Point(410, 51);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(73, 34);
+            this.button28.TabIndex = 7;
+            this.button28.Text = " Thêm";
+            this.button28.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button28.UseVisualStyleBackColor = true;
+            // 
             // WorkScheduleScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Peru;
+            this.Controls.Add(this.button26);
+            this.Controls.Add(this.button27);
+            this.Controls.Add(this.button28);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "WorkScheduleScreen";
@@ -521,5 +564,8 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.Label[] dateLabel;
+        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button button28;
     }
 }

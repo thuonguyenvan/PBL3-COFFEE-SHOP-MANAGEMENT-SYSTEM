@@ -110,6 +110,12 @@
     <Compile Include="Presenters\EmployeePresenter.cs" />
     <Compile Include="Presenters\ReceiptPresenter.cs" />
     <Compile Include="Presenters\UserAccountPresenter.cs" />
+    <Compile Include="Views\ConfirmOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ConfirmOrderForm.Designer.cs">
+      <DependentUpon>ConfirmOrderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CustomerDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     <Compile Include="Views\WorkScheduleScreen.Designer.cs">
       <DependentUpon>WorkScheduleScreen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\ConfirmOrderForm.resx">
+      <DependentUpon>ConfirmOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CustomerDetailsForm.resx">
       <DependentUpon>CustomerDetailsForm.cs</DependentUpon>
     </EmbeddedResource>

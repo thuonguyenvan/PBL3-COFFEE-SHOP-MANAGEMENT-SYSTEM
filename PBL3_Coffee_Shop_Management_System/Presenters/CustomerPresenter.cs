@@ -40,7 +40,7 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
         {
             foreach (CustomerDTO customer in e.customer)
             {
-                DataStructure<CustomerDTO>.Instance.Remove(customer);
+                DataStructure<CustomerDTO>.Instance.RemoveAll(x => x.ID == customer.ID);
                 _model.Delete(customer);
             }
         }

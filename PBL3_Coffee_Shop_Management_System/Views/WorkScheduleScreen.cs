@@ -12,10 +12,16 @@ namespace PBL3_Coffee_Shop_Management_System.Views
 {
     public partial class WorkScheduleScreen : UserControl
     {
-        public WorkScheduleScreen()
+        public WorkScheduleScreen(bool auth)
         {
             InitializeComponent();
             InitializeDateLabel();
+            if (!auth)
+            {
+                button26.Visible = false;
+                button27.Visible = false;
+                button28.Visible = false;
+            }
             monthCalendar1.MaxSelectionCount = 1;
         }
         private void InitializeDateLabel()

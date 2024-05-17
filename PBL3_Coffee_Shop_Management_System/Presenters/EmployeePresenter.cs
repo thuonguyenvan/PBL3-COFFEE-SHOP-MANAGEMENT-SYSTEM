@@ -50,7 +50,7 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
         {
             foreach (EmployeeDTO employee in e.employee)
             {
-                DataStructure<EmployeeDTO>.Instance.Remove(employee);
+                DataStructure<EmployeeDTO>.Instance.RemoveAll(x => x.ID == employee.ID);
                 _model.Delete(employee);
                 UserAccountModel userAccountModel = new UserAccountModel("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 userAccountModel.Delete(DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == employee.ID));
