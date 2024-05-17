@@ -35,7 +35,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             // setup datagridview
             dataGridView1.DataSource = dataTable;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dataGridView1.Columns[1].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataGridView1.Columns[2].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataGridView1.Columns[3].DefaultCellStyle.WrapMode = DataGridViewTriState.True;

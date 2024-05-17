@@ -194,10 +194,10 @@
     <Compile Include="Views\WelcomeScreen.Designer.cs">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="WorkScheduleScreen.cs">
+    <Compile Include="Views\WorkScheduleScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WorkScheduleScreen.Designer.cs">
+    <Compile Include="Views\WorkScheduleScreen.Designer.cs">
       <DependentUpon>WorkScheduleScreen.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Views\CustomerDetailsForm.resx">
@@ -246,7 +246,7 @@
     <EmbeddedResource Include="Views\WelcomeScreen.resx">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WorkScheduleScreen.resx">
+    <EmbeddedResource Include="Views\WorkScheduleScreen.resx">
       <DependentUpon>WorkScheduleScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
