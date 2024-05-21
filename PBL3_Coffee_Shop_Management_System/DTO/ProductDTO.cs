@@ -12,14 +12,14 @@ namespace PBL3_Coffee_Shop_Management_System.DTO
         private string _Name;
         private int _Price;
         private string _Unit;
-        private int _Type;
+        private string _Type;
         public string ID { get { return _ID; } set { _ID = value; } }
         public string Name { get { return _Name; } set { _Name = value; } }
         public int Price { get { return _Price; } set { _Price = value; } }
         public string Unit { get { return _Unit; } set { _Unit = value; } }
-        public int Type { get { return _Type; } set { _Type = value; } }
+        public string Type { get { return _Type; } set { _Type = value; } }
         public ProductDTO() { }
-        public ProductDTO(string ID, string Name, int Price, string Unit, int Type)
+        public ProductDTO(string ID, string Name, int Price, string Unit, string Type)
         {
             _ID = ID;
             _Name = Name;

@@ -25,10 +25,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             }
             foreach (ProductDTO p in DataStructure<ProductDTO>.Instance)
             {
-                listView1.Items.Add(new ListViewItem(new string[] { p.ID, p.Name, p.Price.ToString(), p.Unit, p.Type.ToString() }));
+                listView1.Items.Add(new ListViewItem(new string[] { p.ID, p.Name, p.Price.ToString(), p.Unit, p.Type }));
             }
             AutoSizeColumnList(listView1);
         }
+        
         private void AutoSizeColumnList(ListView listView)
         {
             listView.BeginUpdate();
@@ -47,17 +48,20 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             }
             listView.EndUpdate();
         }
+
         public event EventHandler AddProduct;
         public event EventHandler<ProductEventArgs> DeleteProduct;
         public event EventHandler<ProductEventArgs> UpdateProduct;
+        public event EventHandler GetAllType;
 
         private void button1_Click(object sender, EventArgs e)
         {
+            GetAllType(this, EventArgs.Empty);
             AddProduct(this, EventArgs.Empty);
             listView1.Items.Clear();
             foreach (ProductDTO p in DataStructure<ProductDTO>.Instance)
             {
-                listView1.Items.Add(new ListViewItem(new string[] { p.ID, p.Name, p.Price.ToString(), p.Unit, p.Type.ToString() }));
+                listView1.Items.Add(new ListViewItem(new string[] { p.ID, p.Name, p.Price.ToString(), p.Unit, p.Type }));
             }
             AutoSizeColumnList(listView1);
         }
@@ -70,7 +74,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 foreach (ListViewItem item in listView1.SelectedItems)
                 {
                     ProductDTO temp = new ProductDTO(item.Text, item.SubItems[1].Text, Convert.ToInt32(item.SubItems[2].Text),
-                        item.SubItems[3].Text, Convert.ToInt32(item.SubItems[4].Text));
+                        item.SubItems[3].Text, item.SubItems[4].Text);
                     list.Add(temp);
                     listView1.Items.Remove(item);
                 }
@@ -82,16 +86,17 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         {
             if (listView1.SelectedItems.Count == 1)
             {
+                GetAllType(this, EventArgs.Empty);
                 ListViewItem item = listView1.SelectedItems[0];
                 List<ProductDTO> list = new List<ProductDTO>();
                 ProductDTO product = new ProductDTO(item.Text, item.SubItems[1].Text, Convert.ToInt32(item.SubItems[2].Text),
-                        item.SubItems[3].Text, Convert.ToInt32(item.SubItems[4].Text));
+                        item.SubItems[3].Text, item.SubItems[4].Text);
                 list.Add(product);
                 UpdateProduct(this, new ProductEventArgs(list));
                 listView1.Items.Clear();
                 foreach (ProductDTO p in DataStructure<ProductDTO>.Instance)
                 {
-                    listView1.Items.Add(new ListViewItem(new string[] { p.ID, p.Name, p.Price.ToString(), p.Unit, p.Type.ToString() }));
+                    listView1.Items.Add(new ListViewItem(new string[] { p.ID, p.Name, p.Price.ToString(), p.Unit, p.Type }));
                 }
                 AutoSizeColumnList(listView1);
             }

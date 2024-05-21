@@ -22,6 +22,7 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
             _view.AddProduct += OnAddProduct;
             _view.DeleteProduct += OnDeleteProduct;
             _view.UpdateProduct += OnUpdateProduct;
+            _view.GetAllType += OnGetAllType;
         }
         public void OnAddProduct(object sender, EventArgs e)
         {
@@ -56,6 +57,10 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
                     _model.Update(product);
                 }
             }
+        }
+        public void OnGetAllType(object sender, EventArgs e)
+        {
+            _model.GetAllType();
         }
     }
 }

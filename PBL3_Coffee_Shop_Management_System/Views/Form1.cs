@@ -19,8 +19,22 @@ namespace PBL3_Coffee_Shop_Management_System.Views
     {
         WelcomeScreen welcomeScreen = new WelcomeScreen();
         UserAccountDTO userAccountDTO = new UserAccountDTO();
+        EmployeeDTO employeeDTO;
+        private static Form1 _Instance;
+        public static Form1 Instance
+        {
+            get
+            {
+                if (_Instance == null)
+                    _Instance = new Form1();
+                return _Instance;
+            }
+            set { _Instance = value; }
+        }
+        public string EmployeeID { get { return employeeDTO.ID; } set { } }
         public Form1()
         {
+            _Instance = this;
             /*using (LoginForm loginForm = new LoginForm())
             {
                 loginForm.ShowDialog();
@@ -35,6 +49,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             }*/
             userAccountDTO = DataStructure<UserAccountDTO>.Instance[1];
             userAccountDTO.Authentication = true;
+            string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
+            EmployeeModel employeeModel = new EmployeeModel(connstring);
+            if (DataStructure<EmployeeDTO>.Instance.Count() == 0)
+                employeeModel.getAllData();
+            employeeDTO = DataStructure<EmployeeDTO>.Instance.Find(x => x.ID == userAccountDTO.ID);
             InitializeComponent(userAccountDTO.Authentication);
             label1.Text = "Xin chào, " + userAccountDTO.UserName;
             panel1.Controls.Add(welcomeScreen);
@@ -220,7 +239,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             EmployeeModel employeeModel = new EmployeeModel(connstring);
             if (DataStructure<EmployeeDTO>.Instance.Count() == 0)
                 employeeModel.getAllData();
-            EmployeePresenter employeePresenter = new EmployeePresenter(employeeModel, DataStructure<EmployeeDTO>.Instance.Find(x => x.ID == userAccountDTO.ID));
+            EmployeePresenter employeePresenter = new EmployeePresenter(employeeModel, employeeDTO);
         }
         // Đăng xuất
         private void button8_Click(object sender, EventArgs e)

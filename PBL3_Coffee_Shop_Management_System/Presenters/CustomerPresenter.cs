@@ -14,14 +14,21 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
     internal class CustomerPresenter : IPresenter
     {
         private CustomerModel _model;
-        private CustomerManagementScreen _view;
+        private CustomerManagementScreen _cmview;
+        private ConfirmOrderForm _coview;
         public CustomerPresenter(CustomerModel model, CustomerManagementScreen view)
         {
             _model = model;
-            _view = view;
-            _view.AddCustomer += OnAddCustomer;
-            _view.DeleteCustomer += OnDeleteCustomer;
-            _view.UpdateCustomer += OnUpdateCustomer;
+            _cmview = view;
+            _cmview.AddCustomer += OnAddCustomer;
+            _cmview.DeleteCustomer += OnDeleteCustomer;
+            _cmview.UpdateCustomer += OnUpdateCustomer;
+        }
+        public CustomerPresenter(CustomerModel model, ConfirmOrderForm view)
+        {
+            _model = model;
+            _coview = view;
+            _coview.AddCustomer += OnAddCustomer;
         }
         public void OnAddCustomer(object sender, EventArgs e)
         {

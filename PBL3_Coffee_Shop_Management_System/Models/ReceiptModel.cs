@@ -31,7 +31,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                         {
                             while (reader.Read())
                             {
-                                ReceiptDTO structure = new ReceiptDTO(reader.GetString(0), reader.GetDateTime(1), reader.GetString(2), reader.GetString(3), reader.GetInt32(4), reader.GetInt32(5));
+                                ReceiptDTO structure = new ReceiptDTO(reader.GetString(0), reader.GetDateTime(1), reader.GetString(2), reader.IsDBNull(3)?null:reader.GetString(3), reader.GetInt32(4), reader.GetInt32(5));
                                 DataStructure<ReceiptDTO>.Instance.Add(structure);
                             }
                         }
@@ -76,9 +76,9 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                 {
                     string sql = "INSERT INTO Receipt (ID, TransactionTime, EmployeeID, CustomerID, TableNum, Discount) " +
                         "VALUES (@ID, @TransactionTime, @EmployeeID, @CustomerID, @TableNum, @Discount)";
+                    connection.Open();
                     using (MySqlCommand command = new MySqlCommand(sql, connection))
                     {
-                        connection.Open();
                         command.Parameters.AddWithValue("@ID", receipt.ReceiptID);
                         command.Parameters.AddWithValue("@TransactionTime", receipt.TransactionTime);
                         command.Parameters.AddWithValue("@EmployeeID", receipt.EmployeeID);
@@ -93,7 +93,6 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                     {
                         using (MySqlCommand command = new MySqlCommand(sql, connection))
                         {
-                            connection.Open();
                             command.Parameters.AddWithValue("@ID", receipt.ReceiptID);
                             command.Parameters.AddWithValue("@ProductID", p.ID);
                             command.Parameters.AddWithValue("@Quantity", receipt.Quantity[index]);
@@ -114,17 +113,16 @@ namespace PBL3_Coffee_Shop_Management_System.Models
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
+                    connection.Open();
                     string sql = "DELETE FROM Receipt WHERE ID = @ID";
                     using (MySqlCommand command = new MySqlCommand(sql, connection))
                     {
-                        connection.Open();
                         command.Parameters.AddWithValue("@ID", receipt.ReceiptID);
                         command.ExecuteNonQuery();
                     }
                     sql = "DELETE FROM ReceiptDetails WHERE ReceiptID = @ID";
                     using (MySqlCommand command = new MySqlCommand(sql, connection))
                     {
-                        connection.Open();
                         command.Parameters.AddWithValue("@ID", receipt.ReceiptID);
                         command.ExecuteNonQuery();
                     }

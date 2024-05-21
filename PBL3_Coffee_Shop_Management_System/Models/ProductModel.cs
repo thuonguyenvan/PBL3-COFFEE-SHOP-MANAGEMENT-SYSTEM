@@ -24,7 +24,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                 DataStructure<ProductDTO>.Instance.Clear();
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    string sql = "SELECT * FROM Product";
+                    string sql = "SELECT * FROM Product INNER JOIN ProductType ON Product.TypeID = ProductType.ID";
                     using (MySqlCommand command = new MySqlCommand(sql, connection))
                     {
                         connection.Open();
@@ -32,7 +32,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                         {
                             while (reader.Read())
                             {
-                                ProductDTO structure = new ProductDTO(reader.GetString(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetInt32(4));
+                                ProductDTO structure = new ProductDTO(reader.GetString(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetString(6));
                                 DataStructure<ProductDTO>.Instance.Add(structure);
                             }
                         }
@@ -58,7 +58,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                         command.Parameters.AddWithValue("@Name", product.Name);
                         command.Parameters.AddWithValue("@Price", product.Price);
                         command.Parameters.AddWithValue("@Unit", product.Unit);
-                        command.Parameters.AddWithValue("@TypeID", product.Type);
+                        command.Parameters.AddWithValue("@TypeID", FindTypeID(product.Type));
                         command.ExecuteNonQuery();
                     }
                 }
@@ -102,7 +102,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                         command.Parameters.AddWithValue("@Name", product.Name);
                         command.Parameters.AddWithValue("@Price", product.Price);
                         command.Parameters.AddWithValue("@Unit", product.Unit);
-                        command.Parameters.AddWithValue("@TypeID", product.Type);
+                        command.Parameters.AddWithValue("@TypeID", FindTypeID(product.Type));
                         command.ExecuteNonQuery();
                     }
                 }
@@ -118,7 +118,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    string sql = "SELECT * FROM Product WHERE ID = @ID";
+                    string sql = "SELECT * FROM Product INNER JOIN ProductType ON Product.TypeID = ProductType.ID WHERE Product.ID = @ID ";
                     using (MySqlCommand command = new MySqlCommand(sql, connection))
                     {
                         connection.Open();
@@ -126,7 +126,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
                             reader.Read();
-                            ProductDTO product = new ProductDTO(reader.GetString(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetInt32(4));
+                            ProductDTO product = new ProductDTO(reader.GetString(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetString(6));
                             return product;
                         }
                     }
@@ -136,6 +136,58 @@ namespace PBL3_Coffee_Shop_Management_System.Models
             {
                 MessageBox.Show(e.Message);
                 return null;
+            }
+        }
+        public string FindTypeID(string Type)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string sql = "SELECT ID FROM ProductType WHERE Type = @Type";
+                    using (MySqlCommand command = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@Type", Type);
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            reader.Read();
+                            return reader.GetString(0);
+                        }
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.Message);
+                return null;
+            }
+        }
+        public void GetAllType()
+        {
+            try
+            {
+                DataStructure<ProductTypeDTO>.Instance.Clear();
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string sql = "SELECT * FROM ProductType";
+                    using (MySqlCommand command = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ProductTypeDTO structure = new ProductTypeDTO(reader.GetString(0), reader.GetString(1));
+                                DataStructure<ProductTypeDTO>.Instance.Add(structure);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.Message);
             }
         }
     }
