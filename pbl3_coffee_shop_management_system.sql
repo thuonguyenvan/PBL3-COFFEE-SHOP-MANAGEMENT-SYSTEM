@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2024 at 07:02 AM
+-- Generation Time: May 22, 2024 at 11:48 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,7 +41,7 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`ID`, `Name`, `PhoneNum`, `Email`, `Points`) VALUES
 ('1', 'Nguyễn Hữu Hùng Dũng', '1', 'a@gmail.com', 0),
-('2', 'Nguyễn Văn Thương', '2', 'b@gmail.com', 500),
+('2', 'Nguyễn Văn Thương', '2', 'b@gmail.com', 46),
 ('3', 'a', '3', 'c@gmail.com', 0),
 ('4', 'b', '4', 'd@gmail.com', 20),
 ('5', 'c', '3', 'a', 0),
@@ -73,6 +73,7 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`ID`, `Name`, `Gender`, `DateOfBirth`, `Address`, `PhoneNum`, `Email`, `isFullTime`) VALUES
 ('E00001', 'Nguyễn Văn Thương', 0, '2014-05-14', 'a', '4', 'f', 1),
+('E00002', 'Võ Tiến Khoa', 0, '2014-05-05', 'dddd', '333', 'l@gmail.com', 0),
 ('M00001', 'Nguyễn Hữu Hùng Dũng', 0, '2014-02-05', 'a', '1', 'a@gmail.com', 1);
 
 -- --------------------------------------------------------
@@ -105,6 +106,7 @@ CREATE TABLE `logindetails` (
 
 INSERT INTO `logindetails` (`ID`, `UserName`, `Password`) VALUES
 ('E00001', 'employee', 'employee'),
+('E00002', 'pt', 'pt'),
 ('M00001', 'admin', 'admin');
 
 -- --------------------------------------------------------
@@ -177,7 +179,11 @@ INSERT INTO `receipt` (`ID`, `TransactionTime`, `EmployeeID`, `CustomerID`, `Tab
 ('2', '2015-12-02 09:40:04', 'M00001', '2', 3, 15000),
 ('3', '2024-05-21 11:18:16', 'M00001', NULL, 4, 0),
 ('4', '2024-05-21 11:26:21', 'M00001', '9', 1, 0),
-('5', '2024-05-21 11:41:52', 'M00001', '9', 10, 0);
+('5', '2024-05-21 11:41:52', 'M00001', '9', 10, 0),
+('6', '2024-05-22 16:25:34', 'M00001', '2', 14, 0),
+('7', '2024-05-22 16:28:33', 'M00001', '2', 1, 0),
+('8', '2024-05-22 16:30:42', 'M00001', '2', 1, 50000),
+('9', '2024-05-22 16:35:08', 'M00001', '2', 19, 50000);
 
 -- --------------------------------------------------------
 
@@ -205,7 +211,22 @@ INSERT INTO `receiptdetails` (`ReceiptID`, `ProductID`, `Quantity`, `Total`) VAL
 ('3', '6', 1, 15000),
 ('4', '4', 1, 20000),
 ('4', '7', 1, 15000),
-('5', '3', 1, 18000);
+('5', '3', 1, 18000),
+('6', '3', 1, 18000),
+('6', '5', 1, 22000),
+('7', '2', 2, 30000),
+('7', '3', 2, 36000),
+('7', '4', 3, 60000),
+('7', '5', 1, 22000),
+('7', '6', 1, 15000),
+('7', '7', 2, 30000),
+('8', '5', 5, 110000),
+('9', '2', 1, 15000),
+('9', '3', 1, 18000),
+('9', '4', 1, 20000),
+('9', '5', 2, 44000),
+('9', '6', 2, 30000),
+('9', '7', 1, 15000);
 
 -- --------------------------------------------------------
 
@@ -224,7 +245,8 @@ CREATE TABLE `salary` (
 --
 
 INSERT INTO `salary` (`EmployeeID`, `Position`, `Salary`) VALUES
-('E00001', 'Nhân viên full time', 4000000);
+('E00001', 'Nhân viên full time', 4000000),
+('E00002', 'Nhân viên part time', 17000);
 
 -- --------------------------------------------------------
 
@@ -235,8 +257,27 @@ INSERT INTO `salary` (`EmployeeID`, `Position`, `Salary`) VALUES
 CREATE TABLE `shiftdetails` (
   `WorkshiftID` char(6) NOT NULL,
   `EmployeeID` char(6) NOT NULL,
-  `Day` tinyint(4) NOT NULL
+  `Day` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `shiftdetails`
+--
+
+INSERT INTO `shiftdetails` (`WorkshiftID`, `EmployeeID`, `Day`) VALUES
+('FT0001', 'E00001', '2024-05-20'),
+('FT0001', 'E00001', '2024-05-21'),
+('FT0001', 'E00001', '2024-05-22'),
+('FT0001', 'E00001', '2024-05-23'),
+('FT0001', 'E00001', '2024-05-24'),
+('FT0001', 'E00001', '2024-05-29'),
+('FT0002', 'E00001', '2024-06-05'),
+('FT0002', 'M00001', '2024-05-21'),
+('FT0002', 'M00001', '2024-05-23'),
+('PT0001', 'M00001', '2024-05-31'),
+('PT0003', 'E00002', '2024-05-20'),
+('PT0003', 'E00002', '2024-05-22'),
+('PT0003', 'E00002', '2024-05-24');
 
 -- --------------------------------------------------------
 
