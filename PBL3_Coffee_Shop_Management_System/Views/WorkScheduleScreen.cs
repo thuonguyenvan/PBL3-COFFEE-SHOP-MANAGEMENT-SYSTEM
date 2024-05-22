@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PBL3_Coffee_Shop_Management_System.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,6 +24,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 button28.Visible = false;
             }
             monthCalendar1.MaxSelectionCount = 1;
+            setTableLayoutPanel();
         }
         private void InitializeDateLabel()
         {
@@ -99,13 +101,32 @@ namespace PBL3_Coffee_Shop_Management_System.Views
 
         }
 
+        private void setTableLayoutPanel()
+        {
+            while (tableLayoutPanel1.Controls.ContainsKey("workshift"))
+            {
+                tableLayoutPanel1.Controls.RemoveByKey("workshift");
+            }
+            List<ShiftDetailsDTO> list = DataStructure<ShiftDetailsDTO>.Instance.FindAll(x =>
+                x.Day >= monthCalendar1.SelectionStart.Date.AddDays(DayOfWeek.Monday - ((monthCalendar1.SelectionStart.DayOfWeek==DayOfWeek.Sunday) ? DayOfWeek.Saturday + 1 : monthCalendar1.SelectionStart.DayOfWeek))
+                && x.Day <= monthCalendar1.SelectionStart.Date.AddDays(DayOfWeek.Saturday - ((monthCalendar1.SelectionStart.DayOfWeek == DayOfWeek.Sunday) ? DayOfWeek.Saturday + 1 : monthCalendar1.SelectionStart.DayOfWeek) + 1));
+            foreach (ShiftDetailsDTO shiftDetails in list)
+            {
+                WorkshiftPanel panel = new WorkshiftPanel(shiftDetails.Employee.Name, shiftDetails.Workshift);
+                tableLayoutPanel1.Controls.Add(panel, (int)shiftDetails.Day.DayOfWeek, shiftDetails.Workshift.StartTime.Hours - 5);
+                tableLayoutPanel1.SetRowSpan(panel, (shiftDetails.Workshift.EndTime - shiftDetails.Workshift.StartTime).Hours
+                    + ((shiftDetails.Workshift.EndTime.Hours == 22) ? 1 : 0));
+            }
+        }
+
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            int days = monthCalendar1.SelectionStart.DayOfWeek - DayOfWeek.Monday;
+            int days = ((monthCalendar1.SelectionStart.DayOfWeek == DayOfWeek.Sunday) ? DayOfWeek.Saturday + 1 : monthCalendar1.SelectionStart.DayOfWeek) - DayOfWeek.Monday;
             for (int i = 0; i < 7; i++)
             {
                 dateLabel[i].Text = monthCalendar1.SelectionStart.AddDays(-days + i).ToString("dd/MM/yyyy");
             }
+            setTableLayoutPanel();
         }
     }
 }

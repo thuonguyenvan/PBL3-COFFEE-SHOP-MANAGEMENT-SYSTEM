@@ -101,17 +101,21 @@
     <Compile Include="DTO\DataStructure.cs" />
     <Compile Include="DTO\ProductTypeDTO.cs" />
     <Compile Include="DTO\ReceiptDTO.cs" />
+    <Compile Include="DTO\ShiftDetailsDTO.cs" />
     <Compile Include="DTO\UserAccountDTO.cs" />
+    <Compile Include="DTO\WorkshiftDTO.cs" />
     <Compile Include="EventArguments\CustomerEventArgs.cs" />
     <Compile Include="EventArguments\EmployeeEventArgs.cs" />
     <Compile Include="EventArguments\ProductEventArgs.cs" />
     <Compile Include="EventArguments\ReceiptEventArgs.cs" />
     <Compile Include="Models\ReceiptModel.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
+    <Compile Include="Models\WorkshiftModel.cs" />
     <Compile Include="Presenters\CustomerPresenter.cs" />
     <Compile Include="Presenters\EmployeePresenter.cs" />
     <Compile Include="Presenters\ReceiptPresenter.cs" />
     <Compile Include="Presenters\UserAccountPresenter.cs" />
+    <Compile Include="Presenters\WorkshiftPresenter.cs" />
     <Compile Include="Views\ConfirmOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +212,12 @@
     <Compile Include="Views\WorkScheduleScreen.Designer.cs">
       <DependentUpon>WorkScheduleScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\WorkshiftPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\WorkshiftPanel.Designer.cs">
+      <DependentUpon>WorkshiftPanel.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\ConfirmOrderForm.resx">
       <DependentUpon>ConfirmOrderForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\WorkScheduleScreen.resx">
       <DependentUpon>WorkScheduleScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WorkshiftPanel.resx">
+      <DependentUpon>WorkshiftPanel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

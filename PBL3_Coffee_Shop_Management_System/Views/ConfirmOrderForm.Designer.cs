@@ -48,6 +48,8 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -110,6 +112,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             // 
             // button2
             // 
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(555, 114);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(110, 23);
@@ -221,11 +224,33 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             this.comboBox1.Size = new System.Drawing.Size(248, 21);
             this.comboBox1.TabIndex = 12;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(676, 119);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(112, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Đã dùng điểm tích lũy";
+            this.label5.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(583, 161);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Số tiền được giảm:";
+            this.label6.Visible = false;
+            // 
             // ConfirmOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 482);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listView1);
@@ -266,5 +291,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -164,7 +164,17 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 if (userAccountDTO.Authentication)
                     checkBox6.Checked = false;
                 lastChecked = activeCheckBox;
+                string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
+                WorkshiftModel workshiftModel = new WorkshiftModel(connstring);
+                if (DataStructure<WorkshiftDTO>.Instance.Count() == 0)
+                    workshiftModel.getAllWorkshiftData();
+                if (DataStructure<ShiftDetailsDTO>.Instance.Count() == 0)
+                    foreach (EmployeeDTO employee in DataStructure<EmployeeDTO>.Instance)
+                    {
+                        workshiftModel.getAllShiftDetails(employee);
+                    }
                 WorkScheduleScreen workScheduleScreen = new WorkScheduleScreen(userAccountDTO.Authentication);
+                WorkshiftPresenter workshiftPresenter = new WorkshiftPresenter(workshiftModel, workScheduleScreen);
                 panel1.Controls.Clear();
                 panel1.Controls.Add(workScheduleScreen);
             }

@@ -63,6 +63,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 }
                 return;
             }
+            button2.Enabled = true;
             textBox2.Text = customer.Name;
             textBox3.Text = customer.Points.ToString();
         }
@@ -73,10 +74,12 @@ namespace PBL3_Coffee_Shop_Management_System.Views
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (customer != null)
-            {
-                
-            }
+            textBox3.Text = "0";
+            label5.Visible = true;
+            label6.Visible = true;
+            receipt.Discount = customer.Points * 100;
+            label6.Text = label6.Text + " " + receipt.Discount.ToString();
+            customer.Points = 0;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -90,6 +93,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             List<ProductDTO> products = new List<ProductDTO>();
             List<int> Quantity = new List<int>();
             List<int> Total = new List<int>();
+            int total = 0;
             foreach (ListViewItem i in listView1.Items)
             {
                 ProductDTO product = new ProductDTO();
@@ -97,12 +101,16 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 products.Add(product);
                 Quantity.Add(Convert.ToInt32(i.SubItems[2].Text));
                 Total.Add(Convert.ToInt32(i.SubItems[4].Text));
+                total += Convert.ToInt32(i.SubItems[4].Text);
             }
             receipt.Products = products;
             receipt.Quantity = Quantity;
             receipt.Total = Total;
-            receipt.Discount = 0;
             AddReceipt(this, new ReceiptEventArgs(new List<ReceiptDTO> { receipt }));
+            string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
+            CustomerModel customerModel = new CustomerModel(connstring);
+            customer.Points = (total - receipt.Discount) * 5 / 10000;
+            customerModel.Update(customer);
         }
     }
 }
