@@ -73,7 +73,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                 MessageBox.Show(e.Message);
             }
         }
-        public void AddShiftDetails(EmployeeDTO employee, WorkshiftDTO workshift, int Day)
+        public void AddShiftDetails(EmployeeDTO employee, WorkshiftDTO workshift, DateTime Day)
         {
             try
             {
@@ -95,13 +95,13 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                 MessageBox.Show(e.Message);
             }
         }
-        public void UpdateShiftDetails(EmployeeDTO employee, WorkshiftDTO workshift, int Day)
+        public void UpdateShiftDetails(EmployeeDTO employee, WorkshiftDTO workshift, DateTime Day)
         {
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    string sql = "UPDATE ShiftDetails SET Workshift = @WorkshiftID, EmployeeID = @EmployeeID, Day = @Day";
+                    string sql = "UPDATE ShiftDetails SET WorkshiftID = @WorkshiftID, EmployeeID = @EmployeeID, Day = @Day";
                     using (MySqlCommand command = new MySqlCommand(sql, connection))
                     {
                         connection.Open();
@@ -117,13 +117,13 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                 MessageBox.Show(e.Message);
             }
         }
-        public void DeleteShiftDetails(EmployeeDTO employee, WorkshiftDTO workshift, int Day)
+        public void DeleteShiftDetails(EmployeeDTO employee, WorkshiftDTO workshift, DateTime Day)
         {
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    string sql = "DELETE FROM ShiftDetails WHERE Workshift = @WorkshiftID, EmployeeID = @EmployeeID, Day = @Day";
+                    string sql = "DELETE FROM ShiftDetails WHERE WorkshiftID = @WorkshiftID AND EmployeeID = @EmployeeID AND Day = @Day";
                     using (MySqlCommand command = new MySqlCommand(sql, connection))
                     {
                         connection.Open();

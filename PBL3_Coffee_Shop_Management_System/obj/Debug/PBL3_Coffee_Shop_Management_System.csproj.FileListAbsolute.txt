@@ -108,3 +108,4 @@ E:\Github repository\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Managem
 E:\Github repository\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.csproj.CopyComplete
 E:\Github repository\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.exe
 E:\Github repository\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.pdb
+E:\Github repository\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.Views.ShiftDetailDetailsForm.resources

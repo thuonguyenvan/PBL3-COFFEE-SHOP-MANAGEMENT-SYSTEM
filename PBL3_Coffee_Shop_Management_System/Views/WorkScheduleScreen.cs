@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PBL3_Coffee_Shop_Management_System.EventArguments;
 
 namespace PBL3_Coffee_Shop_Management_System.Views
 {
@@ -96,24 +97,23 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             Controls.Add(dateLabel[0]);
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void setTableLayoutPanel()
         {
             while (tableLayoutPanel1.Controls.ContainsKey("workshift"))
             {
                 tableLayoutPanel1.Controls.RemoveByKey("workshift");
             }
+            while (tableLayoutPanel1.Controls.ContainsKey("selected"))
+            {
+                tableLayoutPanel1.Controls.RemoveByKey("selected");
+            }
             List<ShiftDetailsDTO> list = DataStructure<ShiftDetailsDTO>.Instance.FindAll(x =>
                 x.Day >= monthCalendar1.SelectionStart.Date.AddDays(DayOfWeek.Monday - ((monthCalendar1.SelectionStart.DayOfWeek==DayOfWeek.Sunday) ? DayOfWeek.Saturday + 1 : monthCalendar1.SelectionStart.DayOfWeek))
                 && x.Day <= monthCalendar1.SelectionStart.Date.AddDays(DayOfWeek.Saturday - ((monthCalendar1.SelectionStart.DayOfWeek == DayOfWeek.Sunday) ? DayOfWeek.Saturday + 1 : monthCalendar1.SelectionStart.DayOfWeek) + 1));
             foreach (ShiftDetailsDTO shiftDetails in list)
             {
-                WorkshiftPanel panel = new WorkshiftPanel(shiftDetails.Employee.Name, shiftDetails.Workshift);
-                tableLayoutPanel1.Controls.Add(panel, (int)shiftDetails.Day.DayOfWeek, shiftDetails.Workshift.StartTime.Hours - 5);
+                WorkshiftPanel panel = new WorkshiftPanel(shiftDetails.Employee, shiftDetails.Workshift, shiftDetails.Day);
+                tableLayoutPanel1.Controls.Add(panel, (shiftDetails.Day.DayOfWeek == DayOfWeek.Sunday ? 7 : (int)shiftDetails.Day.DayOfWeek), shiftDetails.Workshift.StartTime.Hours - 5);
                 tableLayoutPanel1.SetRowSpan(panel, (shiftDetails.Workshift.EndTime - shiftDetails.Workshift.StartTime).Hours
                     + ((shiftDetails.Workshift.EndTime.Hours == 22) ? 1 : 0));
             }
@@ -127,6 +127,45 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 dateLabel[i].Text = monthCalendar1.SelectionStart.AddDays(-days + i).ToString("dd/MM/yyyy");
             }
             setTableLayoutPanel();
+        }
+
+        public event EventHandler<ShiftDetailsEventArgs> AddShift;
+        public event EventHandler<ShiftDetailsEventArgs> DeleteShift;
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            foreach (Control c in tableLayoutPanel1.Controls)
+            {
+                if (c.Name == "selected")
+                {
+                    WorkshiftPanel p = (WorkshiftPanel)c;
+                    ShiftDetailsDTO shift = new ShiftDetailsDTO(p.employee, p.workshift, p.day);
+                    DeleteShift(this, new ShiftDetailsEventArgs(new List<ShiftDetailsDTO> { shift }));
+                    tableLayoutPanel1.Controls.Remove(c);
+                }
+            }
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            using (ShiftDetailDetailsForm form = new ShiftDetailDetailsForm())
+            {
+                form.ShowDialog();
+                if (form.DialogResult == DialogResult.OK)
+                {
+                    ShiftDetailsDTO shiftDetails = form.GetData();
+                    AddShift(this, new ShiftDetailsEventArgs(new List<ShiftDetailsDTO> { shiftDetails }));
+                    WorkshiftPanel panel = new WorkshiftPanel(shiftDetails.Employee, shiftDetails.Workshift, shiftDetails.Day);
+                    tableLayoutPanel1.Controls.Add(panel, (shiftDetails.Day.DayOfWeek == DayOfWeek.Sunday?7:(int)shiftDetails.Day.DayOfWeek), shiftDetails.Workshift.StartTime.Hours - 5);
+                    tableLayoutPanel1.SetRowSpan(panel, (shiftDetails.Workshift.EndTime - shiftDetails.Workshift.StartTime).Hours
+                        + ((shiftDetails.Workshift.EndTime.Hours == 22) ? 1 : 0));
+                }
+            }
         }
     }
 }

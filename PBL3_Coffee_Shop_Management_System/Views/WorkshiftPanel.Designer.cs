@@ -49,6 +49,7 @@
             this.Controls.Add(this.label1);
             this.Name = "WorkshiftPanel";
             this.Size = new System.Drawing.Size(81, 150);
+            this.Click += new System.EventHandler(this.WorkshiftPanel_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 

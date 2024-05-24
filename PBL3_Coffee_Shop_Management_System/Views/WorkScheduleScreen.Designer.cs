@@ -123,7 +123,6 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.555554F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(651, 475);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // button9
             // 
@@ -485,13 +484,14 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             this.button26.BackColor = System.Drawing.Color.Transparent;
             this.button26.Image = global::PBL3_Coffee_Shop_Management_System.Properties.Resources.pngegg__2_;
             this.button26.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button26.Location = new System.Drawing.Point(670, 51);
+            this.button26.Location = new System.Drawing.Point(669, 51);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(96, 34);
             this.button26.TabIndex = 9;
             this.button26.Text = " Chỉnh sửa";
             this.button26.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button26.UseVisualStyleBackColor = false;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
             // 
             // button27
             // 
@@ -504,6 +504,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             this.button27.Text = " Xóa";
             this.button27.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button27.UseVisualStyleBackColor = true;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
             // 
             // button28
             // 
@@ -516,6 +517,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             this.button28.Text = " Thêm";
             this.button28.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button28.UseVisualStyleBackColor = true;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
             // 
             // WorkScheduleScreen
             // 
