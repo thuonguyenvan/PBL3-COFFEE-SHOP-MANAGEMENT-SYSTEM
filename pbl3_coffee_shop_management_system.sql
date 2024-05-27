@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2024 at 11:48 AM
+-- Generation Time: May 27, 2024 at 06:27 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -83,10 +83,19 @@ INSERT INTO `employee` (`ID`, `Name`, `Gender`, `DateOfBirth`, `Address`, `Phone
 --
 
 CREATE TABLE `hoursworkedinmonth` (
-  `Month` tinyint(4) NOT NULL,
+  `Month` char(7) NOT NULL,
   `EmployeeID` char(6) NOT NULL,
   `HoursWorked` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `hoursworkedinmonth`
+--
+
+INSERT INTO `hoursworkedinmonth` (`Month`, `EmployeeID`, `HoursWorked`) VALUES
+('05/2024', 'E00001', 16),
+('05/2024', 'E00002', 5),
+('05/2024', 'M00001', 8);
 
 -- --------------------------------------------------------
 
@@ -257,27 +266,29 @@ INSERT INTO `salary` (`EmployeeID`, `Position`, `Salary`) VALUES
 CREATE TABLE `shiftdetails` (
   `WorkshiftID` char(6) NOT NULL,
   `EmployeeID` char(6) NOT NULL,
-  `Day` date NOT NULL
+  `Day` date NOT NULL,
+  `isCompleted` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `shiftdetails`
 --
 
-INSERT INTO `shiftdetails` (`WorkshiftID`, `EmployeeID`, `Day`) VALUES
-('FT0001', 'E00001', '2024-05-20'),
-('FT0001', 'E00001', '2024-05-21'),
-('FT0001', 'E00001', '2024-05-22'),
-('FT0001', 'E00001', '2024-05-23'),
-('FT0001', 'E00001', '2024-05-24'),
-('FT0001', 'E00001', '2024-05-29'),
-('FT0002', 'E00001', '2024-06-05'),
-('FT0002', 'M00001', '2024-05-21'),
-('FT0002', 'M00001', '2024-05-23'),
-('PT0001', 'M00001', '2024-05-31'),
-('PT0003', 'E00002', '2024-05-20'),
-('PT0003', 'E00002', '2024-05-22'),
-('PT0003', 'E00002', '2024-05-24');
+INSERT INTO `shiftdetails` (`WorkshiftID`, `EmployeeID`, `Day`, `isCompleted`) VALUES
+('FT0001', 'E00001', '2024-05-20', b'0'),
+('FT0001', 'E00001', '2024-05-21', b'0'),
+('FT0001', 'E00001', '2024-05-22', b'0'),
+('FT0001', 'E00001', '2024-05-23', b'1'),
+('FT0001', 'E00001', '2024-05-24', b'1'),
+('FT0001', 'E00001', '2024-05-29', b'0'),
+('FT0001', 'M00001', '2024-05-25', b'0'),
+('FT0002', 'E00001', '2024-06-05', b'0'),
+('FT0002', 'M00001', '2024-05-21', b'0'),
+('FT0002', 'M00001', '2024-05-23', b'1'),
+('FT0002', 'M00001', '2024-05-26', b'0'),
+('FT0002', 'M00001', '2024-05-31', b'0'),
+('PT0003', 'E00002', '2024-05-20', b'0'),
+('PT0003', 'E00002', '2024-05-24', b'1');
 
 -- --------------------------------------------------------
 
