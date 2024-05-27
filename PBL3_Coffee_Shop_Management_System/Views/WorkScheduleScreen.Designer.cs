@@ -57,6 +57,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             this.button24 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.button29 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
             this.button27 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
@@ -479,6 +480,16 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             this.monthCalendar1.TabIndex = 1;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
+            // button29
+            // 
+            this.button29.Location = new System.Drawing.Point(42, 51);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(160, 23);
+            this.button29.TabIndex = 10;
+            this.button29.Text = "Xác nhận hoàn thành ca làm";
+            this.button29.UseVisualStyleBackColor = true;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
+            // 
             // button26
             // 
             this.button26.BackColor = System.Drawing.Color.Transparent;
@@ -524,6 +535,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Peru;
+            this.Controls.Add(this.button29);
             this.Controls.Add(this.button26);
             this.Controls.Add(this.button27);
             this.Controls.Add(this.button28);
@@ -569,5 +581,6 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         private System.Windows.Forms.Button button26;
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.Button button29;
     }
 }

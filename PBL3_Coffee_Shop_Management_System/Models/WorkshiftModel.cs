@@ -61,7 +61,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                             {
                                 WorkshiftDTO workshiftDTO = DataStructure<WorkshiftDTO>.Instance.Find(x => x.ID == reader.GetString(0));
                                 EmployeeDTO employeeDTO = DataStructure<EmployeeDTO>.Instance.Find(x => x.ID == reader.GetString(1));
-                                ShiftDetailsDTO structure = new ShiftDetailsDTO(employeeDTO, workshiftDTO, reader.GetDateTime(2));
+                                ShiftDetailsDTO structure = new ShiftDetailsDTO(employeeDTO, workshiftDTO, reader.GetDateTime(2), reader.GetBoolean(3));
                                 DataStructure<ShiftDetailsDTO>.Instance.Add(structure);
                             }
                         }
@@ -79,13 +79,14 @@ namespace PBL3_Coffee_Shop_Management_System.Models
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    string sql = "INSERT INTO ShiftDetails (WorkshiftID, EmployeeID, Day) VALUES (@WorkshiftID, @EmployeeID, @Day)";
+                    string sql = "INSERT INTO ShiftDetails (WorkshiftID, EmployeeID, Day, isCompleted) VALUES (@WorkshiftID, @EmployeeID, @Day, @isCompleted)";
                     using (MySqlCommand command = new MySqlCommand(sql, connection))
                     {
                         connection.Open();
                         command.Parameters.AddWithValue("@EmployeeID", employee.ID);
                         command.Parameters.AddWithValue("@WorkshiftID", workshift.ID);
                         command.Parameters.AddWithValue("@Day", Day);
+                        command.Parameters.AddWithValue("@isCompleted", 0);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -95,19 +96,20 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                 MessageBox.Show(e.Message);
             }
         }
-        public void UpdateShiftDetails(EmployeeDTO employee, WorkshiftDTO workshift, DateTime Day)
+        public void UpdateShiftDetails(EmployeeDTO employee, WorkshiftDTO workshift, DateTime Day, bool isCompleted)
         {
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    string sql = "UPDATE ShiftDetails SET WorkshiftID = @WorkshiftID, EmployeeID = @EmployeeID, Day = @Day";
+                    string sql = "UPDATE ShiftDetails SET isCompleted = @isCompleted WHERE WorkshiftID = @WorkshiftID AND EmployeeID = @EmployeeID AND Day = @Day";
                     using (MySqlCommand command = new MySqlCommand(sql, connection))
                     {
                         connection.Open();
                         command.Parameters.AddWithValue("@EmployeeID", employee.ID);
                         command.Parameters.AddWithValue("@WorkshiftID", workshift.ID);
                         command.Parameters.AddWithValue("@Day", Day);
+                        command.Parameters.AddWithValue("@isCompleted", isCompleted);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -194,6 +196,29 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                         command.Parameters.AddWithValue("@ID", workshift.ID);
                         command.Parameters.AddWithValue("@StartTime", workshift.StartTime);
                         command.Parameters.AddWithValue("@EndTime", workshift.EndTime);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+        public void UpdateHoursWorked(EmployeeDTO employee, WorkshiftDTO workshift, string month)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string sql = "INSERT INTO HoursWorkedInMonth (Month, EmployeeID, HoursWorked) VALUES (@Month, @EmployeeID, @HoursWorked)" +
+                        " ON DUPLICATE KEY UPDATE HoursWorked = HoursWorked + @HoursWorked";
+                    using (MySqlCommand command = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@Month", month);
+                        command.Parameters.AddWithValue("@EmployeeID", employee.ID);
+                        command.Parameters.AddWithValue("@HoursWorked", (workshift.EndTime - workshift.StartTime).Hours);
                         command.ExecuteNonQuery();
                     }
                 }
