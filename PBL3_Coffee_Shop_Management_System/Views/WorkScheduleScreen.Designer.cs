@@ -482,12 +482,16 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             // 
             // button29
             // 
-            this.button29.Location = new System.Drawing.Point(42, 51);
+            this.button29.BackColor = System.Drawing.Color.Black;
+            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button29.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.button29.ForeColor = System.Drawing.Color.Peru;
+            this.button29.Location = new System.Drawing.Point(9, 368);
             this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(160, 23);
+            this.button29.Size = new System.Drawing.Size(227, 208);
             this.button29.TabIndex = 10;
             this.button29.Text = "Xác nhận hoàn thành ca làm";
-            this.button29.UseVisualStyleBackColor = true;
+            this.button29.UseVisualStyleBackColor = false;
             this.button29.Click += new System.EventHandler(this.button29_Click);
             // 
             // button26

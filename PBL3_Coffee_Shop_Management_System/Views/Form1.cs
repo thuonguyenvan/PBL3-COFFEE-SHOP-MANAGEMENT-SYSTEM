@@ -76,7 +76,10 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
                 if (userAccountDTO.Authentication)
+                {
                     checkBox6.Checked = false;
+                    checkBox7.Checked = false;
+                }
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 ProductModel productModel = new ProductModel(connstring);
@@ -105,7 +108,10 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
                 if (userAccountDTO.Authentication)
+                {
                     checkBox6.Checked = false;
+                    checkBox7.Checked = false;
+                }
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 CustomerModel customerModel = new CustomerModel(connstring);
@@ -134,7 +140,10 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
                 if (userAccountDTO.Authentication)
+                {
                     checkBox6.Checked = false;
+                    checkBox7.Checked = false;
+                }
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 ReceiptModel receiptModel = new ReceiptModel(connstring);
@@ -162,7 +171,10 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox3.Checked = false;
                 checkBox5.Checked = false;
                 if (userAccountDTO.Authentication)
+                {
                     checkBox6.Checked = false;
+                    checkBox7.Checked = false;
+                }
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 WorkshiftModel workshiftModel = new WorkshiftModel(connstring);
@@ -196,7 +208,10 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox3.Checked = false;
                 checkBox4.Checked = false;
                 if (userAccountDTO.Authentication)
+                {
                     checkBox6.Checked = false;
+                    checkBox7.Checked = false;
+                }
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 ProductModel productModel = new ProductModel(connstring);
@@ -225,6 +240,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox3.Checked = false;
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
+                checkBox7.Checked = false;
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 EmployeeModel employeeModel = new EmployeeModel(connstring);
@@ -234,6 +250,35 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 EmployeePresenter employeePresenter = new EmployeePresenter(employeeModel, employeeManagementScreen);
                 panel1.Controls.Clear();
                 panel1.Controls.Add(employeeManagementScreen);
+            }
+            else
+            {
+                lastChecked = null;
+                panel1.Controls.Clear();
+                panel1.Controls.Add(welcomeScreen);
+            }
+        }
+        // Thống kê
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox activeCheckBox = sender as CheckBox;
+            if (activeCheckBox != lastChecked && activeCheckBox.Checked)
+            {
+                checkBox1.Checked = false;
+                checkBox2.Checked = false;
+                checkBox3.Checked = false;
+                checkBox4.Checked = false;
+                checkBox5.Checked = false;
+                checkBox6.Checked = false;
+                lastChecked = activeCheckBox;
+                string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
+                ReceiptModel receiptModel = new ReceiptModel(connstring);
+                if (DataStructure<ReceiptDTO>.Instance.Count() == 0)
+                    receiptModel.getAllData();
+                ReportScreen reportScreen = new ReportScreen();
+
+                panel1.Controls.Clear();
+                panel1.Controls.Add(reportScreen);
             }
             else
             {

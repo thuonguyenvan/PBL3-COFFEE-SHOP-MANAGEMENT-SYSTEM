@@ -38,7 +38,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            if (auth) this.checkBox6 = new System.Windows.Forms.CheckBox();
+            if (auth)
+            {
+                this.checkBox6 = new System.Windows.Forms.CheckBox();
+                this.checkBox7 = new System.Windows.Forms.CheckBox();
+            }
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -74,7 +78,7 @@
             this.checkBox5.Name = "checkBox5";
             if (auth)
             {
-                this.checkBox5.Size = new System.Drawing.Size(198, 105);
+                this.checkBox5.Size = new System.Drawing.Size(198, 90);
                 this.checkBox5.Text = "QUẢN LÝ HÀNG HÓA";
             }
             else
@@ -99,7 +103,7 @@
             this.checkBox1.Name = "checkBox1";
             if (auth)
             {
-                this.checkBox1.Size = new System.Drawing.Size(198, 105);
+                this.checkBox1.Size = new System.Drawing.Size(198, 90);
             }
             else
             {
@@ -121,7 +125,7 @@
             this.checkBox4.ForeColor = System.Drawing.Color.SandyBrown;
             if (auth)
             {
-                this.checkBox4.Size = new System.Drawing.Size(198, 105);
+                this.checkBox4.Size = new System.Drawing.Size(198, 90);
                 this.checkBox4.Text = "QUẢN LÝ LỊCH LÀM VIỆC";
             }
             else
@@ -146,7 +150,7 @@
             this.checkBox2.Name = "checkBox2";
             if (auth)
             {
-                this.checkBox2.Size = new System.Drawing.Size(198, 105);
+                this.checkBox2.Size = new System.Drawing.Size(198, 90);
             }
             else
             {
@@ -169,7 +173,7 @@
             this.checkBox3.Name = "checkBox3";
             if (auth)
             {
-                this.checkBox3.Size = new System.Drawing.Size(198, 105);
+                this.checkBox3.Size = new System.Drawing.Size(198, 90);
             }
             else
             {
@@ -223,13 +227,32 @@
                 this.checkBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
                 this.checkBox6.ForeColor = System.Drawing.Color.SandyBrown;
                 this.checkBox6.Name = "checkBox3";
-                this.checkBox6.Size = new System.Drawing.Size(198, 105);
+                this.checkBox6.Size = new System.Drawing.Size(198, 90);
                 this.checkBox6.TabIndex = 20;
                 this.checkBox6.Text = "QUẢN LÝ NHÂN VIÊN";
                 this.checkBox6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                 this.checkBox6.UseVisualStyleBackColor = false;
                 this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
                 this.checkBox6.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            }
+            //
+            // checkBox7
+            //
+            if (auth)
+            {
+                this.checkBox7.Appearance = System.Windows.Forms.Appearance.Button;
+                this.checkBox7.BackColor = System.Drawing.Color.Black;
+                this.checkBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                this.checkBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+                this.checkBox7.ForeColor = System.Drawing.Color.SandyBrown;
+                this.checkBox7.Name = "checkBox3";
+                this.checkBox7.Size = new System.Drawing.Size(198, 90);
+                this.checkBox7.TabIndex = 20;
+                this.checkBox7.Text = "THỐNG KÊ";
+                this.checkBox7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                this.checkBox7.UseVisualStyleBackColor = false;
+                this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+                this.checkBox7.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
             }
             // 
             // flowLayoutPanel1
@@ -240,7 +263,7 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(198, 630);
             this.flowLayoutPanel1.TabIndex = 12;
             if (auth) this.flowLayoutPanel1.Controls.AddRange(new System.Windows.Forms.Control[] { this.checkBox1, this.checkBox2, this.checkBox6,
-                this.checkBox3, this.checkBox4, this.checkBox5 });
+                this.checkBox3, this.checkBox4, this.checkBox5, this.checkBox7 });
             else this.flowLayoutPanel1.Controls.AddRange(new System.Windows.Forms.Control[] { this.checkBox1, this.checkBox2, this.checkBox3, this.checkBox4, this.checkBox5 });
             // 
             // Form1
@@ -277,6 +300,7 @@
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox checkBox7;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
