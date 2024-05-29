@@ -118,6 +118,12 @@
     <Compile Include="Presenters\ReceiptPresenter.cs" />
     <Compile Include="Presenters\UserAccountPresenter.cs" />
     <Compile Include="Presenters\WorkshiftPresenter.cs" />
+    <Compile Include="Views\ChooseReportTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ChooseReportTypeForm.Designer.cs">
+      <DependentUpon>ChooseReportTypeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ConfirmOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +244,9 @@
     <Compile Include="Views\WorkshiftPanel.Designer.cs">
       <DependentUpon>WorkshiftPanel.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\ChooseReportTypeForm.resx">
+      <DependentUpon>ChooseReportTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ConfirmOrderForm.resx">
       <DependentUpon>ConfirmOrderForm.cs</DependentUpon>
     </EmbeddedResource>
