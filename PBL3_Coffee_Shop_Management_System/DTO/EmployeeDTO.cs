@@ -16,6 +16,7 @@ namespace PBL3_Coffee_Shop_Management_System.DTO
         private string _PhoneNum;
         private string _Email;
         private bool _isFullTime;
+        private int _Salary;
         public string ID { get { return _ID; } set { _ID = value; } }
         public string Name { get { return _Name; } set { _Name = value; } }
         public bool Gender { get { return _Gender; } set { _Gender = value; } }
@@ -24,6 +25,7 @@ namespace PBL3_Coffee_Shop_Management_System.DTO
         public string PhoneNum { get { return _PhoneNum; } set { _PhoneNum = value; } }
         public string Email { get { return _Email; } set { _Email = value; } }
         public bool isFullTime { get { return _isFullTime; } set { _isFullTime = value; } }
+        public int Salary { get { return _Salary; } set { _Salary = value; } }
         public EmployeeDTO() { }
         public EmployeeDTO(string ID, string Name, bool Gender, DateTime DateOfBirth, string Address, string PhoneNum, string Email, bool isFullTime)
         {

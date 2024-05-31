@@ -37,6 +37,22 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                             }
                         }
                     }
+                    sql = "SELECT Salary FROM Salary WHERE EmployeeID = @EmployeeID";
+                    using (MySqlCommand command = new MySqlCommand(sql, connection))
+                    {
+                        foreach (EmployeeDTO employee in DataStructure<EmployeeDTO>.Instance)
+                        {
+                            command.Parameters.AddWithValue("@EmployeeID", employee.ID);
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    employee.Salary = reader.GetInt32(0);
+                                }
+                            }
+                            command.Parameters.Clear();
+                        }
+                    }
                 }
             }
             catch (MySqlException e)

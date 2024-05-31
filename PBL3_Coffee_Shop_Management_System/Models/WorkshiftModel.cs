@@ -205,6 +205,34 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                 MessageBox.Show(e.Message);
             }
         }
+        public int GetHoursWorked(EmployeeDTO employee, string month)
+        {
+            try
+            {
+                int hoursWorked;
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    string sql = "SELECT HoursWorked FROM HoursWorkedInMonth WHERE EmployeeID = @EmployeeID AND Month = @Month";
+                    using (MySqlCommand command = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@Month", month);
+                        command.Parameters.AddWithValue("@EmployeeID", employee.ID);
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            reader.Read();
+                            hoursWorked = reader.GetInt32(0);
+                        }
+                    }
+                }
+                return hoursWorked;
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.Message);
+                return -1;
+            }
+        }
         public void UpdateHoursWorked(EmployeeDTO employee, WorkshiftDTO workshift, string month)
         {
             try

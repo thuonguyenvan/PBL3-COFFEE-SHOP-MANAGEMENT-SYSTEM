@@ -347,7 +347,10 @@ namespace PBL3_Coffee_Shop_Management_System.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            using (CalcSalaryForm form = new CalcSalaryForm())
+            {
+                form.ShowDialog();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
