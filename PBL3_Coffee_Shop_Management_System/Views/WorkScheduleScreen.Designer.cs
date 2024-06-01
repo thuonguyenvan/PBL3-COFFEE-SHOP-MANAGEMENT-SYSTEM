@@ -58,6 +58,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             this.button25 = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.button29 = new System.Windows.Forms.Button();
+            this.button30 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
             this.button27 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
@@ -494,6 +495,18 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             this.button29.UseVisualStyleBackColor = false;
             this.button29.Click += new System.EventHandler(this.button29_Click);
             // 
+            // button30
+            // 
+            this.button30.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button30.Location = new System.Drawing.Point(51, 51);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(124, 34);
+            this.button30.TabIndex = 11;
+            this.button30.Text = "Quản lý ca làm";
+            this.button30.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button30.UseVisualStyleBackColor = true;
+            this.button30.Click += new System.EventHandler(this.button30_Click);
+            // 
             // button26
             // 
             this.button26.BackColor = System.Drawing.Color.Transparent;
@@ -539,6 +552,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Peru;
+            this.Controls.Add(this.button30);
             this.Controls.Add(this.button29);
             this.Controls.Add(this.button26);
             this.Controls.Add(this.button27);
@@ -586,5 +600,6 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.Button button30;
     }
 }

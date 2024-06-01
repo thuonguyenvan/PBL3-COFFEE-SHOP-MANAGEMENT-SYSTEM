@@ -107,9 +107,11 @@
     <Compile Include="DTO\WorkshiftDTO.cs" />
     <Compile Include="EventArguments\CustomerEventArgs.cs" />
     <Compile Include="EventArguments\EmployeeEventArgs.cs" />
+    <Compile Include="EventArguments\ProductCategoryEventArgs.cs" />
     <Compile Include="EventArguments\ProductEventArgs.cs" />
     <Compile Include="EventArguments\ReceiptEventArgs.cs" />
     <Compile Include="EventArguments\ShiftDetailsEventArgs.cs" />
+    <Compile Include="EventArguments\WorkshiftEventArgs.cs" />
     <Compile Include="Models\ReceiptModel.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Models\WorkshiftModel.cs" />
@@ -118,6 +120,12 @@
     <Compile Include="Presenters\ReceiptPresenter.cs" />
     <Compile Include="Presenters\UserAccountPresenter.cs" />
     <Compile Include="Presenters\WorkshiftPresenter.cs" />
+    <Compile Include="Views\ProductCategoryDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ProductCategoryDetailsForm.Designer.cs">
+      <DependentUpon>ProductCategoryDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CalcSalaryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +190,12 @@
     <Compile Include="Views\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProductCategoryManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ProductCategoryManagementForm.Designer.cs">
+      <DependentUpon>ProductCategoryManagementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProductDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,12 +258,27 @@
     <Compile Include="Views\WorkScheduleScreen.Designer.cs">
       <DependentUpon>WorkScheduleScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\WorkshiftDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WorkshiftDetailsForm.Designer.cs">
+      <DependentUpon>WorkshiftDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkshiftManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WorkshiftManagementForm.Designer.cs">
+      <DependentUpon>WorkshiftManagementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\WorkshiftPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\WorkshiftPanel.Designer.cs">
       <DependentUpon>WorkshiftPanel.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\ProductCategoryDetailsForm.resx">
+      <DependentUpon>ProductCategoryDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CalcSalaryForm.resx">
       <DependentUpon>CalcSalaryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -273,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProductCategoryManagementForm.resx">
+      <DependentUpon>ProductCategoryManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ProductDetailsForm.resx">
       <DependentUpon>ProductDetailsForm.cs</DependentUpon>
@@ -316,6 +348,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\WorkScheduleScreen.resx">
       <DependentUpon>WorkScheduleScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WorkshiftDetailsForm.resx">
+      <DependentUpon>WorkshiftDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WorkshiftManagementForm.resx">
+      <DependentUpon>WorkshiftManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\WorkshiftPanel.resx">
       <DependentUpon>WorkshiftPanel.cs</DependentUpon>

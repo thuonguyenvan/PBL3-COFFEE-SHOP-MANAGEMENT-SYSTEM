@@ -15,6 +15,7 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
     {
         private ProductModel _model;
         private ProductManagementScreen _view;
+        private ProductCategoryManagementForm _form;
         public ProductPresenter(ProductModel model, ProductManagementScreen view)
         {
             _model = model;
@@ -23,6 +24,15 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
             _view.DeleteProduct += OnDeleteProduct;
             _view.UpdateProduct += OnUpdateProduct;
             _view.GetAllType += OnGetAllType;
+        }
+        public ProductPresenter(ProductModel model, ProductCategoryManagementForm form)
+        {
+            _model = model;
+            _form = form;
+            _form.AddType += OnAddType;
+            _form.GetAllType += OnGetAllType;
+            _form.DeleteType += OnDeleteType;
+            _form.UpdateType += OnUpdateType;
         }
         public void OnAddProduct(object sender, EventArgs e)
         {
@@ -60,7 +70,34 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
         }
         public void OnGetAllType(object sender, EventArgs e)
         {
-            _model.GetAllType();
+            if (DataStructure<ProductTypeDTO>.Instance.Count == 0)
+                _model.GetAllType();
+        }
+        public void OnAddType(object sender, ProductCategoryEventArgs e)
+        {
+            _model.AddProductType(e.ProductTypes[0]);
+            DataStructure<ProductTypeDTO>.Instance.Add(e.ProductTypes[0]);
+        }
+        public void OnDeleteType(object sender, ProductCategoryEventArgs e)
+        {
+            foreach (ProductTypeDTO productTypeDTO in e.ProductTypes)
+            {
+                _model.DeleteProductType(productTypeDTO);
+                DataStructure<ProductTypeDTO>.Instance.RemoveAll(x => x.ID == productTypeDTO.ID);
+            }
+        }
+        public void OnUpdateType(object sender, ProductCategoryEventArgs e)
+        {
+            using (ProductCategoryDetailsForm form = new ProductCategoryDetailsForm(e.ProductTypes[0]))
+            {
+                form.ShowDialog();
+                if (form.DialogResult == System.Windows.Forms.DialogResult.OK)
+                {
+                    ProductTypeDTO productType = new ProductTypeDTO(form.TypeID, form.TypeName);
+                    DataStructure<ProductTypeDTO>.Instance[DataStructure<ProductTypeDTO>.Instance.FindIndex(x => x.ID == e.ProductTypes[0].ID)] = productType;
+                    _model.UpdateProductType(productType);
+                }
+            }
         }
     }
 }

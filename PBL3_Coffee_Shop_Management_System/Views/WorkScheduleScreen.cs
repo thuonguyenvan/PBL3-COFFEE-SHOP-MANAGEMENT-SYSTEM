@@ -203,5 +203,16 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 form.ShowDialog();
             }
         }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            using (WorkshiftManagementForm form = new WorkshiftManagementForm())
+            {
+                string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
+                WorkshiftModel workshiftModel = new WorkshiftModel(connstring);
+                WorkshiftPresenter workshiftPresenter = new WorkshiftPresenter(workshiftModel, form);
+                form.ShowDialog();
+            }
+        }
     }
 }

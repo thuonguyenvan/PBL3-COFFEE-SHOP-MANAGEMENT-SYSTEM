@@ -1,5 +1,7 @@
 ﻿using PBL3_Coffee_Shop_Management_System.DTO;
 using PBL3_Coffee_Shop_Management_System.EventArguments;
+using PBL3_Coffee_Shop_Management_System.Models;
+using PBL3_Coffee_Shop_Management_System.Presenters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -99,6 +101,17 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                     listView1.Items.Add(new ListViewItem(new string[] { p.ID, p.Name, p.Price.ToString(), p.Unit, p.Type }));
                 }
                 AutoSizeColumnList(listView1);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (ProductCategoryManagementForm form = new ProductCategoryManagementForm())
+            {
+                string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
+                ProductModel productModel = new ProductModel(connstring);
+                ProductPresenter productPresenter = new ProductPresenter(productModel, form);
+                form.ShowDialog();
             }
         }
     }

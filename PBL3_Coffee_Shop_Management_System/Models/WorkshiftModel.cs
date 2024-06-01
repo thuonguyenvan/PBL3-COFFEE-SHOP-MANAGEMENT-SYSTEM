@@ -47,7 +47,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
         {
             try
             {
-                //DataStructure<ShiftDetailsDTO>.Instance.Clear();
+                DataStructure<ShiftDetailsDTO>.Instance.Clear();
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     string sql = "SELECT * FROM ShiftDetails WHERE EmployeeID = @EmployeeID";
