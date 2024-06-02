@@ -107,7 +107,7 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                 MessageBox.Show(e.Message);
             }
         }
-        public void Delete(ReceiptDTO receipt)
+        public void Delete(string ReceiptID)
         {
             try
             {
@@ -117,13 +117,13 @@ namespace PBL3_Coffee_Shop_Management_System.Models
                     string sql = "DELETE FROM Receipt WHERE ID = @ID";
                     using (MySqlCommand command = new MySqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@ID", receipt.ReceiptID);
+                        command.Parameters.AddWithValue("@ID", ReceiptID);
                         command.ExecuteNonQuery();
                     }
                     sql = "DELETE FROM ReceiptDetails WHERE ReceiptID = @ID";
                     using (MySqlCommand command = new MySqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@ID", receipt.ReceiptID);
+                        command.Parameters.AddWithValue("@ID", ReceiptID);
                         command.ExecuteNonQuery();
                     }
                 }

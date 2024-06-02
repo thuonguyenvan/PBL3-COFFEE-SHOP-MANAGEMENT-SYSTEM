@@ -40,7 +40,13 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             textBox5.Text = employee.Email;
             textBox6.Text = DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == employee.ID).UserName;
             textBox7.Text = DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == employee.ID).Password;
+            textBox8.Text = employee.Salary.ToString();
             textBox1.Enabled = false;
+            if (Form1.Instance.EmployeeID[0] != 'M')
+            {
+                textBox8.Enabled = false;
+                comboBox2.Enabled = false;
+            }
             comboBox1.SelectedIndex = employee.Gender ? 1 : 0;
             comboBox2.SelectedIndex = employee.isFullTime ? 0 : 1;
             dateTimePicker1.Value = employee.DateOfBirth;
@@ -62,7 +68,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 DataStructure<UserAccountDTO>.Instance.Add(user);
             }
             return new EmployeeDTO(textBox1.Text, textBox2.Text, comboBox1.SelectedIndex==0?false:true, dateTimePicker1.Value, textBox3.Text, textBox4.Text,
-                textBox5.Text, comboBox2.SelectedIndex == 0 ? true : false);
+                textBox5.Text, comboBox2.SelectedIndex == 0 ? true : false, Convert.ToInt32(textBox8.Text));
         }
 
         private void button2_Click(object sender, EventArgs e)

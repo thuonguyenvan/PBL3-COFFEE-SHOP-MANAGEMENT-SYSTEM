@@ -12,9 +12,10 @@ namespace PBL3_Coffee_Shop_Management_System.Views
 {
     public partial class WelcomeScreen : UserControl
     {
-        public WelcomeScreen()
+        public WelcomeScreen(string Name)
         {
             InitializeComponent();
+            this.Name = Name;
         }
     }
 }

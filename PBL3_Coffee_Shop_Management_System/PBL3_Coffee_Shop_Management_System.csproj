@@ -120,6 +120,12 @@
     <Compile Include="Presenters\ReceiptPresenter.cs" />
     <Compile Include="Presenters\UserAccountPresenter.cs" />
     <Compile Include="Presenters\WorkshiftPresenter.cs" />
+    <Compile Include="Views\CustomerPointsDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CustomerPointsDetailsForm.Designer.cs">
+      <DependentUpon>CustomerPointsDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProductCategoryDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +282,9 @@
     <Compile Include="Views\WorkshiftPanel.Designer.cs">
       <DependentUpon>WorkshiftPanel.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\CustomerPointsDetailsForm.resx">
+      <DependentUpon>CustomerPointsDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ProductCategoryDetailsForm.resx">
       <DependentUpon>ProductCategoryDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -358,6 +367,7 @@
     <EmbeddedResource Include="Views\WorkshiftPanel.resx">
       <DependentUpon>WorkshiftPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="CustomerPointsSettings.ini" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

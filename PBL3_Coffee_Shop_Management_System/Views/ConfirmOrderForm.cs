@@ -17,7 +17,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
 {
     public partial class ConfirmOrderForm : Form
     {
-        CustomerDTO customer;
+        CustomerDTO customer = null;
         ReceiptDTO receipt = new ReceiptDTO();
         public ConfirmOrderForm(DataTable dataTable)
         {
@@ -54,7 +54,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 if (res == DialogResult.OK)
                 {
                     CustomerPresenter cp = new CustomerPresenter(customerModel, this);
-                    AddCustomer(this, EventArgs.Empty);
+                    AddCustomer(textBox1.Text, EventArgs.Empty);
                 }
                 else
                 {
@@ -77,7 +77,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             textBox3.Text = "0";
             label5.Visible = true;
             label6.Visible = true;
-            receipt.Discount = customer.Points * 100;
+            receipt.Discount = customer.Points * Form1.Instance.PointsToMoney;
             label6.Text = label6.Text + " " + receipt.Discount.ToString();
             customer.Points = 0;
         }
@@ -107,10 +107,13 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             receipt.Quantity = Quantity;
             receipt.Total = Total;
             AddReceipt(this, new ReceiptEventArgs(new List<ReceiptDTO> { receipt }));
-            string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
-            CustomerModel customerModel = new CustomerModel(connstring);
-            customer.Points = (total - receipt.Discount) * 5 / 10000;
-            customerModel.Update(customer);
+            if (customer != null)
+            {
+                string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
+                CustomerModel customerModel = new CustomerModel(connstring);
+                customer.Points = (int)((total - receipt.Discount) * Form1.Instance.MoneyToPoints);
+                customerModel.Update(customer);
+            }
         }
     }
 }

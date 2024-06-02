@@ -32,7 +32,7 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
         }
         public void OnAddCustomer(object sender, EventArgs e)
         {
-            using (CustomerDetailsForm customerDetailsForm = new CustomerDetailsForm())
+            using (CustomerDetailsForm customerDetailsForm = new CustomerDetailsForm(sender as string))
             {
                 customerDetailsForm.ShowDialog();
                 if (customerDetailsForm.DialogResult != System.Windows.Forms.DialogResult.Cancel)

@@ -1,4 +1,5 @@
 ﻿using PBL3_Coffee_Shop_Management_System.DTO;
+using PBL3_Coffee_Shop_Management_System.EventArguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,6 +62,34 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 dataTable.Rows.Add(r.ReceiptID, products, quantity, prices, r.EmployeeID, r.CustomerID, r.TransactionTime, r.TableNum, r.Discount, total);
             }
             //
+        }
+        public event EventHandler DeleteReceipt;
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (CustomerPointsDetailsForm form = new CustomerPointsDetailsForm())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                List<string> list = new List<string>();
+                foreach (DataGridViewRow rowView in dataGridView1.SelectedRows)
+                {
+                    DataRow row = ((DataRowView)rowView.DataBoundItem).Row;
+                    list.Add(row[0].ToString());
+                    dataTable.Rows.Remove(row);
+                }
+                try
+                {
+                    DeleteReceipt(list, EventArgs.Empty);
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
         }
     }
 }

@@ -21,11 +21,21 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
             _coview = coview;
             _coview.AddReceipt += OnAddReceipt;
         }
+        public ReceiptPresenter(ReceiptModel model, SalesHistoryScreen shview)
+        {
+            _model = model;
+            _shview = shview;
+            _shview.DeleteReceipt += OnDeleteReceipt;
+        }
         private void OnAddReceipt(object sender, ReceiptEventArgs e)
         {
             if (DataStructure<ReceiptDTO>.Instance.Count == 0)
                 _model.getAllData();
             e.receipt[0].ReceiptID = (Convert.ToInt32(DataStructure<ReceiptDTO>.Instance.LastOrDefault().ReceiptID)+1).ToString();
+            while (DataStructure<ReceiptDTO>.Instance.Find(x => x.ReceiptID == e.receipt[0].ReceiptID) != null)
+            {
+                e.receipt[0].ReceiptID = (Convert.ToInt32(e.receipt[0].ReceiptID)+1).ToString();
+            }
             foreach (ProductDTO p in e.receipt[0].Products)
             {
                 p.ID = DataStructure<ProductDTO>.Instance.Find(x => x.Name == p.Name).ID;
@@ -33,6 +43,15 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
             }
             _model.Add(e.receipt[0]);
             DataStructure<ReceiptDTO>.Instance.Add(e.receipt[0]);
+        }
+        private void OnDeleteReceipt(object sender, EventArgs e)
+        {
+            List<string> list = sender as List<string>;
+            foreach (string s in list)
+            {
+                _model.Delete(s);
+                DataStructure<ReceiptDTO>.Instance.RemoveAll(x => x.ReceiptID == s);
+            }
         }
     }
 }

@@ -30,6 +30,13 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             textBox5.Text = customer.Points.ToString();
             textBox1.Enabled = false;
         }
+        public CustomerDetailsForm(string PhoneNum)
+        {
+            InitializeComponent();
+            CenterToScreen();
+            textBox1.Text = (Convert.ToInt32(DataStructure<CustomerDTO>.Instance.Last().ID) + 1).ToString();
+            textBox3.Text = PhoneNum;
+        }
         public CustomerDTO GetData()
         {
             return new CustomerDTO(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, Convert.ToInt32(textBox5.Text));

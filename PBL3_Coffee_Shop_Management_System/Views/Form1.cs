@@ -12,12 +12,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.IO;
 
 namespace PBL3_Coffee_Shop_Management_System.Views
 {
     public partial class Form1 : Form
     {
-        WelcomeScreen welcomeScreen = new WelcomeScreen();
+        WelcomeScreen welcomeScreen = new WelcomeScreen("WelcomeScreen");
         UserAccountDTO userAccountDTO = new UserAccountDTO();
         EmployeeDTO employeeDTO;
         private static Form1 _Instance;
@@ -32,6 +33,8 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             set { _Instance = value; }
         }
         public string EmployeeID { get { return employeeDTO.ID; } set { } }
+        public int PointsToMoney { get; set; }
+        public double MoneyToPoints { get; set; }
         public Form1()
         {
             _Instance = this;
@@ -61,7 +64,16 @@ namespace PBL3_Coffee_Shop_Management_System.Views
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            using (StreamReader sr = new StreamReader(System.AppDomain.CurrentDomain.BaseDirectory + "\\CustomerPointsSettings.ini"))
+            {
+                string temp = "";
+                temp = sr.ReadLine();
+                string[] sArr = temp.Split('=');
+                PointsToMoney = int.Parse(sArr[1]);
+                temp = sr.ReadLine();
+                sArr = temp.Split('=');
+                MoneyToPoints = double.Parse(sArr[1]);
+            }
         }
 
         CheckBox lastChecked;
@@ -71,6 +83,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             CheckBox activeCheckBox = sender as CheckBox;
             if (activeCheckBox != lastChecked && activeCheckBox.Checked)
             {
+                foreach (Control c in panel1.Controls)
+                {
+                    if (c.Name != "WelcomeScreen")
+                        c.Dispose();
+                }
                 checkBox2.Checked = false;
                 checkBox3.Checked = false;
                 checkBox4.Checked = false;
@@ -103,6 +120,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             CheckBox activeCheckBox = sender as CheckBox;
             if (activeCheckBox != lastChecked && activeCheckBox.Checked)
             {
+                foreach (Control c in panel1.Controls)
+                {
+                    if (c.Name != "WelcomeScreen")
+                        c.Dispose();
+                }
                 checkBox1.Checked = false;
                 checkBox3.Checked = false;
                 checkBox4.Checked = false;
@@ -135,6 +157,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             CheckBox activeCheckBox = sender as CheckBox;
             if (activeCheckBox != lastChecked && activeCheckBox.Checked)
             {
+                foreach (Control c in panel1.Controls)
+                {
+                    if (c.Name != "WelcomeScreen")
+                        c.Dispose();
+                }
                 checkBox1.Checked = false;
                 checkBox2.Checked = false;
                 checkBox4.Checked = false;
@@ -150,6 +177,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 if (DataStructure<ReceiptDTO>.Instance.Count() == 0)
                     receiptModel.getAllData();
                 SalesHistoryScreen salesHistoryScreen = new SalesHistoryScreen();
+                ReceiptPresenter receiptPresenter = new ReceiptPresenter(receiptModel, salesHistoryScreen);
                 panel1.Controls.Clear();
                 panel1.Controls.Add(salesHistoryScreen);
             }
@@ -166,6 +194,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             CheckBox activeCheckBox = sender as CheckBox;
             if (activeCheckBox != lastChecked && activeCheckBox.Checked)
             {
+                foreach (Control c in panel1.Controls)
+                {
+                    if (c.Name != "WelcomeScreen")
+                        c.Dispose();
+                }
                 checkBox1.Checked = false;
                 checkBox2.Checked = false;
                 checkBox3.Checked = false;
@@ -203,6 +236,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             CheckBox activeCheckBox = sender as CheckBox;
             if (activeCheckBox != lastChecked && activeCheckBox.Checked)
             {
+                foreach (Control c in panel1.Controls)
+                {
+                    if (c.Name != "WelcomeScreen")
+                        c.Dispose();
+                }
                 checkBox1.Checked = false;
                 checkBox2.Checked = false;
                 checkBox3.Checked = false;
@@ -235,6 +273,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             CheckBox activeCheckBox = sender as CheckBox;
             if (activeCheckBox != lastChecked && activeCheckBox.Checked)
             {
+                foreach (Control c in panel1.Controls)
+                {
+                    if (c.Name != "WelcomeScreen")
+                        c.Dispose();
+                }
                 checkBox1.Checked = false;
                 checkBox2.Checked = false;
                 checkBox3.Checked = false;
@@ -264,6 +307,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             CheckBox activeCheckBox = sender as CheckBox;
             if (activeCheckBox != lastChecked && activeCheckBox.Checked)
             {
+                foreach (Control c in panel1.Controls)
+                {
+                    if (c.Name != "WelcomeScreen")
+                        c.Dispose();
+                }
                 checkBox1.Checked = false;
                 checkBox2.Checked = false;
                 checkBox3.Checked = false;
@@ -313,6 +361,14 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 else Environment.Exit(0);
             }
             InitializeComponent(userAccountDTO.Authentication);
+            
+            if (DataStructure<EmployeeDTO>.Instance.Count() == 0)
+            {
+                string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
+                EmployeeModel employeeModel = new EmployeeModel(connstring);
+                employeeModel.getAllData();
+            }
+            employeeDTO = DataStructure<EmployeeDTO>.Instance.Find(x => x.ID == userAccountDTO.ID);
             label1.Text = "Xin chào, " + userAccountDTO.UserName;
             panel1.Controls.Add(welcomeScreen);
         }

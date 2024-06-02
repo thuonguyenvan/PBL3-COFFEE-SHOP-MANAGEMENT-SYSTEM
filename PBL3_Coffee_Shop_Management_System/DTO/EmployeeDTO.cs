@@ -38,5 +38,17 @@ namespace PBL3_Coffee_Shop_Management_System.DTO
             _Email = Email;
             _isFullTime = isFullTime;
         }
+        public EmployeeDTO(string ID, string Name, bool Gender, DateTime DateOfBirth, string Address, string PhoneNum, string Email, bool isFullTime, int Salary)
+        {
+            _ID = ID;
+            _Name = Name;
+            _Gender = Gender;
+            _DateOfBirth = DateOfBirth;
+            _Address = Address;
+            _PhoneNum = PhoneNum;
+            _Email = Email;
+            _isFullTime = isFullTime;
+            _Salary = Salary;
+        }
     }
 }
