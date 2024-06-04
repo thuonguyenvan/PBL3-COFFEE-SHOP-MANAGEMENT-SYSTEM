@@ -91,5 +91,28 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dataTable.Rows.Clear();
+            List<ReceiptDTO> receipt = DataStructure<ReceiptDTO>.Instance.FindAll(x => x.ReceiptID.Contains(textBox1.Text) || x.EmployeeID.Contains(textBox1.Text)
+                || x.CustomerID.Contains(textBox1.Text) || x.TableNum.ToString().Contains(textBox1.Text));
+            foreach (ReceiptDTO r in DataStructure<ReceiptDTO>.Instance)
+            {
+                string products = "";
+                string quantity = "";
+                string prices = "";
+                int total = 0;
+                int index = 0;
+                foreach (ProductDTO product in r.Products)
+                {
+                    products += product.Name + "\n";
+                    quantity += r.Quantity[index] + "\n";
+                    prices += product.Price + "\n";
+                    total += r.Total[index++];
+                }
+                dataTable.Rows.Add(r.ReceiptID, products, quantity, prices, r.EmployeeID, r.CustomerID, r.TransactionTime, r.TableNum, r.Discount, total);
+            }
+        }
     }
 }

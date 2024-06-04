@@ -53,6 +53,7 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
             {
                 DataStructure<ProductDTO>.Instance.RemoveAll(x => x.ID == product.ID);
                 _model.Delete(product);
+                System.IO.File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + "Images\\" + product.Name.Replace(" ", "_") + ".jpg");
             }
         }
         public void OnUpdateProduct(object sender, ProductEventArgs e)

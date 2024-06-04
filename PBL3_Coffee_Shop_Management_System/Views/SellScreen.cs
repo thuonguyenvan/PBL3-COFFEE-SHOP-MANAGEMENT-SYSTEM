@@ -20,6 +20,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         public SellScreen()
         {
             InitializeComponent();
+            Name = "SellScreen";
             flowLayoutPanel1.AutoScroll = true;
             dataTable.Columns.AddRange(new DataColumn[]
             {

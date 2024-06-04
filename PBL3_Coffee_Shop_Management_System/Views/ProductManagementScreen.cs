@@ -114,5 +114,17 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 form.ShowDialog();
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            List<ProductDTO> product = DataStructure<ProductDTO>.Instance.FindAll(x => x.ID.Contains(textBox1.Text) || x.Name.Contains(textBox1.Text)
+                || x.Price.ToString().Contains(textBox1.Text) || x.Unit.Contains(textBox1.Text) || x.Type.Contains(textBox1.Text));
+            listView1.Items.Clear();
+            foreach (ProductDTO p in product)
+            {
+                listView1.Items.Add(new ListViewItem(new string[] { p.ID, p.Name, p.Price.ToString(), p.Unit, p.Type }));
+            }
+            AutoSizeColumnList(listView1);
+        }
     }
 }

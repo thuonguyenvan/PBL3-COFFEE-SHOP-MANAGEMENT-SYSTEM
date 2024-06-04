@@ -1,4 +1,5 @@
-﻿using PBL3_Coffee_Shop_Management_System.DTO;
+﻿using Mysqlx.Session;
+using PBL3_Coffee_Shop_Management_System.DTO;
 using PBL3_Coffee_Shop_Management_System.EventArguments;
 using System;
 using System.Collections.Generic;
@@ -88,6 +89,18 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 }
                 AutoSizeColumnList(listView1);
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            List<CustomerDTO> customer = DataStructure<CustomerDTO>.Instance.FindAll(x => x.ID.Contains(textBox1.Text) || x.Name.Contains(textBox1.Text)
+                || x.Email.Contains(textBox1.Text) || x.PhoneNum.Contains(textBox1.Text) || x.Points.ToString().Contains(textBox1.Text));
+            listView1.Items.Clear();
+            foreach (CustomerDTO c in customer)
+            {
+                listView1.Items.Add(new ListViewItem(new string[] { c.ID, c.Name, c.PhoneNum, c.Email, c.Points.ToString() }));
+            }
+            AutoSizeColumnList(listView1);
         }
     }
 }

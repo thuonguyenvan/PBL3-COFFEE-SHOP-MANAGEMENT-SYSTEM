@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.IO;
+using PBL3_Coffee_Shop_Management_System.Properties;
 
 namespace PBL3_Coffee_Shop_Management_System.Views
 {
@@ -83,7 +84,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             CheckBox activeCheckBox = sender as CheckBox;
             if (activeCheckBox != lastChecked && activeCheckBox.Checked)
             {
+                List<Control> ctrls = new List<Control>();
                 foreach (Control c in panel1.Controls)
+                    ctrls.Add(c);
+                panel1.Controls.Clear();
+                foreach (Control c in ctrls)
                 {
                     if (c.Name != "WelcomeScreen")
                         c.Dispose();
@@ -104,14 +109,18 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                     productModel.getAllData();
                 SellScreen sellScreen = new SellScreen();
                 SellScreenPresenter sellScreenPresenter = new SellScreenPresenter(productModel, sellScreen);
-                panel1.Controls.Clear();
+                
                 panel1.Controls.Add(sellScreen);
             }
             else
             {
                 lastChecked = null;
-                panel1.Controls.Clear();
-                panel1.Controls.Add(welcomeScreen);
+                if (checkBox1.Checked == false && checkBox2.Checked == false && checkBox3.Checked == false && checkBox4.Checked == false && checkBox5.Checked == false
+                    && checkBox6.Checked == false && checkBox7.Checked == false)
+                {
+                    panel1.Controls.Clear();
+                    panel1.Controls.Add(welcomeScreen);
+                }
             }
         }
         // Quản lý khách hàng
@@ -120,7 +129,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             CheckBox activeCheckBox = sender as CheckBox;
             if (activeCheckBox != lastChecked && activeCheckBox.Checked)
             {
+                List<Control> ctrls = new List<Control>();
                 foreach (Control c in panel1.Controls)
+                    ctrls.Add(c);
+                panel1.Controls.Clear();
+                foreach (Control c in ctrls)
                 {
                     if (c.Name != "WelcomeScreen")
                         c.Dispose();
@@ -141,14 +154,17 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                     customerModel.getAllData();
                 CustomerManagementScreen customerManagementScreen = new CustomerManagementScreen();
                 CustomerPresenter customerPresenter = new CustomerPresenter(customerModel, customerManagementScreen);
-                panel1.Controls.Clear();
                 panel1.Controls.Add(customerManagementScreen);
             }
             else
             {
                 lastChecked = null;
-                panel1.Controls.Clear();
-                panel1.Controls.Add(welcomeScreen);
+                if (checkBox1.Checked == false && checkBox2.Checked == false && checkBox3.Checked == false && checkBox4.Checked == false && checkBox5.Checked == false
+                    && checkBox6.Checked == false && checkBox7.Checked == false)
+                {
+                    panel1.Controls.Clear();
+                    panel1.Controls.Add(welcomeScreen);
+                }
             }
         }
         // Lịch sử bán hàng
@@ -157,7 +173,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             CheckBox activeCheckBox = sender as CheckBox;
             if (activeCheckBox != lastChecked && activeCheckBox.Checked)
             {
+                List<Control> ctrls = new List<Control>();
                 foreach (Control c in panel1.Controls)
+                    ctrls.Add(c);
+                panel1.Controls.Clear();
+                foreach (Control c in ctrls)
                 {
                     if (c.Name != "WelcomeScreen")
                         c.Dispose();
@@ -178,14 +198,17 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                     receiptModel.getAllData();
                 SalesHistoryScreen salesHistoryScreen = new SalesHistoryScreen();
                 ReceiptPresenter receiptPresenter = new ReceiptPresenter(receiptModel, salesHistoryScreen);
-                panel1.Controls.Clear();
                 panel1.Controls.Add(salesHistoryScreen);
             }
             else
             {
                 lastChecked = null;
-                panel1.Controls.Clear();
-                panel1.Controls.Add(welcomeScreen);
+                if (checkBox1.Checked == false && checkBox2.Checked == false && checkBox3.Checked == false && checkBox4.Checked == false && checkBox5.Checked == false
+                    && checkBox6.Checked == false && checkBox7.Checked == false)
+                {
+                    panel1.Controls.Clear();
+                    panel1.Controls.Add(welcomeScreen);
+                }
             }
         }
         // Lịch làm việc
@@ -194,7 +217,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             CheckBox activeCheckBox = sender as CheckBox;
             if (activeCheckBox != lastChecked && activeCheckBox.Checked)
             {
+                List<Control> ctrls = new List<Control>();
                 foreach (Control c in panel1.Controls)
+                    ctrls.Add(c);
+                panel1.Controls.Clear();
+                foreach (Control c in ctrls)
                 {
                     if (c.Name != "WelcomeScreen")
                         c.Dispose();
@@ -220,14 +247,17 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                     }
                 WorkScheduleScreen workScheduleScreen = new WorkScheduleScreen(userAccountDTO.Authentication);
                 WorkshiftPresenter workshiftPresenter = new WorkshiftPresenter(workshiftModel, workScheduleScreen);
-                panel1.Controls.Clear();
                 panel1.Controls.Add(workScheduleScreen);
             }
             else
             {
                 lastChecked = null;
-                panel1.Controls.Clear();
-                panel1.Controls.Add(welcomeScreen);
+                if (checkBox1.Checked == false && checkBox2.Checked == false && checkBox3.Checked == false && checkBox4.Checked == false && checkBox5.Checked == false
+                    && checkBox6.Checked == false && checkBox7.Checked == false)
+                {
+                    panel1.Controls.Clear();
+                    panel1.Controls.Add(welcomeScreen);
+                }
             }
         }
         // Quản lý sản phẩm
@@ -236,7 +266,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             CheckBox activeCheckBox = sender as CheckBox;
             if (activeCheckBox != lastChecked && activeCheckBox.Checked)
             {
+                List<Control> ctrls = new List<Control>();
                 foreach (Control c in panel1.Controls)
+                    ctrls.Add(c);
+                panel1.Controls.Clear();
+                foreach (Control c in ctrls)
                 {
                     if (c.Name != "WelcomeScreen")
                         c.Dispose();
@@ -257,14 +291,17 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                     productModel.getAllData();
                 ProductManagementScreen productManagementScreen = new ProductManagementScreen(userAccountDTO.Authentication);
                 ProductPresenter productPresenter = new ProductPresenter(productModel, productManagementScreen);
-                panel1.Controls.Clear();
                 panel1.Controls.Add(productManagementScreen);
             }
             else
             {
                 lastChecked = null;
-                panel1.Controls.Clear();
-                panel1.Controls.Add(welcomeScreen);
+                if (checkBox1.Checked == false && checkBox2.Checked == false && checkBox3.Checked == false && checkBox4.Checked == false && checkBox5.Checked == false
+                    && checkBox6.Checked == false && checkBox7.Checked == false)
+                {
+                    panel1.Controls.Clear();
+                    panel1.Controls.Add(welcomeScreen);
+                }
             }
         }
         //Quản lý nhân viên
@@ -273,7 +310,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             CheckBox activeCheckBox = sender as CheckBox;
             if (activeCheckBox != lastChecked && activeCheckBox.Checked)
             {
+                List<Control> ctrls = new List<Control>();
                 foreach (Control c in panel1.Controls)
+                    ctrls.Add(c);
+                panel1.Controls.Clear();
+                foreach (Control c in ctrls)
                 {
                     if (c.Name != "WelcomeScreen")
                         c.Dispose();
@@ -291,14 +332,17 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                     employeeModel.getAllData();
                 EmployeeManagementScreen employeeManagementScreen = new EmployeeManagementScreen(userAccountDTO.Authentication);
                 EmployeePresenter employeePresenter = new EmployeePresenter(employeeModel, employeeManagementScreen);
-                panel1.Controls.Clear();
                 panel1.Controls.Add(employeeManagementScreen);
             }
             else
             {
                 lastChecked = null;
-                panel1.Controls.Clear();
-                panel1.Controls.Add(welcomeScreen);
+                if (checkBox1.Checked == false && checkBox2.Checked == false && checkBox3.Checked == false && checkBox4.Checked == false && checkBox5.Checked == false
+                    && checkBox6.Checked == false && checkBox7.Checked == false)
+                {
+                    panel1.Controls.Clear();
+                    panel1.Controls.Add(welcomeScreen);
+                }
             }
         }
         // Thống kê
@@ -307,7 +351,11 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             CheckBox activeCheckBox = sender as CheckBox;
             if (activeCheckBox != lastChecked && activeCheckBox.Checked)
             {
+                List<Control> ctrls = new List<Control>();
                 foreach (Control c in panel1.Controls)
+                    ctrls.Add(c);
+                panel1.Controls.Clear();
+                foreach (Control c in ctrls)
                 {
                     if (c.Name != "WelcomeScreen")
                         c.Dispose();
@@ -325,14 +373,17 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                     receiptModel.getAllData();
                 ReportScreen reportScreen = new ReportScreen();
 
-                panel1.Controls.Clear();
                 panel1.Controls.Add(reportScreen);
             }
             else
             {
                 lastChecked = null;
-                panel1.Controls.Clear();
-                panel1.Controls.Add(welcomeScreen);
+                if (checkBox1.Checked == false && checkBox2.Checked == false && checkBox3.Checked == false && checkBox4.Checked == false && checkBox5.Checked == false
+                    && checkBox6.Checked == false && checkBox7.Checked == false)
+                {
+                    panel1.Controls.Clear();
+                    panel1.Controls.Add(welcomeScreen);
+                }
             }
         }
         // Xem thông tin cá nhân

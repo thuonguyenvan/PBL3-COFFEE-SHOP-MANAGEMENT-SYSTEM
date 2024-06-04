@@ -138,5 +138,29 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 AutoSizeColumnList(listView1);
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            listView1.Items.Clear();
+            List<EmployeeDTO> employee = DataStructure<EmployeeDTO>.Instance.FindAll(x => x.ID.Contains(textBox1.Text) || x.Name.Contains(textBox1.Text) || x.Address.Contains(textBox1.Text)
+                || x.Email.Contains(textBox1.Text) || x.Salary.ToString().Contains(textBox1.Text) || x.PhoneNum.Contains(textBox1.Text));
+            if (Authentication)
+            {
+                foreach (EmployeeDTO em in employee)
+                {
+                    listView1.Items.Add(new ListViewItem(new string[] {em.ID.ToString(), em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.Address, em.PhoneNum,
+                    em.Email, em.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).UserName, DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).Password, em.Salary.ToString()}));
+                }
+            }
+            else
+            {
+                foreach (EmployeeDTO em in employee)
+                {
+                    listView1.Items.Add(new ListViewItem(new string[] { em.ID, em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.PhoneNum,
+                    em.Email, em.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).UserName }));
+                }
+            }
+            AutoSizeColumnList(listView1);
+        }
     }
 }
