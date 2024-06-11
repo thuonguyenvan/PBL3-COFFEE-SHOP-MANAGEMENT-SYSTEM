@@ -129,3 +129,5 @@ E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Man
 E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.Views.WorkshiftDetailsForm.resources
 E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.Views.WorkshiftManagementForm.resources
 E:\Temp Documents\GitHub\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.Views.CustomerPointsDetailsForm.resources
+E:\Github repository\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.Views.CustomerPointsDetailsForm.resources
+E:\Github repository\PBL3-COFFEE-SHOP-MANAGEMENT-SYSTEM\PBL3_Coffee_Shop_Management_System\obj\Debug\PBL3_Coffee_Shop_Management_System.Views.ReceiptScreen.resources

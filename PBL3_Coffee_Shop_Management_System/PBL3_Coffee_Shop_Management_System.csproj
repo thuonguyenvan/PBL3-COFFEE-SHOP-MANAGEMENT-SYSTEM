@@ -222,6 +222,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ReceiptScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ReceiptScreen.Designer.cs">
+      <DependentUpon>ReceiptScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ReportScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -336,6 +342,9 @@
     </Compile>
     <EmbeddedResource Include="Views\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ReceiptScreen.resx">
+      <DependentUpon>ReceiptScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ReportScreen.resx">
       <DependentUpon>ReportScreen.cs</DependentUpon>

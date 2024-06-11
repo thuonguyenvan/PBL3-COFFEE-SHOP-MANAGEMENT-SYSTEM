@@ -19,6 +19,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
     {
         CustomerDTO customer = null;
         ReceiptDTO receipt = new ReceiptDTO();
+        DataTable dataTable;
         public ConfirmOrderForm(DataTable dataTable)
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             textBox3.Enabled = false;
             button4.DialogResult = DialogResult.Cancel;
             button3.DialogResult = DialogResult.OK;
+            this.dataTable = dataTable;
             foreach (DataRow row in dataTable.Rows)
             {
                 listView1.Items.Add(new ListViewItem(new string[] { row.ItemArray[0].ToString(), row.ItemArray[1].ToString(),
@@ -84,7 +86,6 @@ namespace PBL3_Coffee_Shop_Management_System.Views
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Receipt to be added here");
             receipt.TransactionTime = DateTime.Now;
             receipt.EmployeeID = Form1.Instance.EmployeeID;
             if (customer != null)
@@ -113,6 +114,10 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 CustomerModel customerModel = new CustomerModel(connstring);
                 customer.Points = (int)((total - receipt.Discount) * Form1.Instance.MoneyToPoints);
                 customerModel.Update(customer);
+            }
+            using (ReceiptScreen receiptScreen = new ReceiptScreen(receipt, dataTable, Convert.ToInt32(textBox4.Text)))
+            {
+                receiptScreen.ShowDialog();
             }
         }
     }
