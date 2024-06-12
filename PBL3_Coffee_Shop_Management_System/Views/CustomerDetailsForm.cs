@@ -17,7 +17,21 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         {
             InitializeComponent();
             CenterToScreen();
-            textBox1.Text = (Convert.ToInt32(DataStructure<CustomerDTO>.Instance.Last().ID) + 1).ToString();
+            string s = DataStructure<CustomerDTO>.Instance.Last().ID;
+            s = s.Remove(0, 1);
+            int i = Convert.ToInt32(s);
+            i += 1;
+            s = "C";
+            s += i.ToString();
+            if (s.Length < 6) s = s.Insert(1, string.Concat(Enumerable.Repeat("0", 6 - s.Length)));
+            while (DataStructure<CustomerDTO>.Instance.Find(x => x.ID == s) != null)
+            {
+                s.Remove(1, 5);
+                i++;
+                s += i.ToString();
+                if (s.Length < 6) s = s.Insert(1, string.Concat(Enumerable.Repeat("0", 6 - s.Length)));
+            }
+            textBox1.Text = s;
         }
         public CustomerDetailsForm(CustomerDTO customer)
         {
@@ -34,7 +48,21 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         {
             InitializeComponent();
             CenterToScreen();
-            textBox1.Text = (Convert.ToInt32(DataStructure<CustomerDTO>.Instance.Last().ID) + 1).ToString();
+            string s = DataStructure<CustomerDTO>.Instance.Last().ID;
+            s = s.Remove(0, 1);
+            int i = Convert.ToInt32(s);
+            i += 1;
+            s = "C";
+            s += i.ToString();
+            if (s.Length < 6) s = s.Insert(1, string.Concat(Enumerable.Repeat("0", 6 - s.Length)));
+            while (DataStructure<CustomerDTO>.Instance.Find(x => x.ID == s) != null)
+            {
+                s = s.Remove(1, 5);
+                i++;
+                s += i.ToString();
+                if (s.Length < 6) s = s.Insert(1, string.Concat(Enumerable.Repeat("0", 6 - s.Length)));
+            }
+            textBox1.Text = s;
             textBox3.Text = PhoneNum;
         }
         public CustomerDTO GetData()

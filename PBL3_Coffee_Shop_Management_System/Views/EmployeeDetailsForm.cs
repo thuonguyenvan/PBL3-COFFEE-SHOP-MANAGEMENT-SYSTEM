@@ -19,14 +19,18 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 1;
             CenterToScreen();
-            string s = DataStructure<EmployeeDTO>.Instance.Last().ID;
-            s = s.Remove(0, 1);
-            int i = Convert.ToInt32(s);
-            i += 1;
-            s = DataStructure<EmployeeDTO>.Instance.Last().ID;
-            s = s.Remove(1, 5);
+            string s;
+            int i = 1;
+            s = "E";
             s += i.ToString();
-            if (s.Length < 6) s = s.Insert(1, string.Concat(Enumerable.Repeat("0", 6-s.Length)));
+            if (s.Length < 6) s = s.Insert(1, string.Concat(Enumerable.Repeat("0", 6 - s.Length)));
+            while (DataStructure<EmployeeDTO>.Instance.Find(x => x.ID == s) != null)
+            {
+                s = s.Remove(1, 5);
+                i++;
+                s += i.ToString();
+                if (s.Length < 6) s = s.Insert(1, string.Concat(Enumerable.Repeat("0", 6 - s.Length)));
+            }
             textBox1.Text = s;
         }
         public EmployeeDetailsForm(EmployeeDTO employee)

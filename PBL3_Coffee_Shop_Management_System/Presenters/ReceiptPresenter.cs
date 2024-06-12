@@ -31,11 +31,21 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
         {
             if (DataStructure<ReceiptDTO>.Instance.Count == 0)
                 _model.getAllData();
-            e.receipt[0].ReceiptID = (Convert.ToInt32(DataStructure<ReceiptDTO>.Instance.LastOrDefault().ReceiptID)+1).ToString();
-            while (DataStructure<ReceiptDTO>.Instance.Find(x => x.ReceiptID == e.receipt[0].ReceiptID) != null)
+            string s = DataStructure<ReceiptDTO>.Instance.Last().ReceiptID;
+            s = s.Remove(0, 1);
+            int i = Convert.ToInt32(s);
+            i += 1;
+            s = "R";
+            s += i.ToString();
+            if (s.Length < 6) s = s.Insert(1, string.Concat(Enumerable.Repeat("0", 6 - s.Length)));
+            while (DataStructure<ReceiptDTO>.Instance.Find(x => x.ReceiptID == s) != null)
             {
-                e.receipt[0].ReceiptID = (Convert.ToInt32(e.receipt[0].ReceiptID)+1).ToString();
+                s.Remove(1, 5);
+                i++;
+                s += i.ToString();
+                if (s.Length < 6) s = s.Insert(1, string.Concat(Enumerable.Repeat("0", 6 - s.Length)));
             }
+            e.receipt[0].ReceiptID = s;
             foreach (ProductDTO p in e.receipt[0].Products)
             {
                 p.ID = DataStructure<ProductDTO>.Instance.Find(x => x.Name == p.Name).ID;
@@ -56,7 +66,8 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
             foreach (string s in list)
             {
                 ReceiptDTO receipt = DataStructure<ReceiptDTO>.Instance.Find(x => x.ReceiptID == s);
-                DataStructure<CustomerDTO>.Instance.Find(x => x.ID == receipt.CustomerID).Points -= (int)((receipt.Total.Sum() - receipt.Discount) * Form1.Instance.MoneyToPoints);
+                CustomerDTO customer = DataStructure<CustomerDTO>.Instance.Find(x => x.ID == receipt.CustomerID);
+                if (customer != null) customer.Points -= (int)((receipt.Total.Sum() - receipt.Discount) * Form1.Instance.MoneyToPoints);
                 _model.Delete(s);
                 DataStructure<ReceiptDTO>.Instance.RemoveAll(x => x.ReceiptID == s);
             }
