@@ -112,10 +112,10 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             {
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 CustomerModel customerModel = new CustomerModel(connstring);
-                customer.Points = (int)((total - receipt.Discount) * Form1.Instance.MoneyToPoints);
+                customer.Points += (int)((total - receipt.Discount) * Form1.Instance.MoneyToPoints);
                 customerModel.Update(customer);
             }
-            using (ReceiptScreen receiptScreen = new ReceiptScreen(receipt, dataTable, Convert.ToInt32(textBox4.Text)))
+            using (ReceiptScreen receiptScreen = new ReceiptScreen(receipt, dataTable, (textBox4.Text.Length!=0)?Convert.ToInt32(textBox4.Text):0))
             {
                 receiptScreen.ShowDialog();
             }

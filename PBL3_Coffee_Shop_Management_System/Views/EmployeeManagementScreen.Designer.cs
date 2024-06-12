@@ -40,7 +40,6 @@
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -95,8 +94,7 @@
             this.columnHeader5,
             this.columnHeader7,
             this.columnHeader8,
-            this.columnHeader9,
-            this.columnHeader10});
+            this.columnHeader9});
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(27, 139);
@@ -144,11 +142,6 @@
             // 
             this.columnHeader9.Text = "Full Time";
             this.columnHeader9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "Tên Tài Khoản";
-            this.columnHeader10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox1
             // 

@@ -15,9 +15,13 @@ namespace PBL3_Coffee_Shop_Management_System.Views
     public partial class SalesHistoryScreen : UserControl
     {
         private DataTable dataTable = new DataTable();
-        public SalesHistoryScreen()
+        public SalesHistoryScreen(bool Authentication)
         {
             InitializeComponent();
+            if (!Authentication)
+            {
+                button1.Visible = false;
+            }
             dataTable.Columns.AddRange(new DataColumn[]
             {
                 new DataColumn("Mã Hóa Đơn", typeof(string)),

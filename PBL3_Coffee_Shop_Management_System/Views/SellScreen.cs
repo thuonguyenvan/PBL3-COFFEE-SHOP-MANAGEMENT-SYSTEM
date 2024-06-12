@@ -119,12 +119,19 @@ namespace PBL3_Coffee_Shop_Management_System.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ConfirmOrderForm confirmOrderForm = new ConfirmOrderForm(dataTable);
-            string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
-            ReceiptModel receiptModel = new ReceiptModel(connstring);
-            ReceiptPresenter receiptPresenter = new ReceiptPresenter(receiptModel, confirmOrderForm);
-            confirmOrderForm.ShowDialog();
-            dataTable.Rows.Clear();
+            if (dataTable.Rows.Count != 0)
+            {
+                ConfirmOrderForm confirmOrderForm = new ConfirmOrderForm(dataTable);
+                string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
+                ReceiptModel receiptModel = new ReceiptModel(connstring);
+                ReceiptPresenter receiptPresenter = new ReceiptPresenter(receiptModel, confirmOrderForm);
+                confirmOrderForm.ShowDialog();
+                dataTable.Rows.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Danh sách sản phẩm trống!");
+            }
         }
     }
 }

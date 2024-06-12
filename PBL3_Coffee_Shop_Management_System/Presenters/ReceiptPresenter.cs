@@ -46,9 +46,17 @@ namespace PBL3_Coffee_Shop_Management_System.Presenters
         }
         private void OnDeleteReceipt(object sender, EventArgs e)
         {
+            if (DataStructure<CustomerDTO>.Instance.Count == 0)
+            {
+                string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
+                CustomerModel customerModel = new CustomerModel(connstring);
+                customerModel.getAllData();
+            }
             List<string> list = sender as List<string>;
             foreach (string s in list)
             {
+                ReceiptDTO receipt = DataStructure<ReceiptDTO>.Instance.Find(x => x.ReceiptID == s);
+                DataStructure<CustomerDTO>.Instance.Find(x => x.ID == receipt.CustomerID).Points -= (int)((receipt.Total.Sum() - receipt.Discount) * Form1.Instance.MoneyToPoints);
                 _model.Delete(s);
                 DataStructure<ReceiptDTO>.Instance.RemoveAll(x => x.ReceiptID == s);
             }

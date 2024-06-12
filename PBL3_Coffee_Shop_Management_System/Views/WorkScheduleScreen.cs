@@ -25,6 +25,8 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 button26.Visible = false;
                 button27.Visible = false;
                 button28.Visible = false;
+                button29.Visible = false;
+                button30.Visible = false;
             }
             monthCalendar1.MaxSelectionCount = 1;
             setTableLayoutPanel();

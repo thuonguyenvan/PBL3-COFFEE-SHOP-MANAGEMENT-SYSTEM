@@ -97,11 +97,8 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox3.Checked = false;
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
-                if (userAccountDTO.Authentication)
-                {
-                    checkBox6.Checked = false;
-                    checkBox7.Checked = false;
-                }
+                checkBox6.Checked = false;
+                checkBox7.Checked = false;
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 ProductModel productModel = new ProductModel(connstring);
@@ -142,11 +139,8 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox3.Checked = false;
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
-                if (userAccountDTO.Authentication)
-                {
-                    checkBox6.Checked = false;
-                    checkBox7.Checked = false;
-                }
+                checkBox6.Checked = false;
+                checkBox7.Checked = false;
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 CustomerModel customerModel = new CustomerModel(connstring);
@@ -186,17 +180,14 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox2.Checked = false;
                 checkBox4.Checked = false;
                 checkBox5.Checked = false;
-                if (userAccountDTO.Authentication)
-                {
-                    checkBox6.Checked = false;
-                    checkBox7.Checked = false;
-                }
+                checkBox6.Checked = false;
+                checkBox7.Checked = false;
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 ReceiptModel receiptModel = new ReceiptModel(connstring);
                 if (DataStructure<ReceiptDTO>.Instance.Count() == 0)
                     receiptModel.getAllData();
-                SalesHistoryScreen salesHistoryScreen = new SalesHistoryScreen();
+                SalesHistoryScreen salesHistoryScreen = new SalesHistoryScreen(userAccountDTO.Authentication);
                 ReceiptPresenter receiptPresenter = new ReceiptPresenter(receiptModel, salesHistoryScreen);
                 panel1.Controls.Add(salesHistoryScreen);
             }
@@ -230,11 +221,8 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox2.Checked = false;
                 checkBox3.Checked = false;
                 checkBox5.Checked = false;
-                if (userAccountDTO.Authentication)
-                {
-                    checkBox6.Checked = false;
-                    checkBox7.Checked = false;
-                }
+                checkBox6.Checked = false;
+                checkBox7.Checked = false;
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 WorkshiftModel workshiftModel = new WorkshiftModel(connstring);
@@ -279,11 +267,8 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 checkBox2.Checked = false;
                 checkBox3.Checked = false;
                 checkBox4.Checked = false;
-                if (userAccountDTO.Authentication)
-                {
-                    checkBox6.Checked = false;
-                    checkBox7.Checked = false;
-                }
+                checkBox6.Checked = false;
+                checkBox7.Checked = false;
                 lastChecked = activeCheckBox;
                 string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
                 ProductModel productModel = new ProductModel(connstring);

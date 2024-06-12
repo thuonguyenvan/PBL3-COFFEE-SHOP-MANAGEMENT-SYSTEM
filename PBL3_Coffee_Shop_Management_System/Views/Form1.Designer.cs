@@ -35,12 +35,12 @@
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             if (auth)
             {
-                this.checkBox6 = new System.Windows.Forms.CheckBox();
                 this.checkBox7 = new System.Windows.Forms.CheckBox();
             }
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -184,7 +184,7 @@
             this.checkBox3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBox3.UseVisualStyleBackColor = false;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(0,0,0,0);
+            this.checkBox3.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
             // 
             // label1
             // 
@@ -219,22 +219,27 @@
             // 
             // checkBox6
             //
+            this.checkBox6.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox6.BackColor = System.Drawing.Color.Black;
+            this.checkBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.checkBox6.ForeColor = System.Drawing.Color.SandyBrown;
+            this.checkBox6.Name = "checkBox3";
             if (auth)
             {
-                this.checkBox6.Appearance = System.Windows.Forms.Appearance.Button;
-                this.checkBox6.BackColor = System.Drawing.Color.Black;
-                this.checkBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                this.checkBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-                this.checkBox6.ForeColor = System.Drawing.Color.SandyBrown;
-                this.checkBox6.Name = "checkBox3";
                 this.checkBox6.Size = new System.Drawing.Size(198, 90);
-                this.checkBox6.TabIndex = 20;
                 this.checkBox6.Text = "QUẢN LÝ NHÂN VIÊN";
-                this.checkBox6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-                this.checkBox6.UseVisualStyleBackColor = false;
-                this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
-                this.checkBox6.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
             }
+            else
+            {
+                this.checkBox6.Size = new System.Drawing.Size(198, 126);
+                this.checkBox6.Text = "XEM NHÂN VIÊN";
+            }
+            this.checkBox6.TabIndex = 20;
+            this.checkBox6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBox6.UseVisualStyleBackColor = false;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            this.checkBox6.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
             //
             // checkBox7
             //
@@ -264,7 +269,7 @@
             this.flowLayoutPanel1.TabIndex = 12;
             if (auth) this.flowLayoutPanel1.Controls.AddRange(new System.Windows.Forms.Control[] { this.checkBox1, this.checkBox2, this.checkBox6,
                 this.checkBox3, this.checkBox4, this.checkBox5, this.checkBox7 });
-            else this.flowLayoutPanel1.Controls.AddRange(new System.Windows.Forms.Control[] { this.checkBox1, this.checkBox2, this.checkBox3, this.checkBox4, this.checkBox5 });
+            else this.flowLayoutPanel1.Controls.AddRange(new System.Windows.Forms.Control[] { this.checkBox1, this.checkBox2, this.checkBox6, this.checkBox3, this.checkBox4, this.checkBox5 });
             // 
             // Form1
             // 

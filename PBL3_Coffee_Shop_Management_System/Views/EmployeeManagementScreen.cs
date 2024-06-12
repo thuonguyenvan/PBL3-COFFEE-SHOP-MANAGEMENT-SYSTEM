@@ -21,6 +21,9 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             Authentication = auth;
             if (auth)
             {
+                columnHeader10 = new ColumnHeader();
+                columnHeader10.Text = "Tên Tài Khoản";
+                columnHeader10.TextAlign = HorizontalAlignment.Center;
                 columnHeader11 = new ColumnHeader();
                 columnHeader11.Text = "Mật Khẩu";
                 columnHeader11.TextAlign = HorizontalAlignment.Center;
@@ -32,15 +35,18 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 foreach (EmployeeDTO e in DataStructure<EmployeeDTO>.Instance)
                 {
                     listView1.Items.Add(new ListViewItem(new string[] {e.ID.ToString(), e.Name, e.Gender?"Nữ":"Nam", e.DateOfBirth.ToString(), e.Address, e.PhoneNum,
-                e.Email, e.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == e.ID).UserName, DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == e.ID).Password, e.Salary.ToString()}));
+                    e.Email, e.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == e.ID).UserName, DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == e.ID).Password, e.Salary.ToString()}));
                 }
             }
             else
             {
+                button1.Visible = false;
+                button2.Visible = false;
+                button3.Visible = false;
                 foreach (EmployeeDTO e in DataStructure<EmployeeDTO>.Instance)
                 {
                     listView1.Items.Add(new ListViewItem(new string[] {e.ID.ToString(), e.Name, e.Gender?"Nữ":"Nam", e.DateOfBirth.ToString(), e.Address, e.PhoneNum,
-                    e.Email, e.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == e.ID).UserName}));
+                    e.Email, e.isFullTime?"Có":"Không"}));
                 }
             }
             AutoSizeColumnList(listView1);
@@ -84,7 +90,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 foreach (EmployeeDTO em in DataStructure<EmployeeDTO>.Instance)
                 {
                     listView1.Items.Add(new ListViewItem(new string[] { em.ID, em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.PhoneNum,
-                    em.Email, em.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).UserName }));
+                    em.Email, em.isFullTime?"Có":"Không" }));
                 }
             }
             AutoSizeColumnList(listView1);
@@ -132,7 +138,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                     foreach (EmployeeDTO em in DataStructure<EmployeeDTO>.Instance)
                     {
                         listView1.Items.Add(new ListViewItem(new string[] { em.ID, em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.PhoneNum,
-                    em.Email, em.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).UserName }));
+                    em.Email, em.isFullTime?"Có":"Không" }));
                     }
                 }
                 AutoSizeColumnList(listView1);
@@ -157,7 +163,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 foreach (EmployeeDTO em in employee)
                 {
                     listView1.Items.Add(new ListViewItem(new string[] { em.ID, em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.PhoneNum,
-                    em.Email, em.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).UserName }));
+                    em.Email, em.isFullTime?"Có":"Không" }));
                 }
             }
             AutoSizeColumnList(listView1);
