@@ -88,7 +88,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             //
             objChart.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             objChart.AxisY.Minimum = 0;
-            objChart.AxisY.Maximum = revenue.Values.Max();
+            objChart.AxisY.Maximum = (revenue.Count!=0)?revenue.Values.Max():0;
             //
             chart1.Titles.Clear();
             chart1.Titles.Add("Doanh thu từ ngày "+startTime.ToString("dd/MM/yyyy")+" đến ngày "+endTime.ToString("dd/MM/yyyy"));

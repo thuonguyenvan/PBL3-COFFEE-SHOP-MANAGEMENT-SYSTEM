@@ -30,11 +30,12 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 columnHeader12 = new ColumnHeader();
                 columnHeader12.Text = "Lương Một Giờ";
                 columnHeader12.TextAlign = HorizontalAlignment.Center;
+                listView1.Columns.Add(columnHeader10);
                 listView1.Columns.Add(columnHeader11);
                 listView1.Columns.Add(columnHeader12);
                 foreach (EmployeeDTO e in DataStructure<EmployeeDTO>.Instance)
                 {
-                    listView1.Items.Add(new ListViewItem(new string[] {e.ID.ToString(), e.Name, e.Gender?"Nữ":"Nam", e.DateOfBirth.ToString(), e.Address, e.PhoneNum,
+                    listView1.Items.Add(new ListViewItem(new string[] {e.ID.ToString(), e.Name, e.Gender?"Nữ":"Nam", e.DateOfBirth.ToString("dd/MM/yyyy"), e.Address, e.PhoneNum,
                     e.Email, e.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == e.ID).UserName, DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == e.ID).Password, e.Salary.ToString()}));
                 }
             }
@@ -45,7 +46,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 button3.Visible = false;
                 foreach (EmployeeDTO e in DataStructure<EmployeeDTO>.Instance)
                 {
-                    listView1.Items.Add(new ListViewItem(new string[] {e.ID.ToString(), e.Name, e.Gender?"Nữ":"Nam", e.DateOfBirth.ToString(), e.Address, e.PhoneNum,
+                    listView1.Items.Add(new ListViewItem(new string[] {e.ID.ToString(), e.Name, e.Gender?"Nữ":"Nam", e.DateOfBirth.ToString("dd/MM/yyyy"), e.Address, e.PhoneNum,
                     e.Email, e.isFullTime?"Có":"Không"}));
                 }
             }
@@ -81,7 +82,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             {
                 foreach (EmployeeDTO em in DataStructure<EmployeeDTO>.Instance)
                 {
-                    listView1.Items.Add(new ListViewItem(new string[] {em.ID.ToString(), em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.Address, em.PhoneNum,
+                    listView1.Items.Add(new ListViewItem(new string[] {em.ID.ToString(), em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString("dd/MM/yyyy"), em.Address, em.PhoneNum,
                     em.Email, em.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).UserName, DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).Password, em.Salary.ToString()}));
                 }
             }
@@ -89,7 +90,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             {
                 foreach (EmployeeDTO em in DataStructure<EmployeeDTO>.Instance)
                 {
-                    listView1.Items.Add(new ListViewItem(new string[] { em.ID, em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.PhoneNum,
+                    listView1.Items.Add(new ListViewItem(new string[] { em.ID, em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString("dd/MM/yyyy"), em.PhoneNum,
                     em.Email, em.isFullTime?"Có":"Không" }));
                 }
             }
@@ -105,7 +106,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 {
                     EmployeeDTO temp = new EmployeeDTO(item.Text, item.SubItems[1].Text, item.SubItems[2].Text=="Nam"?false:true,
                         Convert.ToDateTime(item.SubItems[3].Text), item.SubItems[4].Text, item.SubItems[5].Text, item.SubItems[6].Text,
-                        item.SubItems[7].Text == "Không" ? false : true, Convert.ToInt32(item.SubItems[8].Text));
+                        item.SubItems[7].Text == "Không" ? false : true, Convert.ToInt32(item.SubItems[10].Text));
                     list.Add(temp);
                     listView1.Items.Remove(item);
                 }
@@ -121,7 +122,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 List<EmployeeDTO> list = new List<EmployeeDTO>();
                 EmployeeDTO employee = new EmployeeDTO(item.Text, item.SubItems[1].Text, item.SubItems[2].Text == "Nam" ? false : true,
                         Convert.ToDateTime(item.SubItems[3].Text), item.SubItems[4].Text, item.SubItems[5].Text, item.SubItems[6].Text,
-                        item.SubItems[7].Text == "Không" ? false : true, Convert.ToInt32(item.SubItems[8].Text));
+                        item.SubItems[7].Text == "Không" ? false : true, Convert.ToInt32(item.SubItems[10].Text));
                 list.Add(employee);
                 UpdateEmployee(this, new EmployeeEventArgs(list));
                 listView1.Items.Clear();
@@ -129,7 +130,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 {
                     foreach (EmployeeDTO em in DataStructure<EmployeeDTO>.Instance)
                     {
-                        listView1.Items.Add(new ListViewItem(new string[] {em.ID.ToString(), em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.Address, em.PhoneNum,
+                        listView1.Items.Add(new ListViewItem(new string[] {em.ID.ToString(), em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString("dd/MM/yyyy"), em.Address, em.PhoneNum,
                     em.Email, em.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).UserName, DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).Password, em.Salary.ToString()}));
                     }
                 }
@@ -137,7 +138,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
                 {
                     foreach (EmployeeDTO em in DataStructure<EmployeeDTO>.Instance)
                     {
-                        listView1.Items.Add(new ListViewItem(new string[] { em.ID, em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.PhoneNum,
+                        listView1.Items.Add(new ListViewItem(new string[] { em.ID, em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString("dd/MM/yyyy"), em.PhoneNum,
                     em.Email, em.isFullTime?"Có":"Không" }));
                     }
                 }
@@ -154,7 +155,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             {
                 foreach (EmployeeDTO em in employee)
                 {
-                    listView1.Items.Add(new ListViewItem(new string[] {em.ID.ToString(), em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.Address, em.PhoneNum,
+                    listView1.Items.Add(new ListViewItem(new string[] {em.ID.ToString(), em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString("dd/MM/yyyy"), em.Address, em.PhoneNum,
                     em.Email, em.isFullTime?"Có":"Không", DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).UserName, DataStructure<UserAccountDTO>.Instance.Find(x => x.ID == em.ID).Password, em.Salary.ToString()}));
                 }
             }
@@ -162,7 +163,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             {
                 foreach (EmployeeDTO em in employee)
                 {
-                    listView1.Items.Add(new ListViewItem(new string[] { em.ID, em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString(), em.PhoneNum,
+                    listView1.Items.Add(new ListViewItem(new string[] { em.ID, em.Name, em.Gender?"Nữ":"Nam", em.DateOfBirth.ToString("dd/MM/yyyy"), em.PhoneNum,
                     em.Email, em.isFullTime?"Có":"Không" }));
                 }
             }
