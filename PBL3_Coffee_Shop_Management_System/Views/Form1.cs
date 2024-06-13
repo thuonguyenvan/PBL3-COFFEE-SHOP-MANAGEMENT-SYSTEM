@@ -39,20 +39,20 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         public Form1()
         {
             _Instance = this;
-            /*using (LoginForm loginForm = new LoginForm())
+            using (LoginForm loginForm = new LoginForm())
             {
                 loginForm.ShowDialog();
                 if (loginForm.DialogResult != DialogResult.Cancel)
                 {
-                    UserAccountDTO.Instance = loginForm.GetUserAccount();
+                    userAccountDTO = loginForm.GetUserAccount();
                     if (loginForm.Authentication == 1)
-                        UserAccountDTO.Instance.Authentication = true;
-                    else UserAccountDTO.Instance.Authentication = false;
+                        userAccountDTO.Authentication = true;
+                    else userAccountDTO.Authentication = false;
                 }
                 else Environment.Exit(0);
-            }*/
-            userAccountDTO = DataStructure<UserAccountDTO>.Instance[1];
-            userAccountDTO.Authentication = true;
+            }
+
+
             string connstring = string.Format("Server=localhost; database=PBL3_COFFEE_SHOP_MANAGEMENT_SYSTEM; UID=root; password=;");
             EmployeeModel employeeModel = new EmployeeModel(connstring);
             if (DataStructure<EmployeeDTO>.Instance.Count() == 0)

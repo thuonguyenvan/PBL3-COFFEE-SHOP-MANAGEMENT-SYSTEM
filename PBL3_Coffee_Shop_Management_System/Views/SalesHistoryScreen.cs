@@ -100,7 +100,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
         {
             dataTable.Rows.Clear();
             List<ReceiptDTO> receipt = DataStructure<ReceiptDTO>.Instance.FindAll(x => x.ReceiptID.Contains(textBox1.Text) || x.EmployeeID.Contains(textBox1.Text)
-                || x.CustomerID.Contains(textBox1.Text) || x.TableNum.ToString().Contains(textBox1.Text));
+                || (x.CustomerID != null && x.CustomerID.Contains(textBox1.Text)) || x.TableNum.ToString().Contains(textBox1.Text));
             foreach (ReceiptDTO r in DataStructure<ReceiptDTO>.Instance)
             {
                 string products = "";

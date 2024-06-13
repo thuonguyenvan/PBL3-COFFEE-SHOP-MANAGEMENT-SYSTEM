@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,7 +58,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             chart1.Series["Revenue"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
             foreach (var item in revenue)
             {
-                chart1.Series["Revenue"].Points.AddXY(Convert.ToDateTime(item.Key), item.Value);
+                chart1.Series["Revenue"].Points.AddXY(DateTime.ParseExact(item.Key, "dd/MM/yyyy", CultureInfo.InvariantCulture), item.Value);
             }
             chart1.Legends.Clear();
         }
@@ -100,7 +101,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             chart1.Series["Revenue"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
             foreach (var item in revenue)
             {
-                chart1.Series["Revenue"].Points.AddXY(Convert.ToDateTime(item.Key), item.Value);
+                chart1.Series["Revenue"].Points.AddXY(DateTime.ParseExact(item.Key, "dd/MM/yyyy", CultureInfo.InvariantCulture), item.Value);
             }
             chart1.Legends.Clear();
         }
@@ -133,7 +134,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             //
             objChart.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             objChart.AxisY.Minimum = 0;
-            objChart.AxisY.Maximum = revenue.Values.Max();
+            objChart.AxisY.Maximum = (revenue.Count != 0) ? revenue.Values.Max() : 0;
             //
             chart1.Titles.Clear();
             chart1.Titles.Add("Doanh thu từ tháng " + startTime.ToString("MM/yyyy") + " đến tháng " + endTime.ToString("MM/yyyy"));
@@ -145,7 +146,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             chart1.Series["Revenue"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
             foreach (var item in revenue)
             {
-                chart1.Series["Revenue"].Points.AddXY(Convert.ToDateTime(item.Key), item.Value);
+                chart1.Series["Revenue"].Points.AddXY(DateTime.ParseExact(item.Key, "dd/MM/yyyy", CultureInfo.InvariantCulture), item.Value);
             }
             chart1.Legends.Clear();
         }
@@ -176,7 +177,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             //
             objChart.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             objChart.AxisY.Minimum = 0;
-            objChart.AxisY.Maximum = revenue.Values.Max();
+            objChart.AxisY.Maximum = (revenue.Count != 0) ? revenue.Values.Max() : 0;
             //
             chart1.Titles.Clear();
             chart1.Titles.Add("Doanh thu từ năm " + startTime.ToString("yyyy") + " đến năm " + endTime.ToString("yyyy"));
@@ -188,7 +189,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             chart1.Series["Revenue"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
             foreach (var item in revenue)
             {
-                chart1.Series["Revenue"].Points.AddXY(Convert.ToDateTime("01/01/"+item.Key), item.Value);
+                chart1.Series["Revenue"].Points.AddXY(DateTime.ParseExact("01/01/"+item.Key, "dd/MM/yyyy", CultureInfo.InvariantCulture), item.Value);
             }
             chart1.Legends.Clear();
         }
@@ -219,7 +220,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             //
             objChart.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             objChart.AxisY.Minimum = 0;
-            objChart.AxisY.Maximum = revenue.Values.Max();
+            objChart.AxisY.Maximum = (revenue.Count != 0) ? revenue.Values.Max() : 0;
             //
             chart1.Titles.Clear();
             chart1.Titles.Add("Doanh thu của các loại sản phẩm từ ngày " + startTime.ToString("dd/MM/yyyy") + " đến ngày " + endTime.ToString("dd/MM/yyyy"));
@@ -237,7 +238,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             }
             foreach (var item in revenue)
             {
-                chart1.Series[item.Key.Substring(12)].Points.AddXY(Convert.ToDateTime(item.Key.Substring(0,10)), item.Value);
+                chart1.Series[item.Key.Substring(12)].Points.AddXY(DateTime.ParseExact(item.Key.Substring(0,10), "dd/MM/yyyy", CultureInfo.InvariantCulture), item.Value);
             }
         }
         private void ChartProductRevenueByMonth(DateTime startTime, DateTime endTime)
@@ -269,7 +270,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             //
             objChart.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             objChart.AxisY.Minimum = 0;
-            objChart.AxisY.Maximum = revenue.Values.Max();
+            objChart.AxisY.Maximum = (revenue.Count != 0) ? revenue.Values.Max() : 0;
             //
             chart1.Titles.Clear();
             chart1.Titles.Add("Doanh thu của các loại sản phẩm từ tháng " + startTime.ToString("MM/yyyy") + " đến tháng " + endTime.ToString("MM/yyyy"));
@@ -287,7 +288,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             }
             foreach (var item in revenue)
             {
-                chart1.Series[item.Key.Substring(9)].Points.AddXY(Convert.ToDateTime(item.Key.Substring(0, 7)), item.Value);
+                chart1.Series[item.Key.Substring(9)].Points.AddXY(DateTime.ParseExact(item.Key.Substring(0,7), "dd/MM/yyyy", CultureInfo.InvariantCulture), item.Value);
             }
         }
         private void ChartProductRevenueByYear(DateTime startTime, DateTime endTime)
@@ -317,7 +318,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             //
             objChart.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             objChart.AxisY.Minimum = 0;
-            objChart.AxisY.Maximum = revenue.Values.Max();
+            objChart.AxisY.Maximum = (revenue.Count != 0) ? revenue.Values.Max() : 0;
             //
             chart1.Titles.Clear();
             chart1.Titles.Add("Doanh thu của các loại sản phẩm từ năm " + startTime.ToString("yyyy") + " đến năm " + endTime.ToString("yyyy"));
@@ -335,7 +336,7 @@ namespace PBL3_Coffee_Shop_Management_System.Views
             }
             foreach (var item in revenue)
             {
-                chart1.Series[item.Key.Substring(6)].Points.AddXY(Convert.ToDateTime("01/01/"+item.Key.Substring(0,4)), item.Value);
+                chart1.Series[item.Key.Substring(6)].Points.AddXY(DateTime.ParseExact("01/01/"+item.Key.Substring(0,4), "dd/MM/yyyy", CultureInfo.InvariantCulture), item.Value);
             }
             chart1.Legends.Clear();
         }
